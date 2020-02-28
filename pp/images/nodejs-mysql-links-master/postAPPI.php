@@ -1,6 +1,6 @@
 <?php
-include_once ("callAPI.php");
-require_once ("parametros.php");
+include_once ("../../../pluton/images/nodejs-mysql-links-master/callAPI.php");
+require_once ("../../../pluton/images/nodejs-mysql-links-master/parametros.php");
 $jsonData = array( 'servicioID' => 2 );
 $data_string = json_encode($jsonData);$ch = curl_init($servidor.'/api/reservas/viewall/');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");

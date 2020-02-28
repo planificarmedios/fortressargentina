@@ -43,7 +43,7 @@ if (empty($_SESSION['name_user']) && empty($_SESSION['password'])){
           <div class="icon">
             <i class="fa fa-calendar"></i>
           </div>
-          <a href="../fortress/FullCalendar/calendar.php" class="small-box-footer" title="Reservas" data-toggle="tooltip"><i class="fa fa-calendar"></i></a>
+          <a href="../fortressargentina/FullCalendar/calendar.php" class="small-box-footer" title="Reservas" data-toggle="tooltip"><i class="fa fa-calendar"></i></a>
         </div>
       </div><!-- ./col -->
       
@@ -60,7 +60,7 @@ if (empty($_SESSION['name_user']) && empty($_SESSION['password'])){
           <div class="icon">
             <i class="fa fa-calendar"></i>
           </div>
-          <a href="../fortress/FullCalendar/salaB.php" class="small-box-footer" title="Reservas" data-toggle="tooltip"><i class="fa fa-calendar"></i></a>
+          <a href="../fortressargentina/FullCalendar/salaB.php" class="small-box-footer" title="Reservas" data-toggle="tooltip"><i class="fa fa-calendar"></i></a>
         </div>
       </div><!-- ./col --><!-- ./col -->
       

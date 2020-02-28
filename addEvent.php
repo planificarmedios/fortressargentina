@@ -22,7 +22,7 @@ if (isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) && 
 	$_SESSION['idInicio'] = $_POST['idInicio'];
 	$_SESSION['idFin'] = $_POST['idFin'];
 	
-	$url = 'http://127.0.0.1/fortress/MP/index.php';
+	$url = 'http://127.0.0.1/fortressargentina/MP/index.php';
 	header ('Location: '.$url);
 	
 	/* se inserta la franja horaria reservada

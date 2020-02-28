@@ -17,7 +17,7 @@
         <!-- Fav and touch icons -->
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../pluton/images/apple-touch-icon-72.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="file:///C|/xampp/htdocs/pluton/images/apple-touch-icon-72.png">
         <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57.png">
         <link rel="shortcut icon" href="../images/logo4.png">
     </head>

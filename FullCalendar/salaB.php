@@ -178,7 +178,7 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a style="color:#D2C575" href="../pluton/index.php" title="Volver">Volver Zona Clientes</a>
+                        <a style="color:#D2C575" href="../pp/index.php" title="Volver">Volver Zona Clientes</a>
                     
                     </li>
                 </ul>

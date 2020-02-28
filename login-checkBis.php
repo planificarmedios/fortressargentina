@@ -28,7 +28,7 @@ else {
 		$_SESSION['email']     = $data['email'];
 		$_SESSION['permisos_acceso'] = $data['permisos_acceso'];
 	
-		header("Location: seguridad-fortress/main.php?module=start");
+		header("Location: fortressargentina/main.php?module=start");
 	}
 
 

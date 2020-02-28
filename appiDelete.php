@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION['id_user'])){
-	header("Location: ../seguridad-fortress");}
+	header("Location: ../fortressargentina");}
     session_start();
 include_once ("callAPI.php");
 include_once ("parametros.php");
@@ -16,5 +16,5 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 'Content-Length: ' . strlen($data_string))
 );
 $result = curl_exec($ch);
-header("Location: pluton/index.php");
+header("Location: pp/index.php");
 ?>

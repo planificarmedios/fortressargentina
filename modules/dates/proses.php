@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once ("../user - Copia/callAPI.php");
+include_once ("../user/callAPI.php");
  if ($_GET['act']=='insert') {
 		if (isset($_POST['guardar'])) {
 	
@@ -38,7 +38,7 @@ include_once ("../user - Copia/callAPI.php");
 										   );
 										   
 						$data_string = json_encode($jsonData);
-						$ch = curl_init('192.168.1.45:2999/api/administracion/addcliente');
+						$ch = curl_init($servidor.'/api/administracion/addcliente');
 						curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 						curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 						curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -94,7 +94,7 @@ include_once ("../user - Copia/callAPI.php");
 										   );
 										   
 						$data_string = json_encode($jsonData);
-						$ch = curl_init('192.168.1.45:2999/api/administracion/updatecliente');
+						$ch = curl_init($servidor.'/api/administracion/updatecliente');
 						curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 						curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 						curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

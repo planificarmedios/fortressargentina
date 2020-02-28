@@ -59,7 +59,7 @@
 											} 
 
 											elseif (($_SESSION['permisos_acceso'] == 2) or ($_SESSION['permisos_acceso'] == 4)) {
-												header("Location: pluton/index.php");
+												header("Location: pp/index.php");
 											}
 											
 										} else {

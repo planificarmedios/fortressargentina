@@ -102,10 +102,6 @@
 		  var result = document.getElementById('adicionales').value;
 		  //alert ('Validando los datos adicionales' + result);
 		}
-		
-	
-	
-		
 </script>
 
 <?php
@@ -217,7 +213,7 @@ $_SESSION["idServicio"] = 1; ///////////////cambiar
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a style="color:#D2C575" href="../pluton/index.php" title="Volver">Volver Zona Clientes</a>
+                        <a style="color:#D2C575" href="../pp/index.php" title="Volver">Volver Zona Clientes</a>
                     
                     </li>
                 </ul>
@@ -243,8 +239,8 @@ $_SESSION["idServicio"] = 1; ///////////////cambiar
 			<div class="modal-content">
 			
 
-			<form class="form-horizontal" method="POST" action="../MP/index.php">
-            
+			<!-- form class="form-horizontal" method="POST" action="../MP/crud/cc.php"-->
+            <form class="form-horizontal" method="POST" action="../MP/index.php">
             				
 				<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -263,7 +259,7 @@ $_SESSION["idServicio"] = 1; ///////////////cambiar
                 <div class="col-sm-10">
                   <select multiple class="form-control"  name="idSelect2" id="idSelect2" 
      onblur="var el = document.getElementsByTagName('select')[0]; getSelectValues(el);" >
-                    <optgroup label="Menú de Selección Múltiple. Presionar Ctrl + Click">
+                    <option value="" selected> -- Seleccionar: Menú de Opción Múltiple -- </option>
                     <?php 
 					session_start(); 
 					require_once ("../callAPI.php");
@@ -322,15 +318,10 @@ $_SESSION["idServicio"] = 1; ///////////////cambiar
                <div class="form-group">
                   <label  for="start" class="col-sm-2 control-label">Fecha </label>
 					<div class="col-sm-10">
-					  <input type="text" name="real" class="form-control" id="real" readonly>
+					  <input type="text" name="start" class="form-control" id="start" readonly>
 					</div>
 			   </div>
                
-    <?php ////////////////////////////////////////////////////////////////////////// ?>
-               
-               
-              
-              <?php ////////////////////////////////////////////////////////////////////////// ?>
                                  
            	 <script type="text/javascript">
 				 // Material Select Initialization
@@ -342,7 +333,7 @@ $_SESSION["idServicio"] = 1; ///////////////cambiar
              <input type="text" name="fechaSeleccionada" id="fechaSeleccionada" hidden="true"></input>
              <input type="text" name="adicionales"       id="adicionales" hidden="true"></input>	
              <input type="text" name="cliente"           id="cliente" value="<?php echo $_SESSION["id_user"];?>"  hidden="true"></input>
-             <input type="text" name="start" id="start" hidden="true">
+             
              
              </div>
              

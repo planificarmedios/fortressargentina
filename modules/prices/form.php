@@ -17,7 +17,7 @@ if ($_GET['form']=='add') { ?>
       <div class="col-md-12">
         <div class="box box-primary">
           <!-- form start -->
-          <form role="form" class="form-horizontal" method="POST"  action="../fortress/modules/prices/proses.php?act=insert" enctype="multipart/form-data">
+          <form role="form" class="form-horizontal" method="POST"  action="../fortressargentina/modules/prices/proses.php?act=insert" enctype="multipart/form-data">
             <div class="box-body">
 
               <div class="form-group">
@@ -59,7 +59,7 @@ if ($_GET['form']=='add') { ?>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <input type="submit" class="btn btn-warning btn-submit" id="guardar" name="guardar" value="Guardar">
-                  <a  href="../fortress/main.php?module=prices" class="btn btn-default btn-reset">Cancelar</a>
+                  <a  href="../fortressargentina/main.php?module=prices" class="btn btn-default btn-reset">Cancelar</a>
                 </div>
               </div>
             </div><!-- /.box footer -->
@@ -76,7 +76,7 @@ if ($_GET['form']=='add') { ?>
 	  $i = $_GET['id'];
       
 					include_once ("callAPI.php");
-					$get_data = callAPI('GET', '192.168.1.72:2999/api/servicios/'.$i,false);
+					$get_data = callAPI('GET', $servidor.'/api/servicios/'.$i,false);
 					$response = json_decode($get_data, true);
 					foreach ($response as $d) {
 					?>
@@ -99,7 +99,7 @@ if ($_GET['form']=='add') { ?>
       <div class="col-md-12">
         <div class="box box-primary">
           <!-- form start -->
-          <form role="form" style="color:#003" class="form-horizontal"  action="../fortress/modules/prices/proses.php?act=update" method="POST">
+          <form role="form" style="color:#003" class="form-horizontal"  action="../fortressfortressargentina/modules/prices/proses.php?act=update" method="POST">
             <div class="box-body">
             
             <div class="form-group">
@@ -149,7 +149,7 @@ if ($_GET['form']=='add') { ?>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <input type="submit" class="btn btn-warning btn-submit" name="Guardar" value="Guardar">
-                  <a href="../fortress/main.php?module=prices" class="btn btn-default btn-reset">Cancelar</a>
+                  <a href="../fortressargentina/main.php?module=prices" class="btn btn-default btn-reset">Cancelar</a>
                 </div>
               </div>
             </div><!-- /.box footer -->

@@ -3,8 +3,8 @@
 if(isset($_POST['dataidobat'])) { 
 $cp = $_POST['dataidobat'];
 
-include_once ("../user - Copia/callAPI.php");
-					$get_data = callAPI('GET', '192.168.1.72:2999/api/ciudades/'.$cp,false);
+include_once ("../user/callAPI.php");
+					$get_data = callAPI('GET', $servidor.'/api/ciudades/'.$cp,false);
 					$response = json_decode($get_data, true);
 					foreach ($response as $d) {
 					      $local = $d['localidad'];	

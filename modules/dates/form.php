@@ -28,7 +28,7 @@ if ($_GET['form']=='add') { ?>
       <div class="col-md-12">
         <div class="box box-primary">
           <!-- form start -->
-          <form role="form" class="form-horizontal" method="POST" action="../user - Copia/modules/user/proses.php?act=insert" enctype="multipart/form-data">
+          <form role="form" class="form-horizontal" method="POST" action="../user/modules/user/proses.php?act=insert" enctype="multipart/form-data">
             <div class="box-body">
 
               <div class="form-group">
@@ -87,8 +87,8 @@ if ($_GET['form']=='add') { ?>
                     <option value="">Seleccionar</option>
                     <?php 
 					session_start(); 
-					include_once ("../user - Copia/callAPI.php");
-					$get_data = callAPI('GET', '192.168.1.72:2999/api/ciudades/',false);
+					include_once ("../user/callAPI.php");
+					$get_data = callAPI('GET', $servidor.'/api/ciudades/',false);
 					$response = json_decode($get_data, true);
 					foreach ($response as $d) {
 					      $id = $d['id'];
@@ -130,8 +130,8 @@ if ($_GET['form']=='add') { ?>
                     <option value="">Seleccionar</option>
                     <?php 
 					session_start(); 
-					include_once ("../user - Copia/callAPI.php");
-					$get_data = callAPI('GET', '192.168.1.72:2999/api/titulares/',false);
+					include_once ("../user/callAPI.php");
+					$get_data = callAPI('GET', $servidor.'/api/titulares/',false);
 					$response = json_decode($get_data, true);
 					foreach ($response as $d) {
 					      $id = $d['id'];
@@ -192,8 +192,8 @@ function validarCuenta(input){
   	if (isset($_GET['id'])) {
 	  $i = $_GET['id'];
       
-					include_once ("../user - Copia/callAPI.php");
-					$get_data = callAPI('GET', '192.168.1.72:2999/api/clientes/'.$i,false);
+					include_once ("../user/callAPI.php");
+					$get_data = callAPI('GET', $servidor.'/api/clientes/'.$i,false);
 					$response = json_decode($get_data, true);
 					foreach ($response as $d) {
 					?>
@@ -285,8 +285,8 @@ function validarCuenta(input){
                     <option value="">Seleccionar</option>
                     <?php 
 					 
-					include_once ("../user - Copia/callAPI.php");
-					$get_data = callAPI('GET', '192.168.1.72:2999/api/ciudades/',false);
+					include_once ("../user/callAPI.php");
+					$get_data = callAPI('GET', $servidor.'/api/ciudades/',false);
 					$response = json_decode($get_data, true);
 					foreach ($response as $d) {
 					      $id = $d['id'];
@@ -329,8 +329,8 @@ function validarCuenta(input){
                     <option value="">Seleccionar</option>
                     <?php 
 					session_start(); 
-					include_once ("../user - Copia/callAPI.php");
-					$get_data = callAPI('GET', '192.168.1.72:2999/api/titulares/',false);
+					include_once ("../user/callAPI.php");
+					$get_data = callAPI('GET', $servidor.'/api/titulares/',false);
 					$response = json_decode($get_data, true);
 					foreach ($response as $d) {
 					      $id = $d['id'];

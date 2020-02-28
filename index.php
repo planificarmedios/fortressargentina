@@ -565,8 +565,8 @@
                   <ul>
                     <li><a href="#"><span class="icon icon-map-marker"></span></span><span class="text">Sarmiento 2685 (7600) Mar del Plata, Prov. de Buenos Aires</span></li>
                     <li><a href="#"><span class="icon icon-phone"></span><span class="text">0810-333-3678</span></a></li>
-                    <li><a href="#contacto"><span class="icon icon-envelope"></span><span class="text">info@seguridad-fortress.com</span></a></li>
-                    <li><a href="#reservas"><span class="icon icon-envelope"></span><span class="text">reservas@seguridad-fortress.com</span></a></li>
+                    <li><a href="#contacto"><span class="icon icon-envelope"></span><span class="text">info@fortressargentina.com</span></a></li>
+                    <li><a href="#reservas"><span class="icon icon-envelope"></span><span class="text">reservas@fortressargentina.com</span></a></li>
                   </ul>
                 </div>
             </div>

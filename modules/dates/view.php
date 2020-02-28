@@ -67,7 +67,7 @@
         <?php
 		  include_once ("callAPI.php");
       require_once ("parametros.php");
-		  $get_data = callAPI('GET', '192.168.1.72:2999/api/dias/',false);
+		  $get_data = callAPI('GET', $servidor.'/api/dias/',false);
 		  $response = json_decode($get_data, true);
 				foreach ($response as $d) {
               $id = $d['id'];

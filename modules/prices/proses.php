@@ -19,7 +19,7 @@ include_once ("../../callAPI.php");
 										   );
 										   
 						$data_string = json_encode($jsonData);
-						$ch = curl_init('192.168.1.72:2999/api/servicios/add');
+						$ch = curl_init($servidor.'/api/servicios/add');
 						curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 						curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 						curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -38,7 +38,7 @@ include_once ("../../callAPI.php");
 			if (isset($_GET['id'])) { $id = $_GET['id']; }
 				$jsonData = array( 'id' => "$id" );
 				$data_string = json_encode($jsonData);
-				$ch = curl_init('192.168.1.72:2999/api/servicios/delete/');
+				$ch = curl_init($servidor.'/api/servicios/delete/');
 				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -71,7 +71,7 @@ include_once ("../../callAPI.php");
 										   );
 										   
 						$data_string = json_encode($jsonData);
-						$ch = curl_init('192.168.1.72:2999/api/servicios/update/');
+						$ch = curl_init($servidor.'/api/servicios/update/');
 						curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 						curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 						curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

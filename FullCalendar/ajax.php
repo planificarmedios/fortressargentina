@@ -10,7 +10,7 @@ $s = $_POST['dataservicio'];
 		$get_data = callAPI('GET', $servidor.'/api/rangos/disponibles/'.$s.'/'.$f,false); 
 		$response = json_decode($get_data, true); 
 			if ($response == null) {
-				$m = 'Sin horarios disponibles';
+				$m = 'Sin Disponibilidad';
 			} else {
 				$m = 'Disponibilidad: ';
 			}
@@ -27,27 +27,51 @@ $s = $_POST['dataservicio'];
 						<?php 
 						$x = 0;
 						$cont = 0;
-						 foreach ($response as $d) { 
-						 		 $a[$x]      = $d['id']; 
-								 $inicio[$x] = $d['inicio'];
-								 $_SESSION['id_max'] = $d['id'];
-								 $x++; 
-								 $cont++;
-                        }
 						
-						 		  for ($i=0;$i<=($_SESSION['id_max']);$i++) {
-										  if (($a[$i+2])-($a[$i])== 2){
-												?>
-												<option value="<?php echo $a[$i]; ?>">&#9724;<?php echo $inicio[$i].' hs';?></option>
-												<?php
-										  } 
-
-										  elseif (($a[$i])==($_SESSION['id_max'])){
-											    ?>
-												<option value="<?php echo $a[$i]; ?>">&#9724;<?php echo $inicio[$i].' hs';?></option>
-												<?php
-										  } 
-								  }
+						
+							 foreach ($response as $d) { 
+									 $a[$x]      = $d['id']; 
+									 $inicio[$x] = $d['inicio'];
+									 $_SESSION['id_max'] = $d['id'];
+									 $x++; 
+									 $cont++;
+							}
+							
+							
+							try {
+								
+								if (isset($_SESSION['id_max']) and isset($a)){
+								
+									  for ($i=0;$i<=($_SESSION['id_max']);$i++) {
+										 
+											try {	 
+												  if (($a[$i+2])-($a[$i])== 2){
+														?>
+														<option value="<?php echo $a[$i]; ?>">&#9724;<?php echo $inicio[$i].' hs';?></option>
+														<?php
+												  } elseif (($a[$i])==($_SESSION['id_max'])){
+														?>
+														<option value="<?php echo $a[$i]; ?>">&#9724;<?php echo $inicio[$i].' hs';?></option>
+														<?php
+												  } else { 												  
+											 			 throw new Exception("de Horarios");
+												  }	
+											
+											} catch (Exception $e) {
+													echo $e->getMessage();
+													die();
+											}	  
+																		
+									  }
+									
+								} else { 												  
+											  throw new Exception("de Horarios");
+								}
+									  
+							} catch (Exception $e) {
+									echo $e->getMessage();
+									die();
+							}
 							
 			echo 	"
 					</select>

@@ -65,8 +65,43 @@
 			var i = input.value;
 			document.getElementById('idFinSeleccionado').value = i;
 		}
-	
 		
+		function getSelectValues(select) {
+		  var result = [];
+		  var token = document.getElementById('codigo').value;
+		  var cliente = document.getElementById('cliente').value;
+		  var options = select && select.options;
+		  var opt;
+		  var a = 0;
+		  
+		  for (var i=0, iLen=options.length; i<iLen; i++) {
+			opt = options[i];
+			a++;
+			
+			if (opt.selected) {
+			  result.push(opt.value || opt.text);
+			  //alert ('Validando los datos adicionales en cada iteracion' + opt.value + ' en la iteracion ' + a + ' token ' + token + ' Cliente: ' + cliente);
+			  /////////////////////////////////////////////////////		
+			  $.post
+			 ("insertar_adicionales.php", 
+					{ dataServicio: opt.value, 
+					  dataCliente: cliente,
+					  dataToken: token}, 
+						function(response) {      
+							//$('#idFin').html(response);
+						}
+				);
+			  
+			  /////////////////////////////////////////////////////
+			} 
+		  }
+		  document.getElementById('adicionales').value = result; 
+		}
+		
+		function verificar() {
+		  var result = document.getElementById('adicionales').value;
+		  //alert ('Validando los datos adicionales' + result);
+		}
 </script>
 
 <?php
@@ -80,7 +115,7 @@ $codigo = str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTU
 $c = substr($codigo, 0,10); //extrae los primeros 6 digitos
 $_SESSION ['codigo'] = $c;
 $u = $_SESSION["id_user"];
-$_SESSION["idServicio"] = 2; ///////////////cambiar
+$_SESSION["idServicio"] = 1; ///////////////cambiar
 
 ?>
 
@@ -204,8 +239,8 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
 			<div class="modal-content">
 			
 
-			<form class="form-horizontal" method="POST" action="../MP/index.php">
-            
+			<!-- form class="form-horizontal" method="POST" action="../MP/crud/cc.php"-->
+            <form class="form-horizontal" method="POST" action="../MP/index.php">
             				
 				<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -217,6 +252,33 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
                    <img name="gifAnimado" id="gifAnimado"src="images/loader-small.gif"/>
                    <br/>Consultando disponibilidad...
                </div>
+               
+               	
+               <div class="form-group" name="idAdicionales" id="idAdicionales">
+                <label class="col-sm-2 control-label" > Adicionales</label>
+                <div class="col-sm-10">
+                  <select multiple class="form-control"  name="idSelect2" id="idSelect2" 
+     onblur="var el = document.getElementsByTagName('select')[0]; getSelectValues(el);" >
+                    <option value="" selected> -- Seleccionar: Menú de Opción Múltiple -- </option>
+                    <?php 
+					session_start(); 
+					require_once ("../callAPI.php");
+					require_once ("../parametros.php");
+					$get_data = callAPI('GET', $servidor.'/api/servicios/extras/',false);
+					$response = json_decode($get_data, true);
+					foreach ($response as $d) {
+					      $id = $d['id'][0];
+						  $precio = $d['precio'];
+						  $nombre = $d['nombre'][0];
+						 ?> 
+                         <option value= "<?php echo $id ?>"> <?php echo $nombre;?> </option>
+					<?php	  
+					}
+					?>
+                    </optgroup>
+                  </select>
+                 </div>
+               </div>   
 						   
 				             
                                 
@@ -256,29 +318,28 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
                <div class="form-group">
                   <label  for="start" class="col-sm-2 control-label">Fecha </label>
 					<div class="col-sm-10">
-					  <input type="text" name="real" class="form-control" id="real" readonly>
+					  <input type="text" name="start" class="form-control" id="start" readonly>
 					</div>
 			   </div>
                
-               
-				
-                
-				                  
-           	    <script type="text/javascript">
+                                 
+           	 <script type="text/javascript">
 				 // Material Select Initialization
 					$(document).ready(function() {
 					$('.mdb-select').materialSelect();
 					});
-				 </script>
-             <input type="text" name="idFinSeleccionado" id="idFinSeleccionado" hidden="true">	    	 
-             <input type="text" name="fechaSeleccionada" id="fechaSeleccionada" hidden="true">		
-             <input type="text" name="start" id="start" hidden="true">
+			 </script>
+             <input type="text" name="idFinSeleccionado" id="idFinSeleccionado" hidden="true"></input>	    	 
+             <input type="text" name="fechaSeleccionada" id="fechaSeleccionada" hidden="true"></input>
+             <input type="text" name="adicionales"       id="adicionales" hidden="true"></input>	
+             <input type="text" name="cliente"           id="cliente" value="<?php echo $_SESSION["id_user"];?>"  hidden="true"></input>
+             
              
              </div>
              
 			  <div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal" onClick="deshabilitar()">Cancelar</button>
-				<button type="submit"  class="btn btn-warning"> Continuar </button>
+				<button type="submit"  class="btn btn-warning" onClick="verificar()"> Continuar </button>
 			  </div>
 			</form>
 			</div>
@@ -293,6 +354,7 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
 	<script src='js/fullcalendar/fullcalendar.js'></script>
 	<script src='js/fullcalendar/locale/es.js'></script>
 	<script type="text/javascript">
+	
 	
 
 	$(document).ready(function() {
@@ -317,7 +379,8 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
 			maxTime: "20:00",
 			editable: true,
 			hiddenDays: [ 0 ], // hide Tuesdays and Thursdays
-						
+			
+			
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 			selectable: true,
@@ -327,7 +390,8 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
 			var actual = (moment(d).format('YYYY-MM-DD'));
 			var eleccion = (moment(start).format('YYYY-MM-DD'));
 			
-			if (eleccion > actual){
+			  if (eleccion > actual){
+				
 				$('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD'));
 				$('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
 				$('#ModalAdd #real').val(moment(start).format('DD-MM-YYYY'));
@@ -336,10 +400,12 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
 				var r = start.format('DD-MM-YYYY');
 				var s = start.format('YYYY-MM-DD');
 				tampil_obat(s);
+			  
 			  } else {
 				  alert ('Sólo pueden realizarse reservas con un día de antelación');
 			  }
 			},
+			
 			
 			eventRender: function(event, element) {
 				element.bind('click', function() {
@@ -395,6 +461,7 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
 		function edit(event){
 			start = event.start.format('YYYY-MM-DD HH:mm:ss');
 			if(event.end){
+
 				end = event.end.format('YYYY-MM-DD HH:mm:ss');
 			}else{
 				end = start;

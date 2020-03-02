@@ -115,7 +115,7 @@ $codigo = str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTU
 $c = substr($codigo, 0,10); //extrae los primeros 6 digitos
 $_SESSION ['codigo'] = $c;
 $u = $_SESSION["id_user"];
-$_SESSION["idServicio"] = 1; ///////////////cambiar
+$_SESSION["idServicio"] = 2; ///////////////cambiar
 
 ?>
 

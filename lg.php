@@ -132,8 +132,8 @@
 						<span class="focus-input100"></span>
 					</div>
 
-					<div align="center" class="wrap-input100 validate-input m-b-10" data-validate="Ingresar Ciudad">
-						<input class="input100" type="text" id="ciudad" name="ciudad" placeholder="Ciudad" required>
+					<div align="center" class="wrap-input100 validate-input m-b-10" data-validate="Ingresar localidad">
+						<input class="input100" type="text" id="localidad" name="localidad" placeholder="Localidad" required>
 						<span class="focus-input100"></span>
 					</div>
 

@@ -482,7 +482,7 @@
                                     
                    
                 <div class="form-group">
-                  <input type="text" id="datos" nombre="datos" class="form-control" placeholder="Nombre" required>
+                  <input type="text" id="nombre" nombre="nombre" class="form-control" placeholder="Nombre" required>
                 </div>
                 
                 <div class="form-group">

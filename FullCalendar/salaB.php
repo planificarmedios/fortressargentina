@@ -318,7 +318,7 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
                <div class="form-group">
                   <label  for="start" class="col-sm-2 control-label">Fecha </label>
 					<div class="col-sm-10">
-					  <input type="text" name="start" class="form-control" id="start" readonly>
+					  <input type="text" name="real" class="form-control" id="real" readonly>
 					</div>
 			   </div>
                
@@ -331,7 +331,8 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
 			 </script>
              <input type="text" name="idFinSeleccionado" id="idFinSeleccionado" hidden="true"></input>	    	 
              <input type="text" name="fechaSeleccionada" id="fechaSeleccionada" hidden="true"></input>
-             <input type="text" name="adicionales"       id="adicionales" hidden="true"></input>	
+             <input type="text" name="adicionales"       id="adicionales" hidden="true"></input>
+             <input type="text" name="start"             id="start" hidden="true">	
              <input type="text" name="cliente"           id="cliente" value="<?php echo $_SESSION["id_user"];?>"  hidden="true"></input>
              
              

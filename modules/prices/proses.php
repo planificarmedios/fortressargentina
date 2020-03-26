@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once ("../../callAPI.php");
+include_once ("../../parametros.php");
  if ($_GET['act']=='insert') {
 		if (isset($_POST['guardar'])) {
 	

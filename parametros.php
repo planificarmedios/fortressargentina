@@ -1,6 +1,11 @@
 <?php
 
-//servidor de datos para fortressDB, maquina de LF
+//servidor remoto
+//$servidor = '200.5.110.82:2999';
+//$urlweb = 'www.fortressargentina.com';
+
+
+//servidor para datos en localhost
 $servidor = '192.168.1.14:2999';
 $urlweb = 'localhost';
 

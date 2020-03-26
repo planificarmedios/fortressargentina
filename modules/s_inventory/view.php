@@ -32,7 +32,7 @@
                 <th class="center">H Fin</th>
                 <th class="center">Cod Reserva</th>
                 <th class="center">Estado</th>
-                <th class="center">Acciones</th>
+                 <th class="center">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -40,18 +40,22 @@
         
         <?php
 		  include_once ("callAPI.php");
-      require_once ("parametros.php");
+          require_once ("parametros.php");
+		  $hoy = date("d/m/Y");
 		  require_once("../MP/mailing_transaction/fechaCastellano.php");
 		  require_once("../MP/mailing_transaction/fechaNumber.php");
-      $get_data = callAPI('GET', $servidor.'/api/reservas/viewall/',false);
+          $get_data = callAPI('GET', $servidor.'/api/reservas/viewall/',false);
 		  $response = json_decode($get_data, true);
-				foreach ($response as $d) {
+		
+		 foreach ($response as $d) {
+				$fecha_reserva = $d['fecha_reserva']; 
+				$ss = substr($fecha_reserva, 0,10);
+						 
+				if  ((fechaNumber($ss)) == $hoy){		  
 						  $sala = $d['nombre']; 
-						  $fecha_reserva = $d['fecha_reserva']; 
 						  $idInicio = $d['idInicio'];
 						  $idFin = $d['idFin'];
 						  $start = $d['start'];
-						  $ss = substr($fecha_reserva, 0,10);
 						  $end = $d['end'];
 						  $cliente= $d['apellido_nombre'];
 						  $estado = $d['estado'];
@@ -68,13 +72,15 @@
                       <td width='50'  class='center'>$end</td>
                       <td width='180'  class='center'>$codigo</td>
                       <td width='80'  class='center'>$m</td>
+					  
 					  <td class='center' width='60'>
                         <div>
-                          <a>
-                              <i></i>
+                          <a data-toggle='tooltip' data-placement='top' title='Imprimir Detalle' style='margin-right:5px' class='btn btn-warning btn-sm' href='modules/s_inventory/printDetalle.php?&codigo=$codigo'>
+                              <i style='color:#fff' class='glyphicon glyphicon-print'></i>
                           </a>";
-            ?>
+            ?>	
                           <a data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-sm" href="modules/mm/proses.php?act=delete&codigo=<?php echo $codigo;?>" onclick="return confirm('Se eliminará la reserva código <?php echo $codigo; ?> ?');">
+                          
                               <i style="color:#fff" class="glyphicon glyphicon-trash"></i>
                           </a>
             <?php
@@ -82,7 +88,8 @@
               echo "    </div>
                       </td>
                     </tr>";
-            }
+    	        }
+			}
 		    ?>
             </tbody>
           </table>

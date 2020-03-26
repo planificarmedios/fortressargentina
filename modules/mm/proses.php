@@ -1,15 +1,15 @@
 
 <?php
 session_start();
-require_once "../../config/database.php";
 
+include_once ("../../parametros.php");
+include_once ("../../callAPI.php");
 if ($_GET['act']=='delete') {
         if (isset($_GET['codigo'])) { $codigo = $_GET['codigo']; }
-		include_once ("../callAPI.php");
 		$c = $codigo;
 		$jsonData = array( 'token' => "$c" );
 		$data_string = json_encode($jsonData);
-		$ch = curl_init('192.168.1.45:2999/api/reservas/delete/');
+		$ch = curl_init($servidor.'/api/reservas/delete/');
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

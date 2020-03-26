@@ -53,8 +53,16 @@ else {
 		include "modules/s_inventory/view.php";
 	}
 
-	elseif ($_GET['module'] == 's_report') {
-		include "modules/s_report/view.php";
+	elseif ($_GET['module'] == 'sfact') {
+		include "modules/sfact/view.php";
+	}
+
+	elseif ($_GET['module'] == 'form_sfact') {
+		include "modules/sfact/form.php";
+	}
+
+	elseif ($_GET['module'] == 'stock_report') {
+		include "modules/stock_report/view.php";
 	}
 
 	elseif ($_GET['module'] == 'user') {

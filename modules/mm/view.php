@@ -59,9 +59,10 @@
         
         <?php
 		  include_once ("callAPI.php");
+		  include_once ("parametros.php");
 		  require_once("../MP/mailing_transaction/fechaCastellano.php");
 		  require_once("../MP/mailing_transaction/fechaNumber.php");
-          $get_data = callAPI('GET', '192.168.1.45:2999/api/reservas/viewall/',false);
+          $get_data = callAPI('GET', $servidor.'/api/reservas/viewall/',false);
 		  $response = json_decode($get_data, true);
 				foreach ($response as $d) {
 						  $sala = $d['nombre']; 
@@ -89,8 +90,8 @@
                       <td width='80'  class='center'>$m</td>
 					  <td class='center' width='60'>
                         <div>
-                          <a data-toggle='tooltip' data-placement='top' title='modificar' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_medicines&form=edit&codigo=$codigo'>
-                              <i style='color:#fff' class='glyphicon glyphicon-edit'></i>
+                           <a data-toggle='tooltip' data-placement='top' title='Imprimir Detalle' style='margin-right:5px' class='btn btn-warning btn-sm' href='modules/s_inventory/printDetalle.php?&codigo=$codigo'>
+                              <i style='color:#fff' class='glyphicon glyphicon-print'></i>
                           </a>";
             ?>
                           <a data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-sm" href="modules/mm/proses.php?act=delete&codigo=<?php echo $codigo;?>" onclick="return confirm('Se eliminará la reserva código <?php echo $codigo; ?> ?');">

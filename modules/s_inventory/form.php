@@ -161,11 +161,8 @@ if ($_GET['form']=='add') { ?>
               </div>
               
                <input type="number" id="intervalo" name="intervalo" value=1 hidden="hidden">
-              
-                          
 
             </div><!-- /.box body -->
-
             <div class="box-footer">
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">

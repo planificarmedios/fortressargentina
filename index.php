@@ -482,7 +482,7 @@
                                     
                    
                 <div class="form-group">
-                  <input type="text" id="nombre" nombre="nombre" class="form-control" placeholder="Nombre" required>
+                  <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required>
                 </div>
                 
                 <div class="form-group">
@@ -492,7 +492,7 @@
                 <div class="form-group">
                   <select id="asunto"  name="asunto" class="form-control" placeholder="Asunto" required>
                   <option value=''>Seleccionar tipo de consulta</option>
-                  <option value="Solicitud de para Alta Cliente">Quiero ser cliente</option>
+                  <option value="Solicitud para Alta Cliente">Quiero ser cliente</option>
                   <option value="Solicitud de Informacion">Necesito más información</option>
                   </select>
                 </div>

@@ -21,7 +21,7 @@ require_once("../../MP/mailing_transaction/fechaNumber.php");
     </head>
     <body>
         <div id="title">
-           <h3>Datos de Reserva</h3>
+           <h3>Movimiento de Clientes Cajas</h3>
            <h3>Fecha <?php echo fechaCastellano(date("m/d/Y")); ?></h3>
         </div>
 

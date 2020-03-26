@@ -14,11 +14,12 @@ require_once ("parametros.php");
 					exit;
 				} else {
 					
+					$nombre = $_POST['nombre'];
 					$email = $_POST['mail'];
 					$asunto = $_POST['asunto'];
 					$mensaje = $_POST['mensaje'];
 					
-					$jsonData = array('email' => "$email", 'asunto' => "$asunto", 'mensaje' => "$mensaje");
+					$jsonData = array('nombre' => "$nombre", 'email' => "$email", 'asunto' => "$asunto", 'mensaje' => "$mensaje");
 					$data_string = json_encode($jsonData);$ch = curl_init($servidor.'/api/consultas/');
 					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST"); curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); curl_setopt($ch, CURLOPT_HTTPHEADER, array(

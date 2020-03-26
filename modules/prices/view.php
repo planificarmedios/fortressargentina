@@ -58,7 +58,6 @@
                 <th class="center">Nombre</th>
                 <th class="center">Descripción</th>
                 <th class="center">Precio</th>
-                <th class="center">Intervalo</th>
                 <th class="center">Tipo Servicio</th>
                 <th class="center">Acciones</th>
               </tr>
@@ -68,9 +67,10 @@
         
         <?php
 		  include_once ("callAPI.php");
+		  include_once ("parametros.php");
 		  require_once("../MP/mailing_transaction/fechaCastellano.php");
 		  require_once("../MP/mailing_transaction/fechaNumber.php");
-          $get_data = callAPI('GET', '192.168.1.45:2999/api/servicios/adicionales',false);
+          $get_data = callAPI('GET', $servidor.'/api/servicios/adicionales',false);
 		  $response = json_decode($get_data, true);
 			 
 			 foreach ($response as $d) {
@@ -81,17 +81,25 @@
 						  $precio_for = number_format($precio, 2,'.', '');
 						  $intervalo= $d['intervalo'][0];
 						  $tipo_servicio= $d['tipo_servicio'];
+						  
+						  if ($tipo_servicio == 1 ) { 
+						  	$tp = "Sala"; 
+						  } elseif ($tipo_servicio == 5 ){ 
+						  	$tp = "Caja"; 
+						  } elseif ($tipo_servicio == 1002 ) { 
+						  	$tp = "Adicional"; 
+						  }
+						  
 			
                       echo "<tr>
                       <td width='80'  class='center'>$servicio</td>
 					  <td width='180'  class='center'>$descripcion</td>
                       <td width='50'  class='center'>$ $precio_for</td>
-                      <td width='50'  class='center'>$intervalo</td>
-					  <td width='50'  class='center'>$tipo_servicio</td>
+                      <td width='50'  class='center'>$tp</td>
            
 					  <td class='center' width='60'>
                         <div>
-                          <a data-toggle='tooltip' data-placement='top' title='modificar' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_prices&form=edit&id=$id'>
+                          <a data-toggle='tooltip' data-placement='top' title='Modificar' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_prices&form=edit&id=$id'>
                               <i style='color:#fff' class='glyphicon glyphicon-edit'></i>
                           </a>";
             ?>

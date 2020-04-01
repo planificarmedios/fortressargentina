@@ -1,9 +1,6 @@
-
-
-<!-- Content Header (Page header) -->
-<section class="content-header">
+<section class="content-header" style="color:#003">
   <h1>
-    <i class="fa fa-file-text-o icon-title"></i> 
+    <i class="fa fa-list icon-title"></i> Generar Reportes Históricos
   </h1>
   <ol class="breadcrumb">
     <li><a href="./?module=start"><i class="fa fa-home"></i> Inicio</a></li>

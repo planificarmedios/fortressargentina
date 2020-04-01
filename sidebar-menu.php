@@ -38,28 +38,28 @@ if ($_SESSION['permisos_acceso'] == 'Administrador')  { ?>
   
   	if ($_GET["module"]=="prices" || $_GET["module"]=="form_prices") { ?>
 		<li class="active">
-		  <a href="?module=prices"><i class="fa fa-folder"></i> Servicios</a>
+		  <a href="?module=prices"><i class="fa fa-user-plus"></i> Salas y Servicios</a>
 		  </li>
 	  <?php
 	  }
 
 	  else { ?>
 		<li>
-		  <a href="?module=prices"><i class="fa fa-folder"></i> Servicios</a>
+		  <a href="?module=prices"><i class="fa fa-user-plus"></i> Salas y Servicios</a>
 		  </li>
 	  <?php
 	}
 	
 	 if ($_GET["module"]=="user" || $_GET["module"]=="form_user") { ?>
 			<li class="active">
-				<a href="?module=user"><i class="fa fa-user"></i>Usuarios</a>
+				<a href="?module=user"><i class="fa fa-users"></i>Usuarios</a>
 			</li>
 		<?php
 		}
 	
 		else { ?>
 			<li>
-			<a href="?module=user"><i class="fa fa-user"></i>Usuarios</a></li>
+			<a href="?module=user"><i class="fa fa-users"></i>Usuarios</a></li>
 		<?php
 	}
 
@@ -110,6 +110,20 @@ if ($_SESSION['permisos_acceso'] == 'Administrador')  { ?>
 	  else { ?>
 		<li>
 		  <a href="?module=sfact"><i class="fa fa-eye"></i>Ingreso Biomêtrico</a>
+		  </li>
+	  <?php
+	}
+	
+	if ($_GET["module"]=="cj" || $_GET["module"]=="form_cj") { ?>
+		<li class="active">
+		  <a href="?module=cj"><i class="fa fa-lock"></i>Cajas</a>
+		  </li>
+	  <?php
+	  }
+
+	  else { ?>
+		<li>
+		  <a href="?module=cj"><i class="fa fa-lock"></i>Cajas</a>
 		  </li>
 	  <?php
 	}

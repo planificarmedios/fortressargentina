@@ -1,7 +1,10 @@
+<section class="content-header" style="color:#003">
+  <h1> <i class="fa fa-calendar icon-title"></i> Historico de Reservas </h1>
+</section>
+
 <section class="content">
   <div class="row">
     <div class="col-md-13">
-
     <?php 
 	 
 

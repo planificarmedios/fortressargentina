@@ -1,13 +1,11 @@
-
 <section class="content-header" style="color:#003">
   <h1>
-    <i class="fa fa-user icon-title"></i> Gestión de Usuarios
+    <i class="fa fa-users icon-title"></i> Gestión de Usuarios
 
     <a class="btn btn-warning btn-social pull-right" href="?module=form_user&form=add" title="Agregar" data-toggle="tooltip">
       <i class="fa fa-plus"></i> Agregar
     </a>
   </h1>
-
 </section>
 
 

@@ -38,7 +38,6 @@ else {
 		include "modules/dates/form.php";
 	}
 	
-
 	elseif ($_GET['module'] == 'm_transaction') {
 		include "modules/m_transaction/view.php";
 	}
@@ -47,7 +46,13 @@ else {
 		include "modules/m_transaction/form.php";
 	}
 	
-	
+	elseif ($_GET['module'] == 'cj') {
+		include "modules/cj/view.php";
+	}
+
+	elseif ($_GET['module'] == 'form_cj') {
+		include "modules/cj/form.php";
+	}
 	
 	elseif ($_GET['module'] == 's_inventory') {
 		include "modules/s_inventory/view.php";
@@ -69,14 +74,13 @@ else {
 		include "modules/user/view.php";
 	}
 
-
 	elseif ($_GET['module'] == 'form_user') {
 		include "modules/user/form.php";
 	}
 
 	elseif ($_GET['module'] == 'profile') {
 		include "modules/profile/view.php";
-		}
+	}
 
 
 	elseif ($_GET['module'] == 'form_profile') {

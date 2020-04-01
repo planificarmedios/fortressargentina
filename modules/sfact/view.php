@@ -1,6 +1,6 @@
 <section class="content-header" style="color:#003">
   <h1>
-    <i class="fa fa-eye icon-title"></i> Ingreso por Detector Biometrico
+    <i class="fa fa-eye icon-title"></i> Ingreso por Detector Biométrico
 
     
   </h1>

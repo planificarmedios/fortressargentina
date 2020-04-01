@@ -1,8 +1,7 @@
 <section class="content-header" style="color:#003">
-  <h1>
-    <i class="fa fa-user-plus icon-title"></i> Servicios y Salas
+  <h1>     <i class="fa fa-lock icon-title"></i> Gestión de Cajas
 
-    <a class="btn btn-warning btn-social pull-right" href="?module=form_prices&form=add" title="Agregar" data-toggle="tooltip">
+    <a class="btn btn-warning btn-social pull-right" href="?module=form_cj&form=add" title="Agregar" data-toggle="tooltip">
       <i class="fa fa-plus"></i> Agregar
     </a>
   </h1>
@@ -55,11 +54,12 @@
 
             <thead>
               <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
-                <th class="center">Nombre</th>
+                <th class="center"># Caja</th>
+                <th class="center">Tipo de Caja</th>
                 <th class="center">Descripción</th>
-                <th class="center">Precio</th>
-                <th class="center">Tipo Servicio</th>
-                <th class="center">Acciones</th>
+                <th class="center"># Cliente</th>
+                <th class="center">Nombre Titular</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -68,44 +68,37 @@
         <?php
 		  include_once ("callAPI.php");
 		  include_once ("parametros.php");
-		  require_once("../MP/mailing_transaction/fechaCastellano.php");
-		  require_once("../MP/mailing_transaction/fechaNumber.php");
-          $get_data = callAPI('GET', $servidor.'/api/servicios/adicionales',false);
+	      $get_data = callAPI('GET', $servidor.'/api/cajas/listar',false);
 		  $response = json_decode($get_data, true);
 			 
 			 foreach ($response as $d) {
-				          $id = $d['id'][0];
-						  $servicio = $d['nombre'][0]; 
-						  $descripcion = $d['descripcion']; 
-						  $precio = $d['precio'];
-						  $precio_for = number_format($precio, 2,'.', '');
-						  $intervalo= $d['intervalo'][0];
-						  $tipo_servicio= $d['tipo_servicio'];
+				          $id = $d['id'];
+						  $nrocaja = $d['nro_caja'];
+						  $tipocaja = $d['tipocaja'];
+						  $id_cliente = $d['id_cliente'];
+						  $nombre = $d['nombre']; 
+						  $apellido = $d['apellido']; 
+						  $descripcion= $d['descripcion'];
+						  $cliente = $nombre.' '.$apellido;
+						  if ($id_cliente == 0) {$m = 'Disponible'; $color = "#00993"; } else {$m = $id_cliente;};
 						  
-						  if ($tipo_servicio == 1 ) { 
-						  	$tp = "Sala"; 
-						  } elseif ($tipo_servicio == 5 ){ 
-						  	$tp = "Caja"; 
-						  } elseif ($tipo_servicio == 1002 ) { 
-						  	$tp = "Adicional"; 
-						  }
-						  
-			
-                      echo "<tr>
-                      <td width='80'  class='center'>$servicio</td>
-					  <td width='180'  class='center'>$descripcion</td>
-                      <td width='50'  class='center'>$ $precio_for</td>
-                      <td width='50'  class='center'>$tp</td>
-           
-					  <td class='center' width='60'>
+					  echo "<tr>
+					  <td width='5'  class='center'>$nrocaja</td>
+					  <td width='50' class='center'>$tipocaja</td>
+                      <td width='50' class='center'>$descripcion</td>
+					  <td width='5'  class='center'>$m</td>
+					  <td width='80' class='center'>$cliente</td>
+                      <td width='1'>
                         <div>
-                          <a data-toggle='tooltip' data-placement='top' title='Modificar' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_prices&form=edit&id=$id'>
+                          <a data-toggle='tooltip' data-placement='top' title='Modificar' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_cj&form=edit&id=$id'>
                               <i style='color:#fff' class='glyphicon glyphicon-edit'></i>
                           </a>";
-            ?>
-                          <a data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-sm" href="modules/prices/proses.php?act=delete&id=<?php echo $id;?>" onclick="return confirm('Se eliminará el servicio <?php echo $servicio; ?> ?');">
+            if ($id_cliente == 0) {
+			?>
+                          <a data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-sm" href="modules/cj/proses.php?act=delete&id=<?php echo $id;?>" onclick="return confirm('Se eliminará la caja nro. <?php echo $nrocaja; ?> ?');">
                               <i style="color:#fff" class="glyphicon glyphicon-trash"></i>
                           </a>
+            <?php } ?>              
             <?php
 
               echo "    </div>

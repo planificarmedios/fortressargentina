@@ -41,7 +41,8 @@ if ($_GET['form']=='listar') {
               <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
                 <th class="center">#Evento</th>
                 <th class="center">Denominación del Cliente</th>
-                <th class="center">Fecha</th>
+                <th class="center">Fecha de Ingreso</th>
+                <th class="center">Horario de Ingreso</th>
                 <th class="center">Verificado</th>
                  <th class="center">Acciones</th>
               </tr>
@@ -64,6 +65,8 @@ if ($_GET['form']=='listar') {
 					     $usrid= $d['USRID'];
 						 $cliente= $d['CLIENTE'];
 						 $srvdt= $d['SRVDT'];
+						 $ss = fechaCastellano(substr($srvdt, 0,10));
+						 $hh = substr($srvdt, 12,7);
 						 $verificado= $d['VERIFICADO'];
 						 if ($verificado == 1) {$m = 'Verificado'; } else { $m = 'No verificado'; } ;
 						 
@@ -71,7 +74,8 @@ if ($_GET['form']=='listar') {
               echo "<tr>
                       <td width='5'  class='center'>$id</td>
                       <td width='100'  class='center'>$cliente</td>
-					  <td width='5'  class='center'>$srvdt</td>
+					  <td width='30'  class='center'>$ss</td>
+					  <td width='30'  class='center'>$hh</td>
 					  <td width='30'  class='center'>$m</td>
                       <td class='center' width='20'>";
            

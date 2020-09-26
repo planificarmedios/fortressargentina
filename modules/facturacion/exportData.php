@@ -11,7 +11,7 @@ $response = json_decode($get_data, true);
     $records[] = $data;
     echo $data['serie'].",";
     echo $data['id_cliente'].",";
-    //echo $data['tipo_uso'].",";
+    echo $data['tipo_uso'].",";
     //echo $data['CLIENTE']."\n";
 
     

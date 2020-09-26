@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login</title>
+	<title>Registro</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -30,130 +30,147 @@
 <script>
 	
 	function validacion() {
-		valor = document.getElementById("dni").value;
-			if( valor == null || valor.length  <=7 ) {
-				alert ('El campo DNI/CUIT debe ser entre 8 -11 caracteres');
-		  		return false;
-  	        }
 
   	    valor = document.getElementById("celular").value;
 			if( valor == null || valor.length  <=9 ) {
-				alert ('El campo telefono debe ser de 10 caracteres');
+				alert ('El campo Celular debe ser de 10 caracteres');
+				document.getElementById('celular').focus();
 		  		return false;
   	        }
+
+  	    valor2 = document.getElementById("mail").value;
+			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.(valor2){
+			   alert("La dirección de email " + valor2 + " es correcta.");
+			  } else {
+			   alert("La dirección de email es incorrecta.");
+			}
+
 	}
+	
+
 	
 </script>
 </head>
-<body style="background-image: url(images/fuertes.jpeg);">
+<body style="background-color: #666666;">
 	
-	<div align="center" class="limiter" style="background-image: url(images/nuevasCajas2.jpg);">
-		<div align="center" class="container-login100">
-			<div align="center" class="wrap-login100">
-				<div align="center" class="login100-form-title" style="background-image: url(images/nuevasCajas2.jpg);">
-                
-					<span class="login100-form-title-1">
-					<font face="SERIF" color="#dcc48c"><strong></strong> </span>
-				</div>
-                
-
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
 				<form align="left" class="login100-form validate-form" action="chv.php" method="POST" onsubmit="return validacion()">
-                
-                <?php  
+
+				 <span class="login100-form-title p-b-43">
+						<a><img src="images/horizontal.png" class="img-fluid"></a> 
+				</span>
+
+				<?php  
  
-      if (empty($_GET['alert'])) {
+            if (empty($_GET['alert'])) {
         echo "";
       } 
 
       elseif ($_GET['alert'] == 1) {
-        echo "<div style='text-align:center' class='alert alert-success wrap-input100 validate-input m-b-18'>
+        echo "<div style='text-align:center' class='alert alert-success validate-input m-b-18'>
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <h4>  <i class='icon fa fa-check-circle'></i>Datos registrados correctamente. En breve recibirá una notificación con los pasos a seguir.</h4>
+                <h4>  <i class='icon fa fa-check-circle'></i>Recibirá un mail de acceso </h4>
               </div>";
       }
 
-      elseif ($_GET['alert'] == 2) {
-        echo "<div style='text-align:center' class='alert alert-success alert-dismissable'>
-                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <h4>  <i class='icon fa fa-check-circle'></i> Sesión finalizada</h4>
-              </div>";
-      }
-	  
+      	  
 	  elseif ($_GET['alert'] == 3) {
-        echo "<div style='text-align:center' class='alert alert-danger wrap-input100 validate-input m-b-18'>
+        echo "<div style='text-align:center' class='alert alert-danger  validate-input m-b-18'>
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <h4>  <i class='icon fa fa-check-circle'></i>  Ingresar Captcha</h4>
+                <h4> Ingresar Captcha <i class='icon fa fa-times-circle'></i></h4>
               </div>";
       }
 	  
 	  elseif ($_GET['alert'] == 4) {
         echo "  <span class='focus-input100'></span> 
-				<div style='text-align:center' class='alert alert-danger wrap-input100 validate-input m-b-18'>
+				<div style='text-align:center' class='alert alert-danger validate-input m-b-18'>
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                <h4>  <i class='icon fa fa-check-circle'></i> Verificar Captcha</h4>
+                <h4>  <i class='icon fa fa-times-circle'></i> Verificar Captcha</h4>
               </div>";
       }
-	  
-	  
-      ?>  
-      				<div align="center" class="wrap-input100 validate-input m-b-10" data-validate="Ingresar Nombre">
-						<input class="input100" type="text" id="nombre" name="nombre" placeholder="Nombre o Razón Social" required>
+	?>  
+
+					<div class="wrap-input100 validate-input" data-validate = "Ingresar Nombre o Razón Social">
+						<input class="input100" type="text" autocomplete="off"  id="nombre" name="nombre" required>
 						<span class="focus-input100"></span>
+						<span class="label-input100">Nombre o Razón Social</span>
 					</div>
 
-					<div align="center" class="wrap-input100 validate-input m-b-10" data-validate="Ingresar Apellido">
-						<input class="input100" type="text" id="apellido" name="apellido" placeholder="Apellido* (Opcional)">
+					<div class="wrap-input100 validate-input" data-validate = "Sólo formato válido de mail xxx@gmail.com">
+						<input class="input100" type="email" autocomplete="off"  id="mail" name="mail" required onblur="validacion();">
 						<span class="focus-input100"></span>
+						<span class="label-input100">Mail</span>
 					</div>
-                
-					<div align="center" class="wrap-input100 validate-input m-b-10" data-validate="Ingresar Mail">
-						<input class="input100" type="email" id="mail" name="mail" placeholder="Mail" required>
+
+					<div class="wrap-input100 validate-input" data-validate = "Ingresar formato válido Ej. 2236065000">
+						<input class="input100" type="number" autocomplete="off"  id="celular" name="celular" maxlength="10" 
+						minlength="10" required pattern="[0-9]+" required onblur="validacion(this);">
 						<span class="focus-input100"></span>
+						<span class="label-input100">Celular</span>
+					</div>
+					<input id="domicilio" name="domicilio" value='0' hidden="true" >
+					<input id="cp" name="cp" value='0' hidden="true">
+					<input  id="localidad" value='0' name="localidad" hidden="true" >
+                    <input  id="provincia" value='0' name="provincia"  hidden="true" >
+                    <input  id="apellido" value='0' name="apellido"  hidden="true" >
+
+					<div align="center">               
+                        <div align="center" class="g-recaptcha" data-sitekey="6LdludYUAAAAAHuKYB88n72h66UUBzncrxKvZHOm">
+                    </div>
+          </div>
+
+				
+				<div class="note"><strong><a class="txt1"></a></strong></div>
+				<div class="note"><strong><a class="txt1"></a></strong></div>		
+						
+
+				<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Ingresar
+						</button>
+					</div>
+
+				<div align="center" class="validate-input m-b-10"></div>
+                    <div class="container-login100-form-btn">              
+                    <input type="button"  class="btn btn-outline-danger btn-lg btn-block btn-flat" 
+                    OnClick="location.href='indexcaptcha.php'" value="Cancelar"></input>
+                </div>
+
+					
+                	               <div class="flex-sb-m w-full p-t-3 p-b-32">
+						<div class="note"><strong><a class="txt1"></a></strong></div>
+						<div><strong><a  class="txt1"></a></strong></div>
+					</div>
+
+					<div class="login100-form-social flex-c-m">
+
+						<a href="mailto:rotamendi@fortessargentina.com" class="login100-form-social-item flex-c-m bg2 m-r-5">
+							<i class="fa fa-envelope-o" aria-hidden="true" title="Email"></i>
+						</a>						
+
+						<a href="https://www.facebook.com/fortressargentina" class="login100-form-social-item flex-c-m bg1 m-r-5">
+							<i class="fa fa-facebook-f" aria-hidden="true" title="Facebook"></i>
+						</a>
+
+						<a href="https://www.instagram.com/fortressargentina/" class="login100-form-social-item flex-c-m bg2 m-r-5">
+							<i class="fa fa-instagram" aria-hidden="true" title="Instagram"></i>
+						</a>
 					</div>
 
 					
-					<div align="center" class="wrap-input100 validate-input m-b-10" data-validate="Sólo números permitidos">
-						<input class="input100" type="number" id="dni" name="dni" maxlength="11" minlength="8" required pattern="[0-9]+" placeholder="Dni / CUIT" required title="Sólo números permitidos 8 dígitos para DNI - 11 para CUIL-CUIT">
-						<span class="focus-input100"></span>
-					</div>
+				</form>
 
-					<div align="center" class="wrap-input100 validate-input m-b-10" data-validate="Formato 2236111000">
-						<input class="input100" type="number" id="celular" name="celular" maxlength="10" minlength="10" required pattern="[0-9]+"placeholder="Celular" required title="Debe completar con 10 números">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div align="center" class="wrap-input100 validate-input m-b-10" data-validate="Ingresar Domicilio">
-						<input class="input100" type="text" id="domicilio" name="domicilio" placeholder="Domicilio" required>
-						<span class="focus-input100"></span>
-					</div>
-
-					<div align="center" class="wrap-input100 validate-input m-b-10" data-validate="Ingresar Provincia">
-						<input class="input100" type="text" id="provincia" name="provincia" placeholder="Provincia" required>
-						<span class="focus-input100"></span>
-					</div>
-
-					<div align="center" class="wrap-input100 validate-input m-b-10" data-validate="Ingresar localidad">
-						<input class="input100" type="text" id="localidad" name="localidad" placeholder="Localidad" required>
-						<span class="focus-input100"></span>
-					</div>
-
-					<div align="center" class="wrap-input100 validate-input m-b-18">               
-                        <div align="center" class="g-recaptcha" data-sitekey="6LdludYUAAAAAHuKYB88n72h66UUBzncrxKvZHOm">
-                        </div>
-                    </div>
-                    
-					<div class="container-login100-form-btn">
-                    <input type="submit" class="btn btn-outline-secondary btn-lg btn-block btn-flat" name="login" value="Confirmar" />
-                    </div>  
-                    <div align="center" class="wrap-input100 validate-input m-b-14"></div>
-                                 
-                    <input type="button"  class="btn btn-outline-danger btn-lg btn-block btn-flat" OnClick="location.href='index.php' " value="Volver"></input>
-                   
-                    </div>
-  				</form>
-       	</div>
-	  </div>
+				<div class="login100-more" style="background-image: url('images/bg-02.jpg');">
+				</div>
+			</div>
+		</div>
 	</div>
+	
+	
+
+	
 	
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -171,7 +188,6 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-	<script src="main.js"></script>
 
 </body>
 </html>

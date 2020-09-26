@@ -47,7 +47,7 @@ $hoy = date("d/m/Y");
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <title>REPORTE</title>
-            <link rel="stylesheet" type="text/css" href="../../assets/css/laporan.css" />
+            <link rel="stylesheet" type="text/css" href="../../assetsOr/css/laporan.css" />
         </head>
         <body>
             
@@ -69,11 +69,11 @@ $hoy = date("d/m/Y");
                 <thead style="background:#e8ecee" bordercolor="#000000">
                     <tr class="tr-title">
                         
-                        <th bordercolor="#000000" height="20" align="center" valign="middle">Nombre</th>
-                        <th bordercolor="#000000" height="20" align="center" valign="middle">Apellido</th>
+                        <th bordercolor="#000000" height="20" align="center" valign="middle">Asistente</th>
+                        <th bordercolor="#000000" height="20" align="center" valign="middle">Mail</th>
                         <th bordercolor="#000000" height="20" align="center" valign="middle">Dni</th>
                         <th bordercolor="#000000" height="20" align="center" valign="middle">Tel.Movil</th>
-                        <th bordercolor="#000000" height="20" align="center" valign="middle">Situacion</th>
+                        <th bordercolor="#000000" height="20" align="center" valign="middle">Antecedentes del Asistente</th>
                     </tr>
                 </thead>
                 <tbody>

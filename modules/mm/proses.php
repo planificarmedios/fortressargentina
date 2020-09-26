@@ -5,10 +5,16 @@ session_start();
 include_once ("../../parametros.php");
 include_once ("../../callAPI.php");
 if ($_GET['act']=='delete') {
-        if (isset($_GET['codigo'])) { $codigo = $_GET['codigo']; }
+        if (isset($_GET['codigo'])) { 
+			$codigo = $_GET['codigo'];
+		}
+		$nombre_usuario = $_SESSION['name_user'];
 		$c = $codigo;
-		$jsonData = array( 'token' => "$c" );
-		$data_string = json_encode($jsonData);
+		$jsonData = array(  'nombre_usuario' => "$nombre_usuario", 
+							'token' => "$c" 
+						);
+		
+						$data_string = json_encode($jsonData);
 		$ch = curl_init($servidor.'/api/reservas/delete/');
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);

@@ -17,7 +17,7 @@ if ($_GET['form']=='add') { ?>
       <div class="col-md-12">
         <div class="box box-primary">
           <!-- form start -->
-          <form role="form" class="form-horizontal" method="POST"  action="../fortressargentina/modules/prices/proses.php?act=insert" enctype="multipart/form-data">
+          <form role="form" class="form-horizontal" method="POST"  action="../seguridad-fortress/modules/prices/proses.php?act=insert" enctype="multipart/form-data">
             <div class="box-body">
 
               <div class="form-group">
@@ -68,7 +68,7 @@ if ($_GET['form']=='add') { ?>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <input type="submit" class="btn btn-warning btn-submit" id="guardar" name="guardar" value="Guardar">
-                  <a  href="../fortressargentina/main.php?module=prices" class="btn btn-default btn-reset">Cancelar</a>
+                  <a  href="../seguridad-fortress/main.php?module=prices" class="btn btn-default btn-reset">Cancelar</a>
                 </div>
               </div>
             </div><!-- /.box footer -->
@@ -167,7 +167,7 @@ if ($_GET['form']=='add') { ?>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <input type="submit" class="btn btn-warning btn-submit" name="Guardar" value="Guardar">
-                  <a href="../fortressargentina/main.php?module=prices" class="btn btn-default btn-reset">Cancelar</a>
+                  <a href="../seguridad-fortress/main.php?module=prices" class="btn btn-default btn-reset">Cancelar</a>
                 </div>
               </div>
             </div><!-- /.box footer -->

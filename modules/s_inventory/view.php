@@ -2,7 +2,7 @@
   <h1>
     <i class="fa fa-calendar icon-title"></i> Reservas de la fecha
 
-    <a class="btn btn-warning btn-social pull-right" href="modules/s_inventory/print.php" target="_blank">
+    <a class="btn btn-primary btn-social pull-right" href="modules/s_inventory/print.php" target="_blank">
       <i class="fa fa-print"></i> Imprimir
     </a>
   </h1>
@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-md-13">
 
-      <div class="box box-primary" style="color:#003">
+      <div class="box box-warning" style="color:#003">
         <div class="box-body">
     
           <table border=10 bordercolor="#000000" id="dataTables1" class="table table-bordered table-striped table-hover">
@@ -42,8 +42,8 @@
 		  include_once ("callAPI.php");
           require_once ("parametros.php");
 		  $hoy = date("d/m/Y");
-		  require_once("../MP/mailing_transaction/fechaCastellano.php");
-		  require_once("../MP/mailing_transaction/fechaNumber.php");
+		  require_once("fechaCastellano.php");
+		  require_once("fechaNumber.php");
           $get_data = callAPI('GET', $servidor.'/api/reservas/viewall/',false);
 		  $response = json_decode($get_data, true);
 		
@@ -75,17 +75,21 @@
 					  
 					  <td class='center' width='60'>
                         <div>
-                          <a data-toggle='tooltip' data-placement='top' title='Imprimir Detalle' style='margin-right:5px' class='btn btn-warning btn-sm' href='modules/s_inventory/printDetalle.php?&codigo=$codigo'>
-                              <i style='color:#fff' class='glyphicon glyphicon-print'></i>
+                          <a data-toggle='tooltip' data-placement='top' title='Imprimir Detalle' style='margin-right:5px' class='btn btn-warning btn-sm' href='modules/s_inventory/printDetalle.php?&codigo=$codigo'><i style='color:#fff' class='glyphicon glyphicon-print'></i>
                           </a>";
-            ?>	
-                          <a data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-sm" href="modules/mm/proses.php?act=delete&codigo=<?php echo $codigo;?>" onclick="return confirm('Se eliminará la reserva código <?php echo $codigo; ?> ?');">
+                          ?>	
                           
-                              <i style="color:#fff" class="glyphicon glyphicon-trash"></i>
-                          </a>
-            <?php
+                            <?php 
+                            if ($estado == 1) { ?>
+                            <a data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-sm" href="modules/mm/proses.php?act=delete&codigo=<?php echo $codigo;?>" onclick="return confirm('Se eliminará la reserva código <?php echo $codigo; ?> ?');">
+                            <i style="color:#fff" class="glyphicon glyphicon-trash"></i></a>
+                            <?php } else {  ?> 
+                              <a data-toggle="tooltip" data-placement="top" title="No se puede eliminar una reserva confirmada" class="btn btn-default btn-sm" href="" onclick=""><i style="color:#fff" class="glyphicon glyphicon-trash"></i></a>	
+                            <?php }?>
 
-              echo "    </div>
+                        <?php
+                        echo "    
+                        </div>
                       </td>
                     </tr>";
     	        }

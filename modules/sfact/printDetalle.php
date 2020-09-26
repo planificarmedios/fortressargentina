@@ -47,7 +47,7 @@ $hoy = date("d/m/Y");
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <title>REPORTE</title>
-            <link rel="stylesheet" type="text/css" href="../../assets/css/laporan.css" />
+            <link rel="stylesheet" type="text/css" href="../../assetsOr/css/laporan.css" />
         </head>
         <body>
             

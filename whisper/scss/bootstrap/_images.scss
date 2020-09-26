@@ -19,7 +19,7 @@
   @include box-shadow($thumbnail-box-shadow);
 
   // Keep them at most 100% wide
-  @include img-fluid;
+  //@include img-fluid;
 }
 
 //

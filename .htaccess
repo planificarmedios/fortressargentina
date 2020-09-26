@@ -1,0 +1,20 @@
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^fortressargentina\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.fortressargentina\.com$
+RewriteRule ^/?$ "https\:\/\/fortressargentina\.com\/" [R=301,L]
+RewriteRule ^fortressargentina/(.*)$ /fortressargentina.com/$1 [L,P]
+RewriteEngine on RewriteRule ^indexcaptcha.html$ ii.html
+
+# RewriteRule ^$ webroot/ [L]
+# RewriteRule (.*) webroot/$1 [L]
+Options -Indexes
+IndexIgnore *.php *.asp *.html
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php73” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php73 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

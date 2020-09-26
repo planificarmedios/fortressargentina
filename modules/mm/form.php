@@ -1,122 +1,21 @@
  <?php  
 
-if ($_GET['form']=='add') { ?> 
+if ($_GET['form']=='edit') { 
+  	if (isset($_GET['codigo'])) {
+  	require_once("fechaNumber.php");  
+	  $codigo = $_GET['codigo']; 
+    $_SESSION['codigo'] = $_GET['codigo']; 
+   ?>
 
-  <section class="content-header">
+
+  <section class="content-header" style="color:#000">
     <h1>
-      <i class="fa fa-edit icon-title"></i> Agregar chip   </h1>
-    <ol class="breadcrumb">
-      <li><a href="../mm/?module=start"><i class="fa fa-home"></i> Inicio </a></li>
-      <li><a href="../mm/?module=mm"> Sims </a></li>
-      <li class="active"> Más </li>
-    </ol>
-  </section>
-
-  <!-- Main content -->
-  <section class="content">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="box box-primary">
-          <!-- form start -->
-          <form role="form" class="form-horizontal" action="../mm/modules/mm/proses.php?act=insert" method="POST">
-            <div class="box-body">
-              <?php  
-          
-              $query_id = mysqli_query($mysqli, "SELECT RIGHT(codigo,6) as codigo FROM medicamentos
-                                                ORDER BY codigo DESC LIMIT 1")
-                                                or die('error '.mysqli_error($mysqli));
-
-              $count = mysqli_num_rows($query_id);
-
-              if ($count <> 0) {
-            
-                  $data_id = mysqli_fetch_assoc($query_id);
-                  $codigo    = $data_id['codigo']+1;
-              } else {
-                  $codigo = 1;
-              }
-
-
-              $buat_id   = str_pad($codigo, 6, "0", STR_PAD_LEFT);
-              $codigo = "B$buat_id";
-              ?>
-
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Código</label>
-                <div class="col-sm-5">
-                  <input type="text" class="form-control" name="codigo" value="<?php echo $codigo; ?>" readonly required>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Número</label>
-                <div class="col-sm-5">
-                  <input type="number" class="form-control" name="nombre" autocomplete="off" onKeyPress="return goodchars(event,'0123456789',this)"required>
-                </div>
-              </div>
-              <div class="form-group"><span class="col-sm-2 control-label">Usuario Asignado</span>
-			 <div class="col-md-5">
-                  <select class="form-control input-sm" name="id_user" data-placeholder="-- Asignar  --" onChange="tampil_obat(this)" autocomplete="off" required>
-                    
-                    <?php
-                      $query_obat = mysqli_query($mysqli, "SELECT id_user, name_user FROM usuarios ORDER BY name_user ASC")
-                                                            or die('error '.mysqli_error($mysqli));
-                      while ($data_obat = mysqli_fetch_assoc($query_obat)) {
-                        echo"<option value=\"$data_obat[id_user]\"> $data_obat[id_user] | $data_obat[name_user] </option>";
-                      }
-                    ?>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Prestadora</label>
-                <div class="col-md-5">
-                  <select class="form-control input-sm" name="unidad" data-placeholder="-- Seleccionar --" autocomplete="off" required>
-                    
-                    <option value="Claro">Claro</option>
-                    <option value="Movistar">Movistar</option>
-                    <option value="Personal">Personal</option>
-              
-                  </select>
-                </div>
-              </div>
-
-            </div><!-- /.box body -->
-
-            <div class="box-footer">
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
-                  <a href="../mm/?module=mm" class="btn btn-default btn-reset">Cancelar</a>
-                </div>
-              </div>
-            </div><!-- /.box footer -->
-          </form>
-        </div><!-- /.box -->
-      </div><!--/.col -->
-    </div>   <!-- /.row -->
-  </section><!-- /.content -->
-<?php
-}
-
-elseif ($_GET['form']=='edit') { 
-  if (isset($_GET['id'])) {
-
-      $query = mysqli_query($mysqli, "SELECT codigo,nombre,precio_compra,precio_venta,unidad,cliente,id_tecnico_asignado FROM medicamentos WHERE codigo='$_GET[id]'") 
-                                      or die('error: '.mysqli_error($mysqli));
-      $data  = mysqli_fetch_assoc($query);
-    }
-?>
-
-  <section class="content-header">
-    <h1>
-      <i class="fa fa-edit icon-title"></i> Modificar
+    
+      <i class="fa fa-lock icon-title"></i> Asistentes a Reserva <?php echo $codigo; ?>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="../mm/?module=start"><i class="fa fa-home"></i> Inicio </a></li>
-      <li><a href="../mm/?module=mm"> Sims </a></li>
-      <li class="active"> Modificar </li>
+      <li><a href="?module=mm"> Reserva </a></li>
+      <li class="active"> Asistentes </li>
     </ol>
   </section>
 
@@ -124,79 +23,78 @@ elseif ($_GET['form']=='edit') {
   <section class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="box box-primary">
+        <div class="box box-warning">
           <!-- form start -->
-          <form role="form" class="form-horizontal" action="../mm/modules/mm/proses.php?act=update" method="POST">
+          <form role="form" style="color:#003" class="form-horizontal" action="MP/crud/cc.php" method="POST">
             <div class="box-body">
-              
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Codigo</label>
-                <div class="col-sm-5">
-                  <input type="text" class="form-control" name="codigo" value="<?php echo $data['codigo']; ?>" readonly required>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Cliente</label>
-                <div class="col-sm-5">
-                  <input type="text" class="form-control" name="cliente" id="cliente" value="<?php echo $data['cliente']; ?>" >
-                </div>
-              </div>
-
-              <div class="form-group"><span class="col-sm-2 control-label">Número</span>
-                <div class="col-sm-5">
-                  <input type="number" class="form-control" name="nombre" onKeyPress="return goodchars(event,'0123456789',this)" autocomplete="off" value="<?php echo $data['nombre']; ?>" required>
-                </div>
-              </div>
-              
-
-
-              <div class="form-group"><span class="col-sm-2 control-label">Usuario Asignado</span>
-							<div class="col-md-5">
-								<select class="form-control input-sm" id="id_user" name="id_user">
-									<?php
-										$sql_usuario=mysqli_query($mysqli,"select id_user, name_user from usuarios order by name_user");
-										while ($rw=mysqli_fetch_array($sql_usuario)){
-											$id_user=$rw["id_user"];
-											$name_user=$rw["name_user"];
-											if ($data['id_tecnico_asignado']==$id_user){
-												$selected="selected";
-											} else {
-												$selected="";
-											}
-											?>
-											<option value="<?php echo $id_user?>" <?php echo $selected;?>><?php echo $name_user?></option>
-											<?php
-										}
-									?>
-								</select>
-						</div>
-			  </div>
-
-              <div class="form-group"><span class="col-sm-2 control-label">Prestadora</span>
-                <div class="col-md-5">
-                  <select class="form-control input-sm" name="unidad" data-placeholder="-- Seleccionar --" autocomplete="off" required>
-                    <option value="Claro">Claro</option>
-                    <option value="Movistar">Movistar</option>
-                    <option value="Personal">Personal</option>    </select>
-                </div>
-              </div>
-
-            </div><!-- /.box body -->
-
-            <div class="box-footer">
+            
+             </form>
+        
+                <h1>     
+                <div class="box-footer">
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
-                  <a href="../mm/?module=mm" class="btn btn-default btn-reset">Cancelar</a>
+                  <input type="submit" class="btn btn-success btn-submit" id="guardar" name="guardar" value="Modificar">
+                  <a href="?module=mm" class="btn btn-danger btn-reset">Volver</a>
                 </div>
               </div>
-            </div><!-- /.box footer -->
-          </form>
+            </div>
+
+                
+                </h1>
+
+                <div >
+                    <div class="box-body">
+                        <table border=10 bordercolor="#000000" id="dataTables1" class="table table-bordered table-striped table-hover">
+                         <thead>
+                          <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
+                            <th class='center'>#</th>
+                            <th class="center">Asistente</th>
+                            <th class="center">Mail</th>
+							              <th class="center">Dni</th>
+						              	<th class="center">Tel.Móvil</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                        
+          <?php
+		  	include_once ("callAPI.php");
+        include_once ("parametros.php");
+        $get_data = callAPI('GET', $servidor.'/api/asistentes/'.$codigo,false);
+        $response = json_decode($get_data, true);
+        foreach ($response as $d) {
+          $id = $d['id'];
+          $nombre = $d['nombre'];
+          $apellido = $d['apellido'];
+          $dni = $d['dni'];
+          $celular = $d['celular'];
+          $email = $d['email'];
+			
+              echo "<tr>
+			  		          <td width='5%'   class='center'>$id</td> 
+					            <td width='20%'   class='center'>$nombre</td>
+                      <td width='20%' class='center'>$apellido</td>
+					            <td width='10%' class='center'>$dni</td>
+					            <td width='10%' class='center'>$celular</td>
+                      
+                      
+                    </tr>";
+            }
+		    ?>
+            </tbody>
+          </table>    
+  
+                    </div>
+                </div>
         </div><!-- /.box -->
       </div><!--/.col -->
     </div>   <!-- /.row -->
   </section><!-- /.content -->
-<?php
-}
+  
+ 
+	<?php
+  }
+ }
+
 ?>

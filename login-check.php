@@ -31,9 +31,9 @@
 							'Content-Type: application/json',
 							'Content-Length: ' . strlen($data_string))
 							);
-						
 						$result = curl_exec($ch);
 						$events = json_decode($result , true);
+
 						
 										if ($events){
 											session_start();
@@ -44,26 +44,62 @@
 											$_SESSION['apellido']  = $events['apellido'];
 											$_SESSION['name_user'] = $events['nombre'].' '.$events['apellido'];
 											$_SESSION['email']     = $events['email'];
-											$_SESSION['telefono_movil']     = $events['telefono_movil'];
-											$_SESSION['id_autorizante']     = $events['id_autorizante'];
 											$_SESSION['permisos_acceso']     = $events['permisos_acceso'];
 											$_SESSION['change_pass']     = $events['change_pass'];
+											$login = false;
 											
-											if ($_SESSION['permisos_acceso'] == 1){
-												$_SESSION['permisos_acceso'] = 'Administrador';
-												header("Location: main.php?module=mm");
-											} 
 
-											elseif ($_SESSION['change_pass']== 1) {
+											if ($_SESSION['change_pass']== 1) {
 												header("Location: recvpss.php?alert=8");		
 											} 
 
 											elseif (($_SESSION['permisos_acceso'] == 2) or ($_SESSION['permisos_acceso'] == 4)) {
-												header("Location: pp/index.php");
+												header("Location: pluton/index.php");
+												$login = true;
+											}
+											
+											elseif ($_SESSION['permisos_acceso'] == 1 ){
+												$_SESSION['permisos_acceso'] = 'Administrador';
+												header("Location: main.php?module=start");
+												$login = true;
+											} 
+
+											elseif ($_SESSION['permisos_acceso'] == 5 ) {
+												$_SESSION['permisos_acceso'] = 'Usuario';
+												header("Location: main.php?module=start");
+												$login = true;
+											} 
+
+											elseif ($_SESSION['permisos_acceso'] == 7 ) {
+												$_SESSION['permisos_acceso'] = 'Facturacion';
+												header("Location: main.php?module=start");
+												$login = true;
 											}
 											
 										} else {
 											header("Location: indexcaptcha.php?alert=1");
+											$login = false;
+										}
+
+										if ($login == true) {
+											$mensaje = 'Login usuario';
+											$usuario = $_SESSION['name_user'];
+											
+											$jsonData = array(
+												'mensaje' =>        "$mensaje",
+												'usuario' => 	    "$usuario"
+											);
+
+											$data_string = json_encode($jsonData);
+											$ch = curl_init($servidor . '/api/AuditLogin/');
+											curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+											curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+											curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+											curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+												'Content-Type: application/json',
+												'Content-Length: ' . strlen($data_string)
+											));
+											$result = curl_exec($ch);
 										}
 						}
 						

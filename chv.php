@@ -18,8 +18,8 @@
 					$dni = $_POST['dni'];
 					$telefono = $_POST['celular'];
 					$domicilio = $_POST['domicilio'];
-					$provincia = $_POST['provincia'];
-					$localidad = $_POST['localidad'];
+					$provincia = 1;
+					$localidad = 1;
 					$permiso = 4; //permiso invitado
 					
 					

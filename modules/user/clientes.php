@@ -18,7 +18,8 @@ $id_autorizante = $_POST['dataidaut'];
 							  $n = $t['nombre'];
 							  $_SESSION['apellido']= $t['apellido'];
 							  $a = $t['apellido'];
-							  if ($cliente == $t['id']){ $dni =''; $n =''; $a ='';};
+							  if ($cliente == $t['id']){ 
+								  $dni =''; $n =''; $a ='';};
 								  echo "
 								  <div class='col-sm-12 col-md-4' style='visibility:visible'>
 								   <label class='control-label'>Cliente Autorizantexxxx</label>

@@ -1132,3 +1132,20 @@ be a descendant of the grid when it is being dragged.
 	border-top-color: transparent;
 	border-bottom-color: transparent;
 }
+
+.navbar-brand{
+	color:black !important;
+}
+.collapse.navbar-collapse .nav.navbar-nav li a{
+	color:black !important;
+}
+.fc-toolbar h2{
+	color:#cbab79;
+}
+
+body{
+	background-color: #262b38 !important;
+}
+.fc-unthemed .fc-today {
+	background-color: white;
+}

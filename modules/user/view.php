@@ -2,7 +2,7 @@
   <h1>
     <i class="fa fa-users icon-title"></i> Gestión de Usuarios
 
-    <a class="btn btn-warning btn-social pull-right" href="?module=form_user&form=add" title="Agregar" data-toggle="tooltip">
+    <a class="btn btn-success btn-social pull-right" href="?module=form_user&form=add" title="Agregar" data-toggle="tooltip">
       <i class="fa fa-plus"></i> Agregar
     </a>
   </h1>
@@ -11,7 +11,7 @@
 
 <section class="content">
   <div class="row">
-    <div class="col-md-13">
+    <div class="col-md-12">
 
     <?php 
 	 
@@ -60,7 +60,7 @@
 	
     ?>
 
-      <div class="box box-primary" style="color:#003">
+      <div class="box box-warning" style="color:#003">
         <div class="box-body">
     
           <table border=10 bordercolor="#000000" id="dataTables1" class="table table-bordered table-striped table-hover">
@@ -72,10 +72,12 @@
 
             <thead>
               <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
+                <th class="center">#</th>
+                <th class="center"># Zk</th>
                 <th class="center">Cliente</th>
-                <th class="center">Telef</th>
-                <th class="center">Email</th>
-                <th class="center">Perfil</th>
+                <th class="center">Permiso</th>
+                <th class="center">Tel.Móvil</th>
+                <th class="center">Documento.</th>
                 <th class="center">Estado</th>
                 <th class="center">Acciones</th>
               </tr>
@@ -93,28 +95,36 @@
 					      $id = $d['id'];
 						  $nombre = $d['nombre']; 
 						  $apellido = ' '.$d['apellido']; 
-						  $telefono = $d['telefono_movil'];
+						  $descripcion = $d['descripcion'];
 						  $email = $d['email'];
 						  $dommicilio = $d['dommicilio'];
 						  $localidad= $d['localidad'];
 						  $provincia = $d['provincia'];
+						  $tel_movil = $d['telefono_movil'];
+              $dni = $d['dni'];
+              $USRID = $d['USRID'];
+						  $tel_fijo = $d['tel_fijo'];
 						  $id_autorizante = $d['id_autorizante'];
 						  $descripcion= $d['descripcion'];
 						  $permisos_acceso = $d['permisos_acceso'];
 						  $status = $d['status'];
 						  if ($status==1){$s = 'Activo';} else {$s = 'Inactivo';};
+						  $evento = 0;
 			
               echo "<tr>
-                      <td width='100'  class='center'>$nombre$apellido</td>
-					  <td width='80'  class='center'>$telefono</td>
-                      <td width='50'  class='center'>$email</td>
-                      <td width='80'  class='center'>$descripcion</td>
-                      <td width='80'  class='center'>$s</td>
-					  <td class='center' width='30'>
+              <td width='5%'   class='center'>$id</td> 
+              <td width='5%'   class='center'>$USRID</td> 
+                      <td width='30%' class='center'>$nombre$apellido</td>
+					  <td width='20%'  class='center'>$descripcion</td>
+                      <td width='5%'  class='center'>$tel_movil</td>
+                      <td width='10%'  class='center'>$dni</td>
+                      <td width='10%'  class='center'>$s</td>
+					  <td class='center' width='20%'>
                         <div>
-                          <a data-toggle='tooltip' data-placement='top' title='Modificar' style='margin-right:5px' class='btn btn-warning btn-sm' href='?module=form_user&form=edit&id=$id'>
-                              <i style='color:#fff' class='glyphicon glyphicon-edit'></i>
-                          </a>";
+						  
+						  <a data-toggle='tooltip' data-placement='top' title='Ver Cajas Asociadas' style='margin-right:5px' class='btn btn-default btn-sm' href='?module=form_recepcion&form=edit&id=$id&id_evento=$evento'><i style='color:#0e001a' class='glyphicon glyphicon-search'></i></a>
+						  
+                          <a data-toggle='tooltip' data-placement='top' title='Modificar' style='margin-right:5px' class='btn btn-warning btn-sm' href='?module=form_user&form=edit&id=$id'><i style='color:#fff' class='glyphicon glyphicon-edit'></i></a>";
 						  
 			if ($s=='Activo') { ?>
                             <a data-toggle="tooltip" data-placement="top" title="Bloquear" style="margin-right:5px" class="btn btn-danger btn-sm" href="modules/user/proses.php?act=off&id=<?php echo $d['id'];?>"><i style="color:#fff" class="glyphicon glyphicon-trash"></i>

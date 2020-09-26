@@ -116,7 +116,7 @@ session_start();
         <?php include "content.php" ?>
 
         <!-- Modal Logout -->
-        <div class="modal fade" id="logout">
+        <div class="modal fade" id="logout" style="color: black;">
           <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -127,7 +127,7 @@ session_start();
                     <p>¿Confirmar salir? </p>
                 </div>
                 <div class="modal-footer">
-                    <a type="button" class="btn btn-danger" href="index.php">Si, Salir</a>
+                    <a type="button" class="btn btn-danger" href='http://localhost/fortressargentina'>Si, Salir</a>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     
                 </div>
@@ -145,7 +145,7 @@ session_start();
     <!-- Bootstrap 3.3.2 JS -->
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>    
     <!-- datepicker -->
-    <script src="assets/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!--<script src="assets/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>-->
     <!-- chosen select -->
     <script src="assets/plugins/chosen/js/chosen.jquery.min.js"></script>
     <!-- DATA TABES SCRIPT -->
@@ -204,16 +204,18 @@ session_start();
            else $('#form-field-select-4').removeClass('tag-input-style');
         });
 
-        // DataTables
-        $("#dataTables1").dataTable();
-        $('#dataTables2').dataTable({
+              // DataTables
+      $("#dataTables3").dataTable();
+        $('#dataTables1').dataTable({
           "bPaginate": true,
-          "bLengthChange": false,
-          "bFilter": false,
+          "bLengthChange": true,
+          "bFilter": true,
           "bSort": true,
+          "oPaginate": true,
           "bInfo": true,
-          "bAutoWidth": false,
-
+	        "sPaginationType": "full_numbers",
+	        "iDisplayLength": 10,
+          "bAutoWidth": true,
           "language": idioma_español
         });
       });

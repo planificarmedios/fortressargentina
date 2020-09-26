@@ -10,12 +10,23 @@ include_once ("../../parametros.php");
 					$precio = $_POST['precio'];
 					$intervalo = $_POST['intervalo'];
 					$tipo_servicio = $_POST['tipo_servicio'];
+					$coef_comercial = $_POST['coef_comercial'];
+					$coef_mensual = $_POST['coef_mensual'];
+					$coef_trimestral = $_POST['coef_trimestral'];
+					$coef_semestral = $_POST['coef_semestral'];
+					$coef_gold = $_POST['coef_gold'];
+					$coef_notificacion = $_POST['coef_notificacion'];
 					
-					
-						$jsonData = array( 'nombre' => "$nombre",
+					$jsonData = array( 'nombre' => "$nombre",
 										   'descripcion' => "$descripcion",
 										   'precio' => "$precio",
 										   'intervalo' => "$intervalo", 
+										   'coef_comercial' => "$coef_comercial",
+										   'coef_mensual' => "$coef_mensual",
+										   'coef_trimestral' => "$coef_trimestral",
+										   'coef_semestral' => "$coef_semestral",
+										   'coef_gold' => "$coef_gold",
+										   'coef_notificacion' => "$coef_notificacion",
 										   'tipo_servicio' => "$tipo_servicio"
 										   );
 										   
@@ -58,6 +69,12 @@ include_once ("../../parametros.php");
 				    $nombre = $_POST['nombre'];
 					$descripcion = $_POST['descripcion'];
 					$precio = $_POST['precio'];
+					$coef_comercial = $_POST['coef_comercial'];
+					$coef_mensual = $_POST['coef_mensual'];
+					$coef_trimestral = $_POST['coef_trimestral'];
+					$coef_semestral = $_POST['coef_semestral'];
+					$coef_gold = $_POST['coef_gold'];
+					$coef_notificacion = $_POST['coef_notificacion'];
 					$intervalo = $_POST['intervalo'];
 					$tipo_servicio = $_POST['tipo_servicio'];
 					}
@@ -67,6 +84,12 @@ include_once ("../../parametros.php");
 										   'nombre' => "$nombre",
 										   'descripcion' => "$descripcion",
 										   'precio' => "$precio",
+										   'coef_comercial' => "$coef_comercial",
+										   'coef_mensual' => "$coef_mensual",
+										   'coef_trimestral' => "$coef_trimestral",
+										   'coef_semestral' => "$coef_semestral",
+										   'coef_gold' => "$coef_gold",
+										   'coef_notificacion' => "$coef_notificacion",
 										   'intervalo' => "$intervalo", 
 										   'tipo_servicio' => "$tipo_servicio"
 										   );

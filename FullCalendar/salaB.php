@@ -1,6 +1,7 @@
-<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+﻿<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script type="text/javascript">
 
+       
 		function tampil_obat(input){
 		var idI = input;
 		var servicio = 2; ///////////////cambiar
@@ -68,40 +69,23 @@
 		
 		function getSelectValues(select) {
 		  var result = [];
-		  var token = document.getElementById('codigo').value;
-		  var cliente = document.getElementById('cliente').value;
 		  var options = select && select.options;
 		  var opt;
-		  var a = 0;
-		  
+		
 		  for (var i=0, iLen=options.length; i<iLen; i++) {
 			opt = options[i];
-			a++;
-			
+		
 			if (opt.selected) {
 			  result.push(opt.value || opt.text);
-			  //alert ('Validando los datos adicionales en cada iteracion' + opt.value + ' en la iteracion ' + a + ' token ' + token + ' Cliente: ' + cliente);
-			  /////////////////////////////////////////////////////		
-			  $.post
-			 ("insertar_adicionales.php", 
-					{ dataServicio: opt.value, 
-					  dataCliente: cliente,
-					  dataToken: token}, 
-						function(response) {      
-							//$('#idFin').html(response);
-						}
-				);
-			  
-			  /////////////////////////////////////////////////////
+			  //alert (opt.text);
 			} 
 		  }
+		
 		  document.getElementById('adicionales').value = result; 
 		}
 		
-		function verificar() {
-		  var result = document.getElementById('adicionales').value;
-		  //alert ('Validando los datos adicionales' + result);
-		}
+		
+		
 </script>
 
 <?php
@@ -213,7 +197,7 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a style="color:#D2C575" href="../pp/index.php" title="Volver">Volver Zona Clientes</a>
+                        <a style="color:#D2C575" href="../pluton/index.php" title="Volver">Volver Zona Clientes</a>
                     
                     </li>
                 </ul>
@@ -239,12 +223,13 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
 			<div class="modal-content">
 			
 
-			<!-- form class="form-horizontal" method="POST" action="../MP/crud/cc.php"-->
-            <form class="form-horizontal" method="POST" action="../MP/index.php">
+			<form class="form-horizontal" method="POST" action="../MP/index.php">
+            
             				
 				<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<center><h4 class="modal-title" id="myModalLabel">Gestión de Reservas Sala B</h4>
+                		<center><h4 class="modal-title" id="myModalLabel">Menú de Selección Múltiple. Presionar ctrl + click</h4>		
 			  </div>
 			  <div class="modal-body">
                             
@@ -259,7 +244,7 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
                 <div class="col-sm-10">
                   <select multiple class="form-control"  name="idSelect2" id="idSelect2" 
      onblur="var el = document.getElementsByTagName('select')[0]; getSelectValues(el);" >
-                    <option value="" selected> -- Seleccionar: Menú de Opción Múltiple -- </option>
+                    
                     <?php 
 					session_start(); 
 					require_once ("../callAPI.php");
@@ -271,17 +256,16 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
 						  $precio = $d['precio'];
 						  $nombre = $d['nombre'][0];
 						 ?> 
-                         <option value= "<?php echo $id ?>"> <?php echo $nombre;?> </option>
+                         <option value= "<?php echo $id ?>" label="<?php echo $nombre?>"> <?php echo $nombre?> </option>
 					<?php	  
 					}
 					?>
-                    </optgroup>
+                    
                   </select>
                  </div>
-               </div>   
-						   
-				             
-                                
+               </div> 
+               
+                               
                <div class="form-group">
                   <label for="idInicio" class="col-sm-2 control-label">Inicio</label>
                   <div class="col-sm-10">
@@ -331,16 +315,15 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
 			 </script>
              <input type="text" name="idFinSeleccionado" id="idFinSeleccionado" hidden="true"></input>	    	 
              <input type="text" name="fechaSeleccionada" id="fechaSeleccionada" hidden="true"></input>
-             <input type="text" name="adicionales"       id="adicionales" hidden="true"></input>
-             <input type="text" name="start"             id="start" hidden="true">	
-             <input type="text" name="cliente"           id="cliente" value="<?php echo $_SESSION["id_user"];?>"  hidden="true"></input>
-             
+             <input type="text" name="adicionales"       id="adicionales" hidden="true"></input>	
+             <input type="text" name="start" id="start" hidden="true">
              
              </div>
              
 			  <div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal" onClick="deshabilitar()">Cancelar</button>
-				<button type="submit"  class="btn btn-warning" onClick="verificar()"> Continuar </button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal" onClick="deshabilitar()">Cancelar</button>
+				
+                <button type="submit"  name="continuar" id="continuar" class="btn btn-warning">  Continuar </button>
 			  </div>
 			</form>
 			</div>
@@ -462,7 +445,6 @@ $_SESSION["idServicio"] = 2; ///////////////cambiar
 		function edit(event){
 			start = event.start.format('YYYY-MM-DD HH:mm:ss');
 			if(event.end){
-
 				end = event.end.format('YYYY-MM-DD HH:mm:ss');
 			}else{
 				end = start;

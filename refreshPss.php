@@ -2,13 +2,13 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $secretKey = '6LdludYUAAAAACyqn0islF1QxAZ8vX-h766hbaRC';
         $captcha = $_POST['g-recaptcha-response'];
-			if(!$captcha){header("Location: recvpss.php.php?alert=3");exit;}
+			if(!$captcha){header("Location: recvpss.php?alert=3");exit;}
 			$ip = $_SERVER['REMOTE_ADDR'];
 			$response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$captcha."&remoteip=".$ip);
 			$responseKeys = json_decode($response,true);
 	
 				if(intval($responseKeys["success"]) !== 1) {
-				  header("Location: recvpss.php.php?alert=4"); exit;
+				  header("Location: recvpss.php?alert=4"); exit;
 				} else {
 					require_once ("callAPI.php");
 					require_once ("parametros.php");

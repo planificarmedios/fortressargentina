@@ -1,5 +1,5 @@
 <?php
-require_once('../../bdd.php');
+require_once('../../own/bdd.php');
 $sql = "SELECT id, title, start, end, color, codigo, idInicio, idFin, idUsuario FROM events WHERE idUsuario > 0";
 $req = $bdd->prepare($sql); $req->execute(); $events = $req->fetchAll();
 

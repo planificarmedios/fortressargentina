@@ -48,13 +48,36 @@
 		 //alert ('Perfil cliente: ' + sms);
 	     document.getElementById('grupo2').style.visibility='visible';
 	   }
-	   
-	    
-}
+	}
+	
+	function validarDni (input){
+		var dni = input.value;
+		//alert (dni);
+		$.post("module/user/validarCliente.php", {
+		 dataidobat: dni,
+		}, function(response) {      
+		  $('#stok').html(response)
+		});
+		
+	}
+
+	function ValidaCivil(input){
+		var estado = input.value;
+		alert (estado);
+		if (estado == 2 or estado == 4) {
+			document.getElementById('civilgroup').style.visibility='visible';
+		}
+	}
+
+	
 
 </script>
 
+
+
 <?php  
+
+
 if ($_GET['form']=='add') { ?>
 
   <section class="content-header" style="color:#000">
@@ -71,133 +94,216 @@ if ($_GET['form']=='add') { ?>
   <section class="content" style="color:#000">
     <div class="row">
       <div class="col-md-12">
-        <div class="box box-primary">
+        <div class="box box-warning">
           <!-- form start -->
           <form role="form" class="form-horizontal" method="POST" action="modules/user/proses.php?act=insert" enctype="multipart/form-data">
+          <div class="box-body" >
+          	<span id='stok' name='stok'><div ></div></span>
             
-            <div class="box-body">
-             <div class="form-group">
-                <label class="col-sm-2 control-label">Nombre o Razón Social</label>
-                <div class="col-sm-5">
-                  <input type="text" class="form-control" id="nombre" name="nombre" autocomplete="off" required>
-                </div>
+             <fieldset> 
+               <div class="form-group">
+               	<div class="row">
+              		<div class="col-sm-12 col-md-4">
+						<label class="control-label">Nombre o Razón Social</label>
+						  <input type="text" class="form-control"  id="nombre" name="nombre" autocomplete="off" required></input>
+				    </div>
+                   
+              		<div class="col-sm-12 col-md-4">            
+                		<label class="control-label">Apellido*(Opcional)</label>
+                 			 <input type="text" class="form-control"  id="apellido"  name="apellido" autocomplete="off" ></input>
+                	 </div>
+				 
+				 	<div class="col-sm-12 col-md-4">
+                		<label class="control-label">Fecha Nacimiento*(Opcional)</label>
+               				<input type="date" class="form-control"  id="fnacimiento" name="fnacimiento" autocomplete="off" >
+                	</div>
+              	</div>
               </div>
+   			</fieldset>
+	              
+            <fieldset> 
+               <div class="form-group">
+               	<div class="row">
+              		<div class="col-sm-12 col-md-4">
+						<label class="control-label">Tipo Documento</label>
+						  <select class="chosen-select" id="tipo_documento" name="tipo_documento" required>
+							<option value="">Seleccionar</option>
+							<option value="1">DNI</option>
+							<option value="2">CUIL</option>
+							<option value="3">CUIT</option>
+						  </select>
+						</div>
               
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Apellido*(Opcional)</label>
-                <div class="col-sm-5">
-                  <input type="text" class="form-control" id="apellido"  name="apellido" autocomplete="off" >
-                </div>
+               			<div class="col-sm-12 col-md-4">
+							<label class="control-label">Número DNI - CUIL - CUIT</label>
+								<input type="number" class="form-control"  id="dni" name="dni" autocomplete="off" required onblur="validarDni(this);" >
+                    	</div>
+   
+						 <div class="col-sm-12 col-md-4">
+							<label class="control-label">Celular</label>
+							  <input type="number" class="form-control" id="celular"  name="celular" autocomplete="off" required>
+						</div>
+              	</div>
               </div>
-              
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Fecha Nacimiento*(Opcional)</label>
-                <div class="col-sm-5">
-                  <input type="date" class="form-control" id="fnacimiento" name="fnacimiento" autocomplete="off" >
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Dni/CUIT</label>
-                <div class="col-sm-5">
-                  <input type="number" class="form-control" id="dni" name="dni" autocomplete="off" required>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Celular</label>
-                <div class="col-sm-5">
-                  <input type="number" class="form-control" id="celular" name="celular" autocomplete="off" required>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-5">
-                  <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Domicilio</label>
-                <div class="col-sm-5">
-                  <input type="text" class="form-control" id="domicilio" name="domicilio" autocomplete="off" required>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Código Postal</label>
-                <div class="col-sm-5">
-                  <select class="form-control" id="cp" name="cp" onchange="ShowSelected();" required>
-                    <option value="">Seleccionar</option>
-                    <?php 
-					session_start(); 
-					include_once ("callAPI.php");
-                    require_once ("parametros.php");
-					$get_data = callAPI('GET', $servidor.'/api/ciudades/',false);
-					$response = json_decode($get_data, true);
-					foreach ($response as $d) {
-					      $id = $d['id'];
-						  $cp = $d['cp'];
-						  $_SESSION['localidad'] = $d['localidad'];	
-						  $l = $d['localidad'];
-						  $_SESSION['provincia']= $d['provincia'];
-						  $p = $d['provincia'];
-						  $lp = '('.$cp.')';
-						  echo "    <option value=\"$cp\"> $cp | $l | $p </option>";
+   			</fieldset>
 						  
-					}
-					?>
-                    
-                  </select>
-                </div>
-              </div>
-              
-              <input  id="localidad" name="localidad" hidden="true" >
-             <input  id="provincia" name="provincia"  hidden="true" >
+             <fieldset> 
+               <div class="form-group">
+               	<div class="row">
+              		<div class="col-sm-12 col-md-4">
+						<label class="control-label">Tel. Fijo</label>
+						  <input type="number" class="form-control" id="tel_fijo"  name="tel_fijo" autocomplete="off" required>
+					</div>
+					 
+
+         			<div class="col-sm-12 col-md-4">
+						<label class="control-label">Email</label>
+					  		<input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
+					</div>
              
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Permisos de acceso</label>
-                <div class="col-sm-5">
-                  <select class="form-control" id="permisos_acceso" name="permisos_acceso" required onchange="validarCuenta(this)">
-                    <option value="">Seleccionar</option>
-                    <option value="1">Administrador</option>
-                    <option value="2">Cliente Titular</option>
-                    <option value="3">Cliente Asociado</option>
-                    <option value="4">Invitado</option>
-                  </select>
-                </div>
-              </div>
               
-              <div class="form-group" id="grupo" name="grupo" style="visibility:hidden">
-                <label id="labelusuario" name="labelusuario" class="col-sm-2 control-label">Cliente Autorizante</label>
-                 <div class="col-sm-5">
-                  <select class="form-control" id="id_autorizante" name="id_autorizante">
-                    <option value="">Seleccionar</option>
-                    
-		<?php 
-		session_start(); 
-		include_once ("callAPI.php");
-        require_once ("parametros.php");
-					$get_data = callAPI('GET', $servidor.'/api/titulares/',false);
-					$response = json_decode($get_data, true);
-					foreach ($response as $d) {
-					      $id = $d['id'];
-						  $dni = $d['dni'];
-						  $_SESSION['nombre'] = $d['nombre'];	
-						  $n = $d['nombre'];
-						  $_SESSION['apellido']= $d['apellido'];
-						  $a = $d['apellido'];
-						  $lp = '('.$cp.')';
-						  echo "    <option value=\"$id\"> $dni | $n $a </option>";
-						  
-		}
-		?>
-                    
-                  </select>
-                </div>
+					<div class="col-sm-12 col-md-4">
+						<label class="control-label">Domicilio</label>
+							  <input type="text" class="form-control" id="domicilio"  name="domicilio" autocomplete="off" required>
+					</div>
+              	</div>
               </div>
-                     <input id="status" name="status" value=1 hidden></input>
+   			</fieldset>
+              
+             <fieldset> 
+               <div class="form-group">
+               	<div class="row">
+              		<div class="col-sm-12 col-md-4">
+						<label class="control-label">Cod. Postal - Localidad</label>
+						  <select class="chosen-select" id="cp" name="cp" onchange="ShowSelected();" required>
+								<option value="">Seleccionar</option>
+								<?php 
+								session_start(); 
+								include_once ("callAPI.php");
+								require_once ("parametros.php");
+								$get_data = callAPI('GET', $servidor.'/api/ciudades/',false);
+								$response = json_decode($get_data, true);
+								foreach ($response as $d) {
+									  $id = $d['id'];
+									  $cp = $d['cp'];
+									  $_SESSION['localidad'] = $d['localidad'];	
+									  $l = $d['localidad'];
+									  $_SESSION['provincia']= $d['provincia'];
+									  $p = $d['provincia'];
+									  $lp = '('.$cp.')';
+									  echo "    <option value=\"$cp\"> $cp | $l | $p </option>";
+								}
+								?>
+							  </select>
+                	</div>
+              
+               		<div class="col-sm-12 col-md-4">
+						<label class="control-label">Permisos de acceso</label>
+						  <select class="chosen-select" id="permisos_acceso" name="permisos_acceso" required onchange="validarCuenta(this)">
+							<option value="">Seleccionar</option>
+							<option value="1">Administrador</option>
+							<option value="5">Empleado</option>
+							<option value="2">Cliente</option>
+							<option value="4">Invitado</option>
+							<option value="5">Empleado</option>
+							<option value="7">Facturación</option>
+						  </select>
+                	</div>
+					
+					<div class="col-sm-12 col-md-4">
+						<label class="control-label">Condición IVA</label>
+						  <select class="chosen-select" id="condicion_iva" name="condicion_iva" required>
+							   <option value="">-- Seleccionar --</option>
+							   <option value="Consumidor Final">Consumidor Final</option>
+							   <option value="Monotributista">Monotributista</option>
+							   <option value="Responsable Inscripto">Responsable Inscripto</option>
+							   <option value="Responsable No Inscripto">Responsable No Inscripto</option>
+							   <option value="Exento">Exento</option>
+							 </select>
+                	</div>
+					
+					
+              </div>
+   			</fieldset>
+				 
+			 <fieldset> 
+               <div class="form-group">
+               	<div class="row">
+              		<div class="col-sm-12 col-md-4">
+						<label class="control-label">Alias</label>
+						  <input type="text" class="form-control"  id="alias" name="alias">
+					</div>
+					
+							
+					<div class="col-sm-12 col-md-4">
+						<label class="control-label">Prótesis Metálica</label>
+					  		<select id="protesis" class="chosen-select" name="protesis" required onchange="validarCuenta(this)">
+							<option value="">Seleccionar</option>
+							<option value="0">No posee</option>
+							<option value="1">Posee</option>
+							
+						  </select>
+					</div>
+					
+					<div class="col-sm-12 col-md-4">
+						<label class="control-label">Detallar Prótesis</label>
+						  <input type="text" class="form-control" id="sector_cuerpo" name="sector_cuerpo" autocomplete="off" >
+					</div>
+					
+					
+              	</div>	
+              </div>
+   			</fieldset>	 
+
+			   <fieldset> 
+               <div class="form-group">
+               	<div class="row">
+				   <div class="col-sm-12 col-md-4">
+                 <label class="control-label">Estado Civil</label>
+                
+                  <select class="chosen-select" id="estado_civil" name="estado_civil" required >
+                  <option style="text-align-last:center" value="">-- Seleccionar --</option>
+                  <option value="1">Soltero</option>
+				  <option value="2">Casado</option>
+				  <option value="3">Viudo</option>
+ 				  <option value="4">Unión de Convivencia</option>
+				  <option value="5">En pareja</option>
+				  <option value="6">No indica</option>
+                  </select>
+               </div>
+					
+				
+					<div class="col-sm-12 col-md-4">
+						<label class="control-label">Casado con</label>
+						<input type="text" class="form-control" id='nombre_apell_matrimonio' name='nombre_apell_matrimonio'>
+					</div>
+
+					<div class="col-sm-12 col-md-4">
+                  		<label class="control-label">Número DNI </label>
+						   <input type="text" class="form-control"  id='dni_matrimonio' name='dni_matrimonio' >
+					</div>
+              	</div>	
+              </div>
+   			</fieldset>	 
+				 
+				 
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Adjuntar Foto</label>
+                <div class="col-sm-5">
+                  <input type="file" name="foto" id="foto" required="required">
+                </div>
+				  
+				
+				  
+           </div> 
+              
+              
+           <input id="status" name="status" value=1 hidden></input>
+           <input  id="localidad" name="localidad" hidden="true" >
+           <input  id="provincia" name="provincia"  hidden="true" >
+           
+           
+           
                      
            </div><!-- /.box body -->
 
@@ -213,7 +319,8 @@ if ($_GET['form']=='add') { ?>
         </div><!-- /.box -->
       </div><!--/.col -->
     </div>   <!-- /.row -->
-  </section><!-- /.content -->
+</div>
+</section><!-- /.content -->
   
 <script type="text/javascript">  
 function validarCuenta(input){
@@ -234,7 +341,7 @@ require_once("fechaNumber.php");
   	if (isset($_GET['id'])) {
 	$id = $_GET['id'];
       
-		  include_once ("callAPI.php");
+	      include_once ("callAPI.php");
           require_once ("parametros.php");
 					$get_data = callAPI('GET', $servidor.'/api/clientes/'.$id,false);
 					$response = json_decode($get_data, true);
@@ -256,27 +363,75 @@ require_once("fechaNumber.php");
   <section class="content" style="color:#000">
     <div class="row">
       <div class="col-md-12">
-        <div class="box box-primary">
+        <div class="box box-warning">
           <!-- form start -->
           <form role="form" class="form-horizontal" method="POST" action="modules/user/proses.php?act=update" enctype="multipart/form-data" >
+          
+          <span id='stok' name='stok'><div ></div></span>
+          
            <body onload="cargaForm()">
               <div class="box-body">
                   <input   id="id" name="id" value="<?php echo $id; ?>" hidden>
                   <input  id="usrid" name="usrid" value="<?php echo $d['USRID']; ?>" hidden>
-             
+                  
+            <fieldset>      
+             <div class="form-group">
+           	  <div class="row">
+               	                   
+                 <div class="col-sm-12 col-md-6"> 
+					<?php  
+                    if ($d['foto']=="") { ?>
+                      <img style="border:1px solid #eaeaea;border-radius:5px;" src="images/user/user-default.png"  width="100">
+                    <?php
+                    }
+                    else { ?>
+                      <img src="images/user/<?php echo $d['foto']; ?>" width="150" height="150" style="border:1px solid #eaeaea;border-radius:100px;"> 
+					  
+                    <?php
+                    }
+                    ?>
+                </div>
+                
+                
+                <input  id="fotobis" name="fotobis" value="<?php echo $d['foto']; ?>" hidden>
+                
+                <div class="col-sm-12 col-md-6" align="left">
+                    <label class="control-label">Imagen de Archivo</label>
+                    <input align="left" type="file" name="foto">
+				  </div>
+				  
+			  </div>
+           </fieldset>
+           
              <fieldset> 
                <div class="form-group">
                	<div class="row">
-               	 <div class="col-sm-12 col-md-6">
+               	 <div class="col-sm-12 col-md-4">
                     <label class="control-label">Nombre o R.Social</label>
                       <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $d['nombre']; ?>" autocomplete="off" required/>
                 </div>
               
-              <div class="col-sm-12 col-md-6">
-                <label class="control-label">Apellido*(Opcional)</label>
-                	<input type="text" class="form-control" id="apellido"  name="apellido" value="<?php echo $d['apellido']; ?>" autocomplete="off"/>
-                	</div>
-              	</div>
+                  <div class="col-sm-12 col-md-4">
+                    <label class="control-label">Apellido*(Opcional)</label>
+                        <input type="text" class="form-control" id="apellido"  name="apellido" value="<?php echo $d['apellido']; ?>" autocomplete="off"/>
+                   </div>
+					
+					
+				   <?php
+						if (($d['fecha_nacimiento'] == null) or ($d['fecha_nacimiento'] <= '1900-01-01') or ($d['fecha_nacimiento'] == '') ){ 
+						$fn = ''; 
+						} else {
+							$type = 'text'; 
+							$fn = fechaNumber(substr($d['fecha_nacimiento'], 0,10));
+							
+						};
+						?>
+
+					<div class="col-sm-12 col-md-4">
+						<label class="control-label">Fecha Nacimiento <?php echo $fn ?> </label>
+						<input type="text"  class="form-control date-picker" data-date-format="yyyy-mm-dd"  value='<?php echo  $d['fecha_nacimiento'];?>'  id="fnacimiento" name="fnacimiento" autocomplete="off">
+						</div>
+              		</div>
               </div>
              </fieldset>
              
@@ -284,52 +439,72 @@ require_once("fechaNumber.php");
              <fieldset> 
                <div class="form-group">
                	<div class="row">
-               	 <div class="col-sm-12 col-md-6">
+               	 <div class="col-sm-12 col-md-4">
                     <label class="control-label">Celular</label>
-                     <input type="number" class="form-control" id="celular" name="celular" value="<?php echo $d['telefono_movil']; ?>" autocomplete="off" required>
+                     <input type="number" class="form-control" id="celular" name="celular" value="<?php echo $d['telefono_movil']; ?>" autocomplete="off" >
                  </div>
-                
-             	<div class="col-sm-12 col-md-6">
+                 
+                 <div class="col-sm-12 col-md-4">
                 	<label class="control-label">Email</label>
                   		<input type="email" class="form-control" id="email" value="<?php echo $d['email']; ?>" name="email" autocomplete="off" required>
                 </div>
+                 
+                 <div class="col-sm-12 col-md-4">
+                    <label class="control-label">Tel. Fijo</label>
+                     <input type="text" class="form-control" id="tel_fijo" name="tel_fijo" value="<?php echo $d['tel_fijo']; ?>" autocomplete="off" >
+                 </div>
               	</div>
               </div>
-             </fieldset>  
+             </fieldset>
              
+                
              <fieldset> 
-              <div class="form-group">
+               <div class="form-group">
                	<div class="row">
-               	 <div class="col-sm-12 col-md-6">
-                  <label class="control-label">Fecha Nac*(Opcional)</label>
-                    <input required="required" type="text" class="form-control" oninvalid="this.setCustomValidity('Formato Incorrecto: ingresar dd-mm-yyyy')"
-                    id="fnacimiento" name="fnacimiento" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])"
-                    value="<?php 
-					$ss = substr($d['fecha_nacimiento'], 0,10); 
-					echo fechaNumber($ss);
-					?>" 
-                    autocomplete="off"/>
-                </div>
-              
-                <div class="col-sm-12 col-md-6">
-                  <label class="control-label">Dni/CUIT</label>
-                    <input  class="form-control" id="dni" name="dni" value="<?php echo $d['dni']; ?>" autocomplete="off" required/>
-                </div>
-               </div>
-              </div>
-              </fieldset>
-             
-             <fieldset> 
-              <div class="form-group">
-               	<div class="row">
-               	 <div class="col-sm-12 col-md-6">
+                
+                <div class="col-sm-4 col-md-4">
                    <label class="control-label">Domicilio</label>
                       <input type="text" class="form-control" id="domicilio" name="domicilio" value="<?php echo $d['dommicilio']; ?>" autocomplete="off" required>
              	 </div>
-              
-              <div class="col-sm-12 col-md-6">
-                 <label class="control-label">Código Postal</label>
-                  <select class="form-control" id="cp" name="cp" onchange="ShowSelected();" required>
+                 
+                 <div class="col-sm-4 col-md-2">
+                   <label class="control-label">Tipo Documento</label>
+                
+                  <select class="chosen-select" id="tipo_documento" name="tipo_documento" >
+                      <option value="1" <?php if ($d['tipo_documento']==1){?>  selected="<?php echo 'selected';};?>">DNI</option>
+                      <option value="2" <?php if ($d['tipo_documento']==2){?> selected="<?php echo 'selected';};?>">CUIL</option>
+                      <option value="3" <?php if ($d['tipo_documento']==3){?> selected="<?php echo 'selected';};?>">CUIL</option>
+                  </select>
+                </div>
+                
+                <div class="col-sm-4 col-md-2">
+                  <label class="control-label">Número DNI - CUIL - CUIT </label>
+                    <input  class="form-control" id="dni" name="dni" value="<?php echo $d['dni']; ?>" autocomplete="off" required onblur="validarDni(this);" >
+                </div>
+
+				<div class="col-sm-4 col-md-4">
+						<label class="control-label">Condición IVA</label>
+						  <select class="chosen-select" id="condicion_iva" name="condicion_iva" required>
+							   <option value="">-- Seleccionar --</option>
+							   <option value="Consumidor Final" <?php if ($d['condicion_iva']=='Consumidor Final'){?> selected="<?php echo 'selected';};?>">Consumidor Final</option>
+							   <option value="Monotributista" <?php if ($d['condicion_iva']=='Monotributista'){?> selected="<?php echo 'selected';};?>">Monotributista</option>
+							   <option value="Responsable Inscripto" <?php if ($d['condicion_iva']=='Responsable Inscripto'){?> selected="<?php echo 'selected';};?>">Responsable Inscripto</option>
+							   <option value="Responsable No Inscripto" <?php if ($d['condicion_iva']=='Responsable No Inscripto'){?> selected="<?php echo 'selected';};?>">Responsable No Inscripto</option>
+							   <option value="Exento" <?php if ($d['condicion_iva']=='Exento'){?> selected="<?php echo 'selected';};?>">Exento</option>
+							 </select>
+                	</div>
+
+
+               </div>
+              </div>
+             </fieldset>
+             
+             <fieldset> 
+              <div class="form-group">
+               	<div class="row">
+                   <div class="col-sm-12 col-md-4">
+                    <label class="control-label">Código Postal</label>
+                    <select class="chosen-select" id="cp" name="cp" onchange="ShowSelected();" required>
                     <?php 
 					include_once ("callAPI.php");
           			require_once ("parametros.php");
@@ -351,83 +526,126 @@ require_once("fechaNumber.php");
 					?>
                   </select>
                 </div>
+                
+                <input id="status" name="status" value=" <?php echo ($d['status']); ?>" hidden>
+                
+                <div class="col-sm-12 col-md-4">
+                   <label class="control-label">Estado</label>
+                      <label type="text" class="form-control" id="status2" name="status2">
+                      <?php if ($d['status']==1) { echo 'Activo';} else { echo 'Inactivo'; } ?> 
+                      </label>
+                </div>
+                
+               <div class="col-sm-12 col-md-4">
+                 <label class="control-label">Permisos de acceso</label>
+                
+                  <select class="chosen-select" id="permisos_acceso" name="permisos_acceso" required onchange="validarCuenta(this, '<?php echo $d['id_autorizante'];?>')">
+                  <option style="text-align-last:center" value="">-- Seleccionar --</option>
+                  <option value="1" <?php if ($d['permisos_acceso']==1){?> selected="<?php echo 'selected';};?>">Administrador</option>
+                  <option value="2" <?php if ($d['permisos_acceso']==2){?> selected="<?php echo 'selected';};?>">Cliente</option>
+ 				  <option value="4" <?php if ($d['permisos_acceso']==4){?> selected="<?php echo 'selected';};?>">Invitado</option>
+                  <option value="5" <?php if ($d['permisos_acceso']==5){?> selected="<?php echo 'selected';};?>">Empleado</option>
+				  <option value="7" <?php if ($d['permisos_acceso']==7){?> selected="<?php echo 'selected';};?>">Facturacion</option>
+                  </select>
+               </div>
+                
+                
                </div>
               </div>
               </fieldset>
-              
-              
-              <fieldset> 
-              <div class="form-group">
+				
+			  <fieldset> 
+               <div class="form-group">
                	<div class="row">
-               	 <div class="col-sm-12 col-md-3">
-                   <label class="control-label">Estado</label>
-                
-                  <select class="form-control" id="status" name="status" >
-                      <option style="background-color:#BBDAB6" value="1" <?php if ($d['status']==1){?> style="background-color:#BBDAB6" selected="<?php echo 'selected';};?>">Activo</option>
-                      <option style="background-color:#F7C8BF" value="0" <?php if ($d['status']==0){?> selected="<?php echo 'selected';};?>">Inactivo</option>
-                  </select>
-                </div>
-              
-              
-               <div class="col-sm-12 col-md-3">
-                 <label class="control-label">Permisos de acceso</label>
-                
-                  <select class="form-control" id="permisos_acceso" name="permisos_acceso" required onchange="validarCuenta(this, '<?php echo $d['id_autorizante'];?>')">
-                  <option style="background-color:#F7C8BF; text-align-last:center" value="">Actualizar Autorizante</option>
-                  <option value="1" <?php if ($d['permisos_acceso']==1){?> selected="<?php echo 'selected';};?>">Administrador</option>
- 				  <option value="2" <?php if ($d['permisos_acceso']==2){?> selected="<?php echo 'selected';};?>">Cliente Titular</option>
- 				  <option value="3" <?php if ($d['permisos_acceso']==3){?> selected="<?php echo 'selected';};?>">Cliente Asociado</option>
- 				  <option value="4" <?php if ($d['permisos_acceso']==4){?> selected="<?php echo 'selected';};?>">Invitado</option>
-                  </select>
-               </div>
-                         
-              <div class="col-sm-12 col-md-6" id="grupo2" name="grupo2" style="visibility:hidden">
-			    <label id="labelusuario" name="labelusuario" class="control-label">Cliente Autorizante</label>
-                  <select class="form-control" id="id_autorizante2" name="id_autorizante2" disabled="true" >
-                    <?php 
-					session_start(); 
-					include_once ("callAPI.php");
-                    require_once ("parametros.php");
-					$get_data = callAPI('GET', $servidor.'/api/titulares/',false);
-					$response = json_decode($get_data, true);
+              		<div class="col-sm-4 col-md-2">
+						<label class="control-label">Alias</label>
+						  <input type="text" class="form-control" value="<?php echo $d['alias']; ?>" id="alias" name="alias" autocomplete="off">
+					</div>
 					
-						foreach ($response as $t) {
-							  $id = $t['id'];
-							  $dni = $t['dni'];
-							  $_SESSION['nombre'] = $t['nombre'];	
-							  $n = $d['nombre'];
-							  $_SESSION['apellido']= $t['apellido'];
-							  $a = $t['apellido'];
-								if ($d['id_autorizante'] == $t['id']) {
-									echo "    <option selected='selected' value=\"$id\"> $dni | $n | $a </option>";
+					
+					<div class="col-sm-4 col-md-2">
+						<label class="control-label">Token</label>
+						  <input type="text" class="form-control" value="<?php echo $d['token']; ?>" id="token" name="token" autocomplete="off" required>
+					</div>
+				
+				
+					<div class="col-sm-4 col-md-4">
+						<label class="control-label">Prótesis Metálica</label>
+					  		<select id="protesis" class="chosen-select" name="protesis" required onchange="validarCuenta(this)">
+							
+							<?php	
+								if ($d['protesis_metalica'] == 0 ) {
+									echo "    <option selected='selected' value=\"0\"> No Posee </option>";
+									echo "    <option  					  value=\"1\"> Posee </option>";
 								  } else {
-									echo "    <option value=\"$id\"> $dni | $n | $a </option>";
-						  		}
-						}
+									echo "    <option selected='selected' 	value=\"1\"> Posee </option>";
+									echo "    <option                       value=\"0\"> No Posee </option>";
+								  }
+							?>
+						  </select>
+					</div>
 					
-					?>
-                  </select>
-                </div>
-                
-                <div class="col-sm-12 col-md-6" id="grupo" name="grupo" style="visibility:hidden">
-								   <label class="control-label">Cliente Autorizante</label>
-									    <select class='form-control' id='id_autorizante' name='id_autorizante'></select>
-									  
-				</div>
-                
-               </div>
+					<div class="col-sm-4 col-md-4">
+						<label class="control-label">Detallar Prótesis</label>
+						  <input type="text" class="form-control" value="<?php echo $d['sector_cuerpo']; ?>" id="sector_cuerpo" name="sector_cuerpo" autocomplete="off" >
+					</div>
+					
+              	</div>	
               </div>
-            </fieldset>
-         
+			   </fieldset>	 
+			   
+
+			   <fieldset> 
+               <div class="form-group">
+               	<div class="row">
+				   <div class="col-sm-12 col-md-4">
+                 <label class="control-label">Estado Civil</label>
+                
+                  <select class="chosen-select" id="estado_civil" name="estado_civil" required >
+                  <option style="text-align-last:center" value="">-- Seleccionar --</option>
+                  <option value="1" <?php if ($d['estado_civil']==1){?> selected="<?php echo 'selected';};?>">Soltero</option>
+				  <option value="2" <?php if ($d['estado_civil']==2){?> selected="<?php echo 'selected';};?>">Casado</option>
+				  <option value="3" <?php if ($d['estado_civil']==3){?> selected="<?php echo 'selected';};?>">Viudo</option>
+ 				  <option value="4" <?php if ($d['estado_civil']==4){?> selected="<?php echo 'selected';};?>">Unión de Convivencia</option>
+				  <option value="5" <?php if ($d['estado_civil']==5){?> selected="<?php echo 'selected';};?>">En pareja</option>
+				  <option value="6" <?php if ($d['estado_civil']==6){?> selected="<?php echo 'selected';};?>">No indica</option>
+                  </select>
+               </div>
+					
+				
+					<div class="col-sm-12 col-md-4">
+						<label class="control-label">Casado con</label>
+						<input type="text" class="form-control" id='nombre_apell_matrimonio' name='nombre_apell_matrimonio' value="<?php echo $d['nombre_apell_matrimonio'];?> " >
+					</div>
+
+					<div class="col-sm-12 col-md-4">
+                  		<label class="control-label">Número DNI </label>
+						   <input type="text" class="form-control"  id='dni_matrimonio' name='dni_matrimonio' 
+						   value="<?php echo $d['dni_matrimonio'];?> " >
+					</div>
+              	</div>	
+              </div>
+   			</fieldset>	 
+              
+              
+                       
             <input  id="localidad" name="localidad" hidden="true" >
             <input  id="provincia" name="provincia"  hidden="true" >  
               
             </div>
-            <!-- /.box body -->
+            
 
             <div class="box-footer" align="left">
+				
+				 <div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" name="chqFiscal" id="chqFiscal">
+				<label class="custom-control-label" for="defaultUnchecked">Generar Razón Social</label>
+			</div>		
+
+				
               <div class="form-group" align="left">
                 <div class="col-sm-offset-2 col-sm-10">
+				 
                   <input type="submit" class="btn btn-warning btn-submit" id="guardar" name="guardar" value="Guardar" onclick="validarFecha()">
                   <a href="?module=user" class="btn btn-default btn-reset">Cancelar</a>
                 </div>
@@ -442,5 +660,7 @@ require_once("fechaNumber.php");
 <?php
 } //endforeach
 }
-}
-?>
+} 
+
+
+?> 

@@ -13,20 +13,20 @@ require_once ("parametros.php");
 				  header("Location: index.php?alert=4");
 					exit;
 				} else {
-					
-					$nombre = $_POST['nombre'];
-					$email = $_POST['mail'];
+					$datos = $_POST['datos'];
+					$mail = $_POST['mail'];
 					$asunto = $_POST['asunto'];
 					$mensaje = $_POST['mensaje'];
-					
-					$jsonData = array('nombre' => "$nombre", 'email' => "$email", 'asunto' => "$asunto", 'mensaje' => "$mensaje");
-					$data_string = json_encode($jsonData);$ch = curl_init($servidor.'/api/consultas/');
-					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST"); curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-					'Content-Type: application/json', 
-					'Content-Length: ' . strlen($data_string)));
-					$result = curl_exec($ch);		
+					$mail_username="medinilla.seguridadintegral@gmail.com";//Correo electronico saliente ejemplo: tucorreo@gmail.com
+					$mail_userpassword="Segmed785@";//
+				  	$mail_addAddress="seguridadfortresssa@gmail.com";//correo electroniLco que recibira el mensaje
+				  	$template="email_template.html";//Ruta de la plantilla HTML para enviar nuestro mensaje
+					$mail_subject=$asunto;
+					$txt_message='ASUNTO: '. $asunto. '<br>'. 'MENSAJE: '. $mensaje;
+					$mail_setFromEmail=$mail;
+					$mail_setFromName=$datos;
 
+					sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_setFromName,$mail_addAddress,$txt_message,$mail_subject,$template);//Enviar el mensaje
 					header("Location: index.php?alert=2");
 
 				}

@@ -10,7 +10,7 @@ $response = json_decode($get_data, true);
    foreach ($response as $data) {
     $records[] = $data;
     echo $data['serie'].",";
-    //echo $data['id_cliente'].",";
+    echo $data['id_cliente'].",";
     //echo $data['tipo_uso'].",";
     //echo $data['CLIENTE']."\n";
 

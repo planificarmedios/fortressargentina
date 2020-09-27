@@ -21,18 +21,23 @@ echo "DOMICILIO,";
 echo "CP,";  
 echo "LOCALIDAD,"; 
 echo "IVA,"; 
-echo "MAIL,";  
+echo "MAIL,"; 
+echo "TIPO,"; 
+echo "NUMERO TARJETA,"; 
+echo "MARCA,";  
+echo "VENCIMIENTO,"; 
 echo "TIPO CAJA,"; 
-echo "Precio,"; 
-echo "Cf/uso,"; 
-echo "Abono/uso,"; 
+echo "$ PRECIO,"; 
+echo "% Cf/uso,"; 
+echo "$ Abono/uso,"; 
 echo "Tmpo. Contrato,"; 
-echo "Cf/tmpo,"; 
-echo "Abono Mensual,"; 
+echo "% Cf/tmpo,"; 
+echo "$ Abono Mensual,"; 
 echo "Notif,"; 
-echo "Cf.Notif.,"; 
+echo "% Cf.Notif.,"; 
 echo "Cb.Gold,"; 
-echo "Cf.Gold,"; 
+echo "% Cf.Gold,"; 
+echo "$ ABONO MENSUAL,"; 
 echo "FECHA ULT. MODIFICACION\n"; 
 
 
@@ -48,6 +53,9 @@ echo "FECHA ULT. MODIFICACION\n";
     } elseif (($data['id_cliente'])== 0 and ($data['status']==0)) {
         $s = '';
     }
+
+    $nro_tarjeta = "'".$data['numero'];
+
     echo $s.",";
     echo $data['CLIENTE'].",";
     echo $data['INICIO_CONTRATO'].",";
@@ -61,6 +69,10 @@ echo "FECHA ULT. MODIFICACION\n";
     echo $data['localidad'].",";
     echo $data['tipo_iva'].",";
     echo $data['email'].","; 
+    echo $data['tipo'].",";  
+    echo $nro_tarjeta.","; 
+    echo $data['marca'].",";  
+    echo $data['vencimiento'].","; 
     echo $data['tipocaja'].","; 
 
                   $tipo_uso = $data['tipo_uso'];
@@ -85,31 +97,63 @@ echo "FECHA ULT. MODIFICACION\n";
                     $coef_tmpo = 1;
                     $abono_mensual = $abono_uso * $coef_tmpo;
                     $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
-                    $coef_cob_gold = $cobertura_gold*$coef_gold;
+                    if ($cobertura_gold == 1){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = $abono_mensual* $coef_cob_gold ;
+                    } else {
+                      $importe_mensual = $abono_mensual;
+                      $coef_cob_gold = 0;
+                    }
                   } elseif ($periodo_contratacion == 2) {
                     $pc = 'Semestral';
                     $coef_tmpo = $data['coef_contr_semestral'];
                     $abono_mensual = $abono_uso * $coef_tmpo;
                     $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
-                    $coef_cob_gold = $cobertura_gold*$coef_gold;
+                    if ($cobertura_gold == 1){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = $abono_mensual * $coef_cob_gold ;
+                    } else {
+                      $importe_mensual = $abono_mensual;
+                      $coef_cob_gold = 0;
+                    }
                   } elseif ($periodo_contratacion == 3) {
                     $pc = 'Trimestral';
                     $coef_tmpo = $data['coef_contr_trim'];
                     $abono_mensual = $abono_uso * $coef_tmpo;
                     $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
-                    $coef_cob_gold = $cobertura_gold*$coef_gold;
+                    if ($cobertura_gold == true){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = $abono_mensual * $coef_cob_gold ;
+                    } else {
+                      $importe_mensual = $abono_mensual;
+                      $coef_cob_gold = 0;
+                    }
+
                   } elseif ($periodo_contratacion == 4) {
                     $pc = 'Mensual';
                     $coef_tmpo = $data['coef_contr_mensual'];
                     $abono_mensual = $abono_uso * $coef_tmpo;
                     $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
-                    $coef_cob_gold = $cobertura_gold*$coef_gold;
+                    if ($cobertura_gold == 1){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = $abono_mensual * $coef_cob_gold ;
+                    } else {
+                      $importe_mensual = $abono_mensual;
+                      $coef_cob_gold = 0;
+                    }
+
                   } elseif ($periodo_contratacion == 5) {
                     $pc = 'Anual Adelantado';
                     $coef_tmpo = 0;
                     $abono_mensual = $abono_uso * $coef_tmpo;
                     $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
-                    $coef_cob_gold = $cobertura_gold*$coef_gold;
+                    if ($cobertura_gold == 1){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = 0;
+                    } else {
+                      $coef_cob_gold = 0;
+                      $importe_mensual = 0;
+                    }
                   } 
 
                   if ($ingreso_boveda==1){
@@ -123,17 +167,18 @@ echo "FECHA ULT. MODIFICACION\n";
                 } else {
                   $cg = ''; 
                 }
-                  
-                echo '$'.$precioxxx."$,";
+                
+                echo $precioxxx.",";
                 echo '%'.$coef_uso."%,";
-                echo '$'.$abono_uso."$,";
+                echo $abono_uso.",";
                 echo $pc.",";
                 echo '%'.$coef_tmpo."%,";
-                echo '$'.$abono_mensual."$,";
+                echo $abono_mensual.",";
                 echo $ib.",";
                 echo '%'.$coef_notif_bobeda."%,";
                 echo $cg.",";
-                echo '%' .$coef_cob_gold."%,";
+                echo '%'.$coef_cob_gold."%,";
+                echo $importe_mensual.",";
                 $modificado = date("d/m/Y", strtotime($data['MODIFICADO']));
                 echo $modificado."\n"; 
                 

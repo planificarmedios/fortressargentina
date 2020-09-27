@@ -79,18 +79,19 @@
                 
                 
                 <th class="center"># Caja</th>
-                <th class="center">Tipo de Caja</th>
+                <th class="center">Caja</th>
                 <th class="center">Titular</th>
                 <th class="center">Precio</th>
                 <th class="center">Cf/uso</th> 
-                <th class="center">Abono/uso</th>
+                <th class="center">Imp s/uso</th>
                 <th class="center">Tmpo. Contrato</th>
                 <th class="center">Cf/tmpo</th> 
-                <th class="center">Abono Mensual</th>
+                <th class="center">Imp s/tmpo</th>
                 <th class="center">Notif</th>
                 <th class="center">Cf.Notif.</th>
                 <th class="center">Cb.Gold</th>
                 <th class="center">Cf.Gold</th>
+                <th class="center">ABONO MENSUAL</th>
                 <th class="center">Modificado</th>
                
               </tr>
@@ -168,6 +169,7 @@
                   $coef_comercial = $a['coef_comercial'];
                   $coef_notificacion = $a['coef_notificacion'];
                   $coef_gold = $a['coef_gold'];
+                 
                   $coef_uso = $tipo_uso * $coef_comercial;
                   
                   if ($coef_uso == 0) {
@@ -181,31 +183,63 @@
                     $coef_tmpo = 1;
                     $abono_mensual = $abono_uso * $coef_tmpo;
                     $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
-                    $coef_cob_gold = $cobertura_gold*$coef_gold;
+                    if ($cobertura_gold == 1){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = $abono_mensual* $coef_cob_gold ;
+                    } else {
+                      $importe_mensual = $abono_mensual;
+                      $coef_cob_gold = 0;
+                    }
                   } elseif ($periodo_contratacion == 2) {
                     $pc = 'Semestral';
                     $coef_tmpo = $a['coef_contr_semestral'];
                     $abono_mensual = $abono_uso * $coef_tmpo;
                     $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
-                    $coef_cob_gold = $cobertura_gold*$coef_gold;
+                    if ($cobertura_gold == 1){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = $abono_mensual * $coef_cob_gold ;
+                    } else {
+                      $importe_mensual = $abono_mensual;
+                      $coef_cob_gold = 0;
+                    }
                   } elseif ($periodo_contratacion == 3) {
                     $pc = 'Trimestral';
                     $coef_tmpo = $a['coef_contr_trim'];
                     $abono_mensual = $abono_uso * $coef_tmpo;
                     $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
-                    $coef_cob_gold = $cobertura_gold*$coef_gold;
+                    if ($cobertura_gold == true){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = $abono_mensual * $coef_cob_gold ;
+                    } else {
+                      $importe_mensual = $abono_mensual;
+                      $coef_cob_gold = 0;
+                    }
+
                   } elseif ($periodo_contratacion == 4) {
                     $pc = 'Mensual';
                     $coef_tmpo = $a['coef_contr_mensual'];
                     $abono_mensual = $abono_uso * $coef_tmpo;
                     $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
-                    $coef_cob_gold = $cobertura_gold*$coef_gold;
+                    if ($cobertura_gold == 1){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = $abono_mensual * $coef_cob_gold ;
+                    } else {
+                      $importe_mensual = $abono_mensual;
+                      $coef_cob_gold = 0;
+                    }
+
                   } elseif ($periodo_contratacion == 5) {
                     $pc = 'Anual Adelantado';
                     $coef_tmpo = 0;
                     $abono_mensual = $abono_uso * $coef_tmpo;
                     $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
-                    $coef_cob_gold = $cobertura_gold*$coef_gold;
+                    if ($cobertura_gold == 1){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = 0;
+                    } else {
+                      $coef_cob_gold = 0;
+                      $importe_mensual = 0;
+                    }
                   } 
                   
                       
@@ -218,12 +252,13 @@
                   <td width='3%' bgcolor='#C5F0FB' class='center'>% $coef_uso</td>
                   <td width='3%' bgcolor='#C5F0FB' class='center'>$ $abono_uso</td>
                   <td width='6%' bgcolor='#FCD4CC' class='center'>$pc</td>
-                  <td width='5%' bgcolor='#FCD4CC' class='center'>% $coef_tmpo</td>
-                  <td width='6%' bgcolor='#FCD4CC' class='center'>$ $abono_mensual</td>
-                  <td width='4%' bgcolor='#A9F5BC' class='center'>$ib</td>
-                  <td width='5%' bgcolor='#A9F5BC' class='center'>% $coef_notif_bobeda</td>
+                  <td width='3%' bgcolor='#FCD4CC' class='center'>% $coef_tmpo</td>
+                  <td width='3%' bgcolor='#FCD4CC' class='center'>$ $abono_mensual</td>
+                  <td width='3%' bgcolor='#A9F5BC' class='center'>$ib</td>
+                  <td width='3%' bgcolor='#A9F5BC' class='center'>% $coef_notif_bobeda</td>
                   <td width='3%' bgcolor='#CECEF6' class='center'>$cg</td>
                   <td width='3%' bgcolor='#CECEF6' class='center'>% $coef_cob_gold</td>
+                  <td width='5%' bgcolor='#CECEF6' class='center'>$ $importe_mensual</td>
                   <td width='5%' class='center'>$ultima_modificacion</td>          
                 </tr>";
                 }

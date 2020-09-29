@@ -106,6 +106,7 @@ else {
 		include "modules/cj/view.php";
 	}
 
+	
 	elseif ($_GET['module'] == 'form_cj') {
 		include "modules/cj/form.php";
 	}
@@ -188,6 +189,10 @@ else {
 
 	elseif ($_GET['module'] == 'facturacion') {
 		include "modules/facturacion/exportData.php";
+	}
+
+	elseif ($_GET['module'] == 'cj') {
+		include "modules/cj/exportData.php";
 	}
 
 	

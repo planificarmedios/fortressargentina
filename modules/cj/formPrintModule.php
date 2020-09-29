@@ -1,5 +1,156 @@
 <?php
-if ($_GET['formPrintModule']=='print') { 
+if ($_GET['formPrintModule']=='auditoria') { 
+  if (isset($_GET['id']) and isset($_GET['nro_caja']) and isset($_GET['serie'])) {
+    require_once("fechaNumber.php");  
+    $idcaja = $_GET['id']; //id_caja
+    $serie= $_GET['serie']; 
+    $nro_caja= $_GET['nro_caja']; 
+
+    ?>
+      <section class="content-header" style="color:#000">
+        <h1>
+        <i class="fa fa-list icon-title" style="color:#000"></i> # <?php echo $nro_caja; ?> 
+       <i class="fa fa-lock icon-title"></i> Caja Serie <?php echo $serie; ?>
+    
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="?module=cj"> Cajas </a></li>
+          <li class="active"> Auditoria </li>
+        </ol>
+      </section>
+
+ <section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      
+      <div class="box box-warning" style="color:#003">
+        <div class="box-body">
+
+        <form role="form" class="form-horizontal" method="GET" action="modules/cj/exportData.php" target="_blank">
+          <div class="box-body">
+              <input name="nro_caja" value="<?php echo $nro_caja; ?>" hidden/>
+                  <div class="box-footer">
+                    <div class="form-group">
+                      <div class="col-sm-offset-1 col-sm-11">
+                        <button type="submit" class="btn btn-success btn-social btn-submit" style="width: 210px;">
+                          <i class="fa fa-file-excel-o"></i> Generar reporte de Caja
+                        </button>
+
+                        <button type="submit" class="btn btn-info btn-social btn-submit" style="width: 220px;">
+                          <i class="fa fa-file-excel-o"></i> Generar reporte por fecha
+                        </button>
+                      </div>
+                  </div>
+           </div>
+        </form>
+  
+
+    
+          <table border=10 bordercolor="#000000" id="dataTables1" class="table table-bordered table-striped table-hover">
+       
+             <thead>
+              <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
+                <td class="center">#</td>
+                <td class="center">#clte</td>
+                <td class="center">#serv</td>
+                <td class="center">#Rsoc</td>
+                <td class="center">#tarj</td>
+                <td class="center">inicio</td>
+                <td class="center">final</td> 
+                <td class="center">gold</td>  
+                <td class="center">serie</td>
+                <td class="center">uso</td>
+                <td class="center">bvda</td>
+                <td class="center">usuario</td>
+                <td class="center">modif</td>
+                <td class="center">periodo</td>
+                <td class="center">precio</td>
+                <td class="center">%com</td>
+                <td class="center">%gold</td>
+                <td class="center">%mens</td>
+                <td class="center">%trim</td>
+                <td class="center">%sem</td>
+                <td class="center">%nf</td>
+             </tr>
+            </thead>
+            <tbody>
+        
+        <?php
+      include_once ("callAPI.php");
+      require_once ("parametros.php");
+      include_once ("fechaNumber.php");
+
+      $get_data = callAPI('GET', $servidor.'/api/cajas/auditoriaCaja/'.$nro_caja,false);
+      $response = json_decode($get_data, true);
+        
+        foreach ($response as $d) {
+                $id = $d['id'];
+                $id_cliente = $d['id_cliente'];
+                      $id_servicio = $d['id_servicio'];
+                      $id_rsocial = $d['id_rsocial'];
+                      $id_tarjeta = $d['id_tarjeta'];
+                      $f_inicio = fechaNumber($d['f_inicio']);
+                      $f_final = fechaNumber($d['f_final']);
+                      $cobertura_gold = $d['cobertura_gold'];
+                      $serie = $d['serie'];
+                      $tipo_uso = $d['tipo_uso'];
+                      $ingreso_boveda = $d['ingreso_boveda'];
+                      $nombre_usuario = $d['nombre_usuario'];
+                      $ultima_modificacion = fechaNumber($d['ultima_modificacion']);
+                      $ultima_modificacion = $ultima_modificacion;
+                      $periodo_contratacion = $d['periodo_contratacion'];
+                      $precio = $d['precio'];
+                      $coef_comercial = $d['coef_comercial'];
+                      $coef_gold = $d['coef_gold'];
+                      $coef_contr_mensual = $d['coef_contr_mensual'];
+                      $coef_contr_trim = $d['coef_contr_trim'];
+                      $coef_contr_semestral = $d['coef_contr_semestral'];
+                      $coef_notificacion = $d['coef_notificacion'];
+             
+					
+              echo "<tr>
+              
+                      <td width='3%'   class='center'>$id</td> 
+                      <td width='3%'   class='center'>$id_cliente</td>
+                      <td width='3%'   class='center'>$id_servicio</td>
+                      <td width='3%'   class='center'>$id_rsocial</td>
+                      <td width='3%'   class='center'>$id_tarjeta</td>
+                      <td width='3%'   class='center'>$f_inicio</td>
+                      <td width='3%'   class='center'>$f_final</td> 
+                      <td width='3%'   class='center'>$cobertura_gold</td>  
+                      <td width='3%'   class='center'>$serie</td>
+                      <td width='3%'   class='center'>$tipo_uso</td>
+                      <td width='3%'   class='center'>$ingreso_boveda</td>
+                      <td width='8%'   class='center'>$nombre_usuario</td>
+                      <td width='8%'   class='center'>$ultima_modificacion</td>
+                      
+                      <td width='3%'   class='center'>$periodo_contratacion</td>
+                      <td width='3%'   class='center'>$$precio</td>
+                      <td width='3%'   class='center'>%$coef_comercial</td>
+                      <td width='3%'   class='center'>%$coef_gold</td>
+                      <td width='3%'   class='center'>%$coef_contr_mensual</td>
+                      <td width='3%'   class='center'>%$coef_contr_trim</td>
+                      <td width='3%'   class='center'>%$coef_contr_semestral</td>
+                      <td width='3%'   class='center'>%$coef_notificacion</td>
+
+                      <div>
+                    ";
+         
+              echo "    </div>
+                      </td>
+                    </tr>";
+            }
+        ?>
+           </tbody>
+          </table>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div><!--/.col -->
+  </div>   <!-- /.row -->
+</section><!--
+    <?php
+  }
+}  elseif ($_GET['formPrintModule']=='print') { 
   	if (isset($_GET['id']) and isset($_GET['nrocaja'])) {
   	  require_once("fechaNumber.php");  
 	    $idcaja = $_GET['id']; //id_caja
@@ -219,14 +370,14 @@ if ($_GET['formPrintModule']=='print') {
                         <table border=10 bordercolor="#000000" id="dataTables1" class="table table-bordered table-striped table-hover">
                          <thead>
                           <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
-                            <th class="center"># </th>
+                            <td class="center"># </td>
                             
-                            <th class="center"># Asociado</th>
-                            <th class="center"># Nombre Asociado</th>
-                            <th class="center">Doc</th>
-                            <th class="center">Email</th>
-                            <th class="center">Estado</th>
-                            <th class="center">Módulos de Impresión</th>
+                            <td class="center"># Asociado</td>
+                            <td class="center"># Nombre Asociado</td>
+                            <td class="center">Doc</td>
+                            <td class="center">Email</td>
+                            <td class="center">Estado</td>
+                            <td class="center">Módulos de Impresión</td>
                           </tr>
                         </thead>
                         <tbody>

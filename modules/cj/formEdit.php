@@ -357,6 +357,7 @@ if ($_GET['formEdit']=='edit') {
                 if ($id_cliente > 0)
                   {
                   echo " <a href='?module=formPrintModule_cj&formPrintModule=print&id=$i&nrocaja=$nro_caja' class='btn btn-primary'>Módulo de Impresiones</a>";
+                  echo " <a href='?module=formPrintModule_cj&formPrintModule=auditoria&id=$i&serie=$serie&nro_caja=$nro_caja' class='btn btn-info'>Auditoría de Caja</a>";
                   }
                 ?>
 

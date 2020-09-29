@@ -177,10 +177,9 @@ if ($_GET['form']=='edit') {
 							 <div>
 							 <a></i></a>";
 							 ?>
-               <a data-toggle="tooltip" data-placement="top" title="Confirmar Ingreso a Caja" style="margin-right:5px" class="btn btn-success btn-sm" href="modules/recepcion/proses.php?act=update&nro_caja=<?php echo $nro_caja;?>&id_titular=<?php echo $id_titular?>&id_evento=<?php echo $id_evento;?>" onclick="return confirm(' Se confirmará ingreso a Caja Serie Nº <?php echo $serie; ?> ?');"><i style="color:#fff" class="glyphicon glyphicon-ok"></i></a>
-               
                <a data-toggle="tooltip" data-placement="top" title="Imprimir Ingreso a Caja" style="margin-right:5px" class="btn btn-primary btn-sm" href="?module=formPrintModule_cj&formPrintModule=print&id=<?php echo $id;?>&nrocaja=<?php echo $nro_caja?>&asistente=<?php echo $asistente?>&id_evento=<?php echo $id_evento?>"><i style="color:#fff" class="glyphicon glyphicon-print"></i></a>
-
+               <a data-toggle="tooltip" data-placement="top" title="Confirmar Ingreso a Caja" style="margin-right:5px" class="btn btn-success btn-sm" href="modules/recepcion/proses.php?act=update&nro_caja=<?php echo $nro_caja;?>&id_titular=<?php echo $id_titular?>&id_evento=<?php echo $id_evento;?>" onclick="return confirm(' Se confirmará ingreso a Caja Serie Nº <?php echo $serie; ?> ?');"><i style="color:#fff" class="glyphicon glyphicon-ok"></i></a>
+              
 							<?php
 						 } else {
 							echo "

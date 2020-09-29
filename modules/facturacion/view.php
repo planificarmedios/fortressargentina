@@ -250,10 +250,10 @@
                   <td width='3%' class='center'>$id_cliente</td>
                   <td width='3%' class='center'>$ $precioxxx</td>
                   <td width='3%' bgcolor='#C5F0FB' class='center'>% $coef_uso</td>
-                  <td width='3%' bgcolor='#C5F0FB' class='center'>$ $abono_uso</td>
+                  <td width='5%' bgcolor='#C5F0FB' class='center'>$ $abono_uso</td>
                   <td width='6%' bgcolor='#FCD4CC' class='center'>$pc</td>
                   <td width='3%' bgcolor='#FCD4CC' class='center'>% $coef_tmpo</td>
-                  <td width='3%' bgcolor='#FCD4CC' class='center'>$ $abono_mensual</td>
+                  <td width='5%' bgcolor='#FCD4CC' class='center'>$ $abono_mensual</td>
                   <td width='3%' bgcolor='#A9F5BC' class='center'>$ib</td>
                   <td width='3%' bgcolor='#A9F5BC' class='center'>% $coef_notif_bobeda</td>
                   <td width='3%' bgcolor='#CECEF6' class='center'>$cg</td>

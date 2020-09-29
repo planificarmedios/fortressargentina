@@ -37,7 +37,7 @@ echo "Notif,";
 echo "% Cf.Notif.,"; 
 echo "Cb.Gold,"; 
 echo "% Cf.Gold,"; 
-echo "$ ABONO MENSUAL,"; 
+echo "$ ABONO A FACTURAR,"; 
 echo "FECHA ULT. MODIFICACION\n"; 
 
 
@@ -72,7 +72,8 @@ echo "FECHA ULT. MODIFICACION\n";
     echo $data['tipo'].",";  
     echo $nro_tarjeta.","; 
     echo $data['marca'].",";  
-    echo $data['vencimiento'].","; 
+    $vencimiento = "'".date("Y-m", strtotime($data['vencimiento']));
+    echo $vencimiento.","; 
     echo $data['tipocaja'].","; 
 
                   $tipo_uso = $data['tipo_uso'];
@@ -168,17 +169,17 @@ echo "FECHA ULT. MODIFICACION\n";
                   $cg = ''; 
                 }
                 
-                echo $precioxxx.",";
-                echo '%'.$coef_uso."%,";
-                echo $abono_uso.",";
+                echo "'$ ".$precioxxx.",";
+                echo "'% ".$coef_uso.",";
+                echo "'$ ".$abono_uso.",";
                 echo $pc.",";
-                echo '%'.$coef_tmpo."%,";
-                echo $abono_mensual.",";
+                echo "'% ".$coef_tmpo.",";
+                echo "'$ ".$abono_mensual.",";
                 echo $ib.",";
-                echo '%'.$coef_notif_bobeda."%,";
+                echo "'% ".$coef_notif_bobeda.",";
                 echo $cg.",";
-                echo '%'.$coef_cob_gold."%,";
-                echo $importe_mensual.",";
+                echo "'% ".$coef_cob_gold.",";
+                echo "'$ ".$importe_mensual.",";
                 $modificado = date("d/m/Y", strtotime($data['MODIFICADO']));
                 echo $modificado."\n"; 
                 

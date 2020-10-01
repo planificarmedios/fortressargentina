@@ -8,11 +8,8 @@ include_once ("../../callAPI.php");
 require_once ("../../parametros.php");
 include_once ("../../fechaNumber.php");
 
-$nro_caja   = $_GET['nro_caja'];
-
-      
      
-      $get_data = callAPI('GET', $servidor.'/api/cajas/auditoriaCaja/'.$nro_caja,false);
+      $get_data = callAPI('GET', $servidor.'/api/cajas/auditoriaTotales/',false);
       $response = json_decode($get_data, true);
 
                 echo "#Id Registro.,";
@@ -25,6 +22,8 @@ $nro_caja   = $_GET['nro_caja'];
                 echo "FINAL CONTRATO.,"; 
                 echo "COBERT GOLD.,";  
                 echo "TIPO USO.,";
+                
+                
                 echo "PERIODO DE CONTRATO.,";
                 echo "PRECIO BASE.,";
                 echo "% COEF. USO COMERCIAL.,";

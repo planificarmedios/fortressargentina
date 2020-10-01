@@ -95,11 +95,15 @@ if ($_GET['formEdit']=='edit') {
 						        	<?php
                         $t0 = 0; $t1 = 1;  $t2 = 2; $t3 = 3; $t4 = 4; $t5 = 5; 
                         if ($d['periodo_contratacion'] == 1) {
-                          echo "    <option selected='selected' value=\"$t1\"> Anual </option>";
-                          echo "    <option value=\"$t2\"> Semestral </option>"; 
-                          echo "    <option value=\"$t3\"> Trimestral </option>"; 
-                          echo "    <option value=\"$t4\"> Mensual </option>"; 
-                          echo "    <option value=\"$t5\"> Anual Pago adelantado </option>";
+                          echo "    <option selected='selected' value=\"$t1\"> Anual por Débito Mensualizado</option>";
+                          echo "    <option value=\"$t2\"> Semestral por Débito Mensualizado</option>"; 
+                          echo "    <option value=\"$t3\"> Trimestral por Débito Mensualizado</option>"; 
+                          echo "    <option value=\"$t4\"> Mensual por Débito Mensualizado </option>"; 
+                          echo "    <option value=\"$t5\"> Anual Pagado por Adelantado </option>";
+                          echo "    <option value=\"$t6\"> Semestral Pagado por Adelantado </option>";
+                          echo "    <option value=\"$t7\"> Trimestral Pagado por Adelantado </option>";
+                          echo "    <option value=\"$t8\"> Mensual Pagado por Adelantado </option>";
+
                         } else if ($d['periodo_contratacion'] == 2) {
                           echo "    <option value=\"$t1\"> Anual </option>";
                           echo "    <option selected='selected' value=\"$t2\"> Semestral </option>"; 

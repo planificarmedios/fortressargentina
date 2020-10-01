@@ -26,7 +26,7 @@ function fechaCastellano ($fecha) {
 ?>
 
 
-<center><h3 style="color:#000"><?php echo $f.' - '.$h.'hs'; ?> </h3>
+<center><h1 style="color:#000"><?php echo 'Hora Actual: '. $h.'hs'; ?> </h1>
  <section class="content">
   <div class="row">
     <div class="col-md-12">

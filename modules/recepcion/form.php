@@ -44,8 +44,13 @@ if ($_GET['form']=='edit') {
 		  ?>
 		
      
-		
-	<a data-toggle="tooltip" data-placement="top" title="Confirmar Ingreso" style="margin-right:5px" class="btn btn-danger btn-social pull-right"href="modules/recepcion/proses.php?act=update&nro_caja=-1&id_evento=<?php echo $id_evento;?>" onclick="return confirm(' Se confirmará ingreso sin asociación a ninguna caja ');"><i style="color:#fff" class="glyphicon glyphicon-ok"></i>Limpiar Registro de Pantalla </a>
+    <?php 
+    if 	($id_evento > 0){
+      ?>
+        <a data-toggle="tooltip" data-placement="top" title="Confirmar Ingreso" style="margin-right:5px" class="btn btn-danger btn-social pull-right"href="modules/recepcion/proses.php?act=update&nro_caja=-1&id_evento=<?php echo $id_evento;?>" onclick="return confirm(' Se confirmará ingreso sin asociación a ninguna caja ');"><i style="color:#fff" class="glyphicon glyphicon-ok"></i>Limpiar Registro de Pantalla </a>
+      <?php
+    }
+    ?>
 		
     </h1>
 	

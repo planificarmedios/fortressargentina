@@ -8,7 +8,9 @@ function validarFinalizacion (input){
 </script>
 
 <?php
+
 if ($_GET['formEdit']=='edit') { 
+
   	if (isset($_GET['id']) and isset($_GET['nrocaja'])) {
   	  require_once("fechaNumber.php");  
 	  $i = $_GET['id']; //id_caja
@@ -99,10 +101,7 @@ if ($_GET['formEdit']=='edit') {
                           echo "    <option value=\"$t2\"> Semestral por Débito Mensualizado</option>"; 
                           echo "    <option value=\"$t3\"> Trimestral por Débito Mensualizado</option>"; 
                           echo "    <option value=\"$t4\"> Mensual por Débito Mensualizado </option>"; 
-                          echo "    <option value=\"$t5\"> Anual Pagado por Adelantado </option>";
-                          echo "    <option value=\"$t6\"> Semestral Pagado por Adelantado </option>";
-                          echo "    <option value=\"$t7\"> Trimestral Pagado por Adelantado </option>";
-                          echo "    <option value=\"$t8\"> Mensual Pagado por Adelantado </option>";
+                          
 
                         } else if ($d['periodo_contratacion'] == 2) {
                           echo "    <option value=\"$t1\"> Anual </option>";
@@ -455,5 +454,131 @@ if ($_GET['formEdit']=='edit') {
 	<?php
   }
  }
-}
+} if ($_GET['formEdit']=='listarDisponibles') { 
 ?>
+    <section class="content-header" style="color:#003">
+
+    <ol class="breadcrumb">
+      <li><a href="?module=start"><i class="fa fa-home"></i> Inicio</a></li>
+      <li class="active">Cajas</li>
+      <li class="active"> Listar</li>
+    </ol>
+
+    <div class="row">
+          <div class="col-md-11">
+            
+            <div class="col-md-2 pull-left">
+              <a class="btn btn-success btn-social" href="?module=formAddCaja_cj&formAddCaja=add">
+                <i class="fa fa-plus"></i> Agregar Caja
+              </a>
+            </div>
+
+            <div class="col-md-2 pull-left">
+              <a class="btn btn-info btn-social" href="modules/cj/exportTotales.php" target="_blank">
+              <i class="fa fa-file-excel-o"></i> Informe Auditoría 
+                </a>
+            </div>
+
+          </div>  
+        </div>
+      </section>
+
+      <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="box box-warning" style="color:#003">
+          <div class="box-body">
+            <table border=10 bordercolor="#000000" id="dataTables1" class="table table-bordered table-striped table-hover">
+       
+              <thead>
+              <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
+                <th class="center"># </th>
+                <th class="center"># Caja</th>
+                <th class="center">Tipo de Caja</th>
+                <th class="center">Descripción</th>
+                <th class="center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+        
+        
+        <?php
+		  include_once ("callAPI.php");
+		  include_once ("parametros.php");
+		  include_once ("fechaNumber.php");
+	      $get_data = callAPI('GET', $servidor.'/api/cajas/disponibleTamano',false);
+		  $response = json_decode($get_data, true);
+		  
+		
+			 foreach ($response as $d) {
+				      $id = $d['id'];
+						  $serie = $d['serie'];
+						  $tipocaja = $d['tipocaja'];
+						  $id_cliente = $d['id_cliente'];
+						  $descripcion= $d['descripcion'];
+              if ($id_cliente == 0) 
+              {
+                $m = 'Disponible'; $color = "#00993"; 
+                $f_inicio = '';
+                $f_final  = '';
+              } else {
+                $m = $id_cliente;
+              };
+              
+						  
+					  echo "<tr>
+					  
+					        <td width='5%'  class='center'>$serie</td>
+					        <td width='10%' class='center'>$tipocaja</td>
+                  <td width='15%' class='center'>$descripcion</td>
+					        <td width='7%'  class='center'>$m</td>
+					        <td width='10%' class='center'>
+                      <div>
+					  
+					  	 
+                          <a data-toggle='tooltip' data-placement='top' title='Acciones' style='margin-right:5px' class='btn btn-success btn-sm' href='?module=formEdit_cj&formEdit=edit&id=$id&nrocaja=$nrocaja'><i style='color:#fff' class='glyphicon glyphicon-edit'></i></a>
+						  
+						  
+						  <a data-toggle='tooltip' data-placement='top' title='Listar Registros' style='margin-right:5px' class='btn btn-warning btn-sm' href='?module=form_cj&form=list&id=$id&nrocaja=$nrocaja&serie=$serie'><i style='color:#fff' class='glyphicon glyphicon-search'></i>
+                          </a>";
+				 
+			if ($id_cliente <> 0) {
+			?> 
+            <a href='?module=formPrintModule_cj&formPrintModule=print&id=<?php echo $id;?>&nrocaja=<?php echo $nrocaja;?>' data-toggle='tooltip' data-placement='top' title='Módulo Impresiones' style='margin-right:5px' class='btn btn-primary btn-sm' ><i style='color:#fff' class='glyphicon glyphicon-print'></i></a>
+            <?php } else { ?>
+			<a data-toggle="tooltip" data-placement="top"  class="btn btn-default btn-sm" href="" onclick=""><i style="color:#fff" class="glyphicon glyphicon-trash"></i></a>			 
+			<?php 
+			}
+				 
+						  
+            if ($id_cliente == 0) {
+			?> 
+            <a href="modules/cj/prosesDelete.php?act=delete&id=<?php echo $id;?>&nrocaja=<?php echo $nrocaja;?>&serie=<?php echo $serie;?>" data-toggle="tooltip" data-placement="top" title="Eliminar Caja" class="btn btn-danger btn-sm" onclick="return confirm('Se eliminará la caja nro. <?php echo $serie; ?> ?');"><i style="color:#fff" class="glyphicon glyphicon-trash"></i></a>
+            <?php } else { ?>
+			<a data-toggle="tooltip" data-placement="top" title="No se puede eliminar" class="btn btn-default btn-sm" href="" onclick=""><i style="color:#fff" class="glyphicon glyphicon-trash"></i></a>			 
+			<?php 
+			}
+			?>  
+				
+				
+            <?php
+
+              echo "    </div>
+                      </td>
+                    </tr>";
+            }
+		    ?>
+            </tbody>
+          </table>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div><!--/.col -->
+  </div>   <!-- /.row -->
+</section><!-- /.content
+
+
+
+<?php
+}
+?> 

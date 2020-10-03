@@ -17,7 +17,7 @@ if ($_GET['formPrintModule']=='listar') {
       <div class="col-md-12">
         <div class="box box-warning">
           <!-- form start -->
-          <form role="form" style="color:#003" class="form-horizontal"  method="POST">
+          <form role="form" style="color:#003" action="?module=formEdit_cj&formEdit=listarDisponibles" class="form-horizontal"  method="POST">
             <div class="box-body">
 
        
@@ -50,15 +50,13 @@ if ($_GET['formPrintModule']=='listar') {
         
         
          <div class="box-footer">
-              <div class="form-group"> 
+             
+            <div class="form-group"> 
                 <div class="col-sm-offset-2 col-sm-10">
-                <a data-toggle='tooltip' data-placement='top' title='Cajas Disponibles' style='margin-right:7px' class='btn btn-success btn-sm' 
-    href='?module=formPrintModule_cj&formPrintModule=printAsociado'>
-    <i class='glyphicon glyphicon-list'>Listar</i></a>
-                 
+                  <input type='submit' class="btn btn-primary" name="imprimir" value="Listar" >
+                  <a href='?module=cj' class="btn btn-danger">Volver</a>
                 </div>
               </div>
-            </div>
 
             </div>
            </div>
@@ -69,11 +67,8 @@ if ($_GET['formPrintModule']=='listar') {
   </form>  
 
 
-
-
 <?php
-} 
-else if ($_GET['formPrintModule']=='auditoria') { 
+} else if ($_GET['formPrintModule']=='auditoria') { 
   if (isset($_GET['id']) and isset($_GET['nro_caja']) and isset($_GET['serie'])) {
     require_once("fechaNumber.php");  
     $idcaja = $_GET['id']; //id_caja

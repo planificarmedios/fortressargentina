@@ -15,7 +15,7 @@
           <div class="col-md-11">
             
             <div class="col-md-2 pull-left">
-              <a class="btn btn-success btn-social" href="?module=formAddCaja_cj&formAddCaja=add" target="_blank">
+              <a class="btn btn-success btn-social" href="?module=formAddCaja_cj&formAddCaja=add">
                 <i class="fa fa-plus"></i> Agregar Caja
               </a>
             </div>

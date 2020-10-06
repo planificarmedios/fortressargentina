@@ -48,7 +48,7 @@ h1 {
 <img align="left"style="width:30%"src="sales_invoice/assets/img/logo.png"></br></br>
 TARIFARIO DE CAJAS Y SERVICIO OFRECIDOS (ANEXO III)</br></h1><p>&nbsp;
 </p><p>&nbsp;</p>
-<strong><p>Los precios expresados en la presente lista NO INCLUYEN IVA</p></strong>
+<strong><p>LOS PRECIOS EXPRESADOS EN LA PRESENTE LISTA INCLUYEN IVA</p></strong>
 <p>&nbsp;</p>
 <body><center><table border="1"cellpadding="0"cellspacing="0"width="630"style="border-collapse:
 collapse;
@@ -146,8 +146,8 @@ $response=json_decode($get_data, true);
                       <td width='15%'  class='center'>$servicio</td>
                       <td width='8%'  class='center'>Comercial</td>
                       <td width='12%'  class='center'>$ $precio_comercial_for</td>
-                      <td width='12%'  class='center'>$ $abono_trimestral_comercial</td>
                       <td width='12%'  class='center'>$ $abono_semestral_comercial </td>
+                      <td width='12%'  class='center'>$ $abono_trimestral_comercial</td>
                       <td width='12%'  class='center'>$ $abono_mensual_comercial</td>
                       <td width='10%'  class='center'>$coef_gold_for % </td>
                       <td width='12%'  class='center'>$coef_notificacion_for % </td>
@@ -253,7 +253,7 @@ $response=json_decode($get_data, true);
                         <blockquote>
                             <p><br>
 
-                                <strong> Contratación anual con renovación automática<br>
+                                <strong> Contratación anual, semestral, trimestral o mensual con renovación automática<br>
                                     <strong> Formas de Pago:<br>
                                         <strong> Pago mensual adelantado sólo por débito automático por tarjeta de
                                             crédito<br>

@@ -393,7 +393,8 @@ acceso al recinto de Bóveda será siempre conjunto, cliente y empleado de <b>SE
 FORTRESS SA</b>. El sistema de acceso está desarrollado para que ninguna
 persona pueda entrar en forma individual al recinto de Bóveda. Tal limitación
 aplica a clientes, autorizados, empleados, funcionarios y accionistas de <b>SEGURIDAD
-FORTRESS SA</b>.<o:p></o:p></span></p>
+FORTRESS SA</b>.Los días y horarios de funcionamiento de las cajas de seguridad estarán supeditados a los días y horarios  que establezca 
+el Paseo Aldrey para su funcionamiento<o:p></o:p></span></p>
 
 <p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
 margin-bottom:10.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
@@ -467,7 +468,7 @@ lang=ES style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:Calibri;
 mso-bidi-theme-font:minor-latin'>SALAS:</span></u></b><span lang=ES
 style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:Calibri;
 mso-bidi-theme-font:minor-latin'> El locador dispondrá dentro del local de <b>SEGURIDAD
-FORTRESS <span class=GramE>SA ,</span></b> de distintas salas de reuniones parala firma de escriguras o 
+FORTRESS <span class=GramE>SA ,</span></b> de distintas salas de reuniones para la firma de escriguras o 
 uso comercial para que el Locatario y/o los autorizados puedan hacer uso.<o:p></o:p></span></p>
 
 <p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
@@ -597,7 +598,7 @@ garantiza su disponibilidad, su exactitud ni es responsable de uso de éstas.<u>
 style='mso-bidi-font-weight:normal'><span lang=ES style='font-size:10.0pt;
 line-height:107%;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
 mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:
-Calibri;mso-bidi-theme-font:minor-latin'>V. DE LOS VALORES.<o:p></o:p></span></b></p>
+Calibri;mso-bidi-theme-font:minor-latin'>VI. DE LOS VALORES.<o:p></o:p></span></b></p>
 
 <p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
 margin-bottom:10.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
@@ -659,7 +660,7 @@ Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></b></p>
 style='mso-bidi-font-weight:normal'><span lang=ES style='font-size:10.0pt;
 line-height:107%;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
 mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:
-Calibri;mso-bidi-theme-font:minor-latin'>VI. DE LAS RESTRICCIONES.<o:p></o:p></span></b></p>
+Calibri;mso-bidi-theme-font:minor-latin'>VII. DE LAS RESTRICCIONES.<o:p></o:p></span></b></p>
 
 <p class=MsoListParagraphCxSpFirst style='margin-top:0cm;margin-right:29.5pt;
 margin-bottom:10.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
@@ -726,7 +727,7 @@ text-justify:inter-ideograph;line-height:115%'><span lang=ES style='font-size:
 style='mso-bidi-font-weight:normal'><span lang=ES style='font-size:10.0pt;
 line-height:107%;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
 mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:
-Calibri;mso-bidi-theme-font:minor-latin'>VII. DE LOS DERECHOS DE <span
+Calibri;mso-bidi-theme-font:minor-latin'>VIII. DE LOS DERECHOS DE <span
 style='mso-bidi-font-weight:bold'>SEGURIDAD FORTRESS SA.</span><o:p></o:p></span></b></p>
 
 <p class=MsoListParagraphCxSpFirst style='margin-top:0cm;margin-right:29.5pt;
@@ -821,7 +822,7 @@ text-justify:inter-ideograph'><span lang=ES style='font-size:10.0pt;line-height:
 margin-bottom:8.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
 text-justify:inter-ideograph'><b style='mso-bidi-font-weight:normal'><span
 lang=ES style='font-size:10.0pt;line-height:107%;mso-bidi-font-family:Calibri;
-mso-bidi-theme-font:minor-latin'>VIII. DE LOS LÍMITES DE RESPONSABILIDAD<o:p></o:p></span></b></p>
+mso-bidi-theme-font:minor-latin'>IX. DE LOS LÍMITES DE RESPONSABILIDAD<o:p></o:p></span></b></p>
 
 <p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
 margin-bottom:8.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;

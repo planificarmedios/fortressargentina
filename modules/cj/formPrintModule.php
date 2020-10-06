@@ -26,7 +26,7 @@ if ($_GET['formPrintModule']=='listar') {
                	<div> 
                  <div class="col-sm-4 col-md-4">
 						            
-                            <select  required="required" class="chosen-select">					                
+                            <select  required="required" class="chosen-select" name="tamano" id="tamano">					                
                                               <option selected value="">------------------ Ingresar una opción del Menú ------------------ </option>
                                               <?php 
                                               include_once ("callAPI.php");
@@ -40,9 +40,7 @@ if ($_GET['formPrintModule']=='listar') {
                                                   echo "    <option value=\"$id\"> $nombre: $descripcion </option>";
                                               }
                                               ?>
-                                             
-                                
-                           </select>
+                          </select>
                        </div>
               	</div>
               </div>

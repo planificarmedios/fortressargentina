@@ -132,6 +132,7 @@ if (isset($_POST['imprimir'])) {
 						$id_tarjeta = $d['id_tarjeta'];
 						$tipocaja = $d['tipocaja'];
 						$descripcion = $d['descripcion'];
+						$periodo_contratacion = $d['periodo_contratacion'];
 						$cliente = $nombre.' '.$apellido;
 						$f_inicio = $d['f_inicio'];
 						$f_final = $d['f_final'];
@@ -161,6 +162,23 @@ if (isset($_POST['imprimir'])) {
 						}
 	
 					
+					if ($periodo_contratacion == 1) {
+						$per_contrat = 'ANUAL CON RENOVACIÓN AUTOMÁTICA';
+						$form_pago = 'DÉBITO POR TARJETA DE CRÉDITO CON PRORROGA AUTOMÁTICA';
+					} elseif ($periodo_contratacion == 2) {
+						$per_contrat  = 'SEMESTRAL CON RENOVACIÓN AUTOMÁTICA';
+						$form_pago = 'DÉBITO POR TARJETA DE CRÉDITO CON PRORROGA AUTOMÁTICA';
+					} elseif ($periodo_contratacion == 3) {
+						$per_contrat  = 'TRIMESTRAL CON RENOVACIÓN AUTOMÁTICA';
+						$form_pago = 'DÉBITO POR TARJETA DE CRÉDITO CON PRORROGA AUTOMÁTICA';
+					} elseif ($periodo_contratacion == 4) {
+						$per_contrat  = 'MENSUAL CON RENOVACIÓN AUTOMÁTICA';
+						$form_pago = 'DÉBITO POR TARJETA DE CRÉDITO CON PRORROGA AUTOMÁTICA';
+					} elseif ($periodo_contratacion == 5) {
+						$per_contrat  = 'ANUAL CON RENOVACIÓN AUTOMÁTICA';
+						$form_pago = 'PAGO ADELANTADO CON PRORROGA AUTOMÁTICA';
+					}	
+
 	
 					
 					$fi = fechaNumber(substr($d['f_inicio'], 0,10));

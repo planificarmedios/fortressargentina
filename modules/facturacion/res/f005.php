@@ -45,7 +45,7 @@ h1 {
         mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
         minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
         
-         Lunes a viernes de 8:30 a 17:30 hs. 
+         Lunes a viernes de 10:00 a 18:00 hs. 
          
   <o:p></o:p></span></b></p>
 
@@ -55,7 +55,7 @@ h1 {
         mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
         minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>
 
-      Sábados de 9:00 a 13:00 hs. 
+      Sábados de 10:00 a 14:00 hs. 
 
       <o:p></o:p></span></b></p>
 

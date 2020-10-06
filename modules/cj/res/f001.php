@@ -58,13 +58,13 @@ h1 {
                           <p><strong> Nombre / Razón Social Titular: </strong> <?php echo $nombre.' '.$apellido; ?><br>
                             <strong> Domicilio: </strong> <?php echo $dom. '' ?> ( <?php echo $cp3. '' ?>). <?php echo $l ?><br>
                             <strong> Tipo: </strong><?php echo $doc. ' '; ?> <strong> Nro. Doc: </strong> <?php echo $nro_doc. ' '; ?>   
-                            <strong> Fecha Nac.:  </strong>  <?php echo fechaNumber($fn); ?> <br> 
                             <strong> Estado Civil: </strong><?php echo $estado_civil ?> <br>
                             <strong> Email: </strong><?php echo $email. ' '; ?><br> 
+                            <strong> Fecha Nac.:  </strong>  <?php if (!isset($fn)){ echo 'No Indica';} else { echo fechaNumber($fn);}?> <br> 
                             <strong>Tel. Fijo: </strong> <?php echo $telf. ' '; ?>   <strong> 
                             Tel. Móvil: </strong><?php echo $telm. ' '; ?> <br>
-                            <strong>Id: </strong><?php echo $USRID. ' '; ?> <br>
-                            <strong> Alias: </strong> <?php echo $alias. ' '; ?> <br>
+                            <strong> Id: </strong><?php if (!isset($USRID)){ echo ''; } else { echo ($USRID); } ?> <br>
+                            <strong> Alias: </strong> <?php if (!isset($alias)){ echo 'No Indica'; } else { echo ($alias); } ?> <br>
                           </p>
                         </blockquote>
                     </tr>
@@ -94,7 +94,7 @@ h1 {
                             <strong> Tipo de Uso: </strong> <?php echo $tu; ?> <strong> Frecuencia de Uso: <?php if ($tu == 'Personal') { echo 4; } else { echo  8; }?> mensuales.
                             </strong><br>
 							              <strong> Desde: </strong> <?php echo $fi; ?>  <strong>  - Hasta: </strong><?php echo $ff; ?> 
-							              <strong> CON PRÓRROGA ANUAL AUTOMÁTICA <br>
+							              <strong>  <?php echo $per_contrat; ?> <br>
                           </p>
                         </blockquote>
                     </tr>
@@ -183,7 +183,7 @@ h1 {
                       <td width="100%" style="text-align:left">
                         <blockquote>
                           <p><br>
-                            <strong> Forma de cobro: </strong> Por débito mensual automático con tarjeta de crédito con prórroga anual automática.
+                            <strong> Forma de cobro: </strong> <?php $form_pago; ?>
 							              <strong> Marca: </strong> <?php echo $marca; ?><br>
                             <strong> Número de Tarjeta: </strong><?php echo $num_tarj; ?> 
                             <strong> Banco: </strong> <?php echo $banco; ?> 

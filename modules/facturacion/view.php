@@ -13,9 +13,11 @@
     <?php 
 	 
 
-    if (empty($_GET['alert'])) {echo ""; } 
-  
-    elseif ($_GET['alert'] == 1) {
+    if (empty($_GET['alert'])) {
+      
+      echo ""; 
+    
+    } elseif ($_GET['alert'] == 1) {
       echo "<div class='alert alert-success alert-dismissable'>
               <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
               <h4>  <i class='icon fa fa-check-circle'></i> Almacenado correctamente!</h4>
@@ -152,8 +154,7 @@
 							$f_final = fechaNumber($f_final);	
               
               $cliente = $nombre.' '.$apellido;
-              if ($id_cliente == 0) 
-              {
+              if ($id_cliente == 0) {
                 $m = 'Disponible'; $color = "#00993"; 
                 $f_inicio = '';
                 $f_final  = '';
@@ -183,6 +184,7 @@
                     $coef_tmpo = 1;
                     $abono_mensual = $abono_uso * $coef_tmpo;
                     $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
+                    
                     if ($cobertura_gold == 1){
                       $coef_cob_gold =   $cobertura_gold*$coef_gold;
                       $importe_mensual = $abono_mensual* $coef_cob_gold ;
@@ -190,11 +192,13 @@
                       $importe_mensual = $abono_mensual;
                       $coef_cob_gold = 0;
                     }
+                  
                   } elseif ($periodo_contratacion == 2) {
                     $pc = 'Semestral';
                     $coef_tmpo = $a['coef_contr_semestral'];
                     $abono_mensual = $abono_uso * $coef_tmpo;
                     $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
+                    
                     if ($cobertura_gold == 1){
                       $coef_cob_gold =   $cobertura_gold*$coef_gold;
                       $importe_mensual = $abono_mensual * $coef_cob_gold ;

@@ -35,8 +35,7 @@ h1 {
      <header class="row">
     <h1 align="center" contenteditable>
     <img align="left"  style="width:30%" src="sales_invoice/assets/img/logo.png"></br></br>
-    				CONTRATO DE LOCACIÓN </br>
-                    DE CAJA DE SEGURIDAD.
+    				CONTRATO DE LOCACIÓN </br> DE CAJA DE SEGURIDAD.
     </h1>
  
   <p>&nbsp;</p>
@@ -70,8 +69,8 @@ h1 {
                             <strong> Email: </strong><?php echo $email. ' '; ?><br> 
                             <strong> Tel. Fijo: </strong> <?php echo $telf. ' '; ?>   
                             <strong> Tel. Móvil: </strong><?php echo $telm. ' '; ?> <br>
-                            <strong> Id: </strong><?php echo $USRID. ' '; ?> <br>
-                            <strong> Alias: </strong> <?php echo $alias. ' '; ?> <br>
+                            <strong> Id: </strong><?php if (!isset($USRID)){ echo ''; } else { echo ($USRID); } ?> <br>
+                            <strong> Alias: </strong> <?php if (!isset($alias)){ echo 'No Indica'; } else { echo ($alias); } ?> <br>
                           </p>
                         </blockquote>
                     </tr>
@@ -112,7 +111,7 @@ h1 {
                 <table style='width:100%'>
                     <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="100%" >C. PERÍODO DE CONTRATACIÓN ANUAL CON RENOVACIÓN AUTOMÁTICA</th>
+                      <th width="100%" >C. PERÍODO DE CONTRATACIÓN <?php echo $per_contrat ?></th>
                      </tr> 
                     </thead>
                   <tbody contenteditable>
@@ -186,7 +185,7 @@ h1 {
                 <table style='width:100%'>
                     <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="100%" >F. DOMICILIO SEGURIDAD FORTRESS SA:</th>
+                      <th width="100%" >F. DATOS SEGURIDAD FORTRESS SA:</th>
                      </tr> 
                     </thead>
                   <tbody contenteditable>
@@ -195,8 +194,8 @@ h1 {
                         <blockquote>
                           <p><br>
                             <strong> Dirección: </strong> Sarmiento 2685 1° Subsuelo Oficina(7600) Mar del Plata<br>
-                            <strong> CUIT: </strong>  <br>
-                            <strong> Email: </strong>  <br>
+                            <strong> CUIT: 30-71614962-1</strong>  <br>
+                            <strong> Email: info@fortressargentina.com</strong>  <br>
                           </p>
                         </blockquote>
                     </tr>
@@ -447,7 +446,7 @@ El Contrato es de renovación automática por período consecutivo salvo selecci
 plazo determinado para períodos menores a 1 año. Durante el plazo de vigencia
 del presente Contrato el Locatario tendrán derecho de uso de servicios
 adicionales por la Locadora dentro del local brindado por ella o por terceros,
-previo pago de la taifa correspondiente y bajo las condiciones específicas para
+previo pago de la tarifa correspondiente y bajo las condiciones específicas para
 ese servicio. Como, por ejemplo, el acceso a una sala de reuniones por tiempo determinado.
 <o:p></o:p></span></p>
 
@@ -610,7 +609,7 @@ mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-f
 minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>: En
 caso de embargo o secuestro que se comunique a <b>SEGURIDAD FORTRESS SA </b>por
 autoridad competente, el Locador quedará obligado a impedir el acceso del
-Locatario a la Caja, y de corresponder, proceder a su apertura ante el ante el
+Locatario a la Caja, y de corresponder, proceder a su apertura ante el 
 Oficial de Justicia y consiguiente depósito de las cajas extraídas a la orden
 del Juez que dispuso la medida cautelar o de ejecución. <b>SEGURIDAD FORTRESS
 SA </b>proveerá al Oficial de Justicia toda documentación y filmación que sea

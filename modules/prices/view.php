@@ -138,15 +138,15 @@
 						  
 			
                       echo "<tr>
-                      <td width='10%'  class='center'>$servicio</td>
-                      <td width='20%'  class='center'>$descripcion</td>
+                      <td width='15%'  class='center'>$servicio</td>
+                      <td width='25%'  class='center'>$descripcion</td>
                       
-                      <td width='8%'  class='center'>$ $precio_for</td>
+                      <td width='5%'  class='center'>$ $precio_for</td>
                       <td width='8%'  class='center'>$coef_comercial_for % </td>
-                      <td width='8%'  class='center'>$coef_mensual_for % </td>
-                      <td width='8%'  class='center'>$coef_trim_for % </td>
-                      <td width='8%'  class='center'>$coef_semestral_for % </td>
-                      <td width='8%'  class='center'>$coef_gold_for % </td>
+                      <td width='6%'  class='center'>$coef_mensual_for % </td>
+                      <td width='6%'  class='center'>$coef_trim_for % </td>
+                      <td width='6%'  class='center'>$coef_semestral_for % </td>
+                      <td width='6%'  class='center'>$coef_gold_for % </td>
                       <td width='9%'  class='center'>$coef_notificacion_for % </td>
            
 					  <td class='center' width='9%'>

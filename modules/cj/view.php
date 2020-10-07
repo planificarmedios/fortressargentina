@@ -108,7 +108,7 @@
             <thead>
               <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
                 
-                <th class="center"># </th>
+                
                 <th class="center"># Caja</th>
                 <th class="center">Tipo de Caja</th>
                 <th class="center">Descripción</th>
@@ -166,7 +166,6 @@
 						  
 					  echo "<tr>
 					  
-					  <td width=2%  class='center'>$nrocaja</td>
 					  <td width='5%'  class='center'>$serie</td>
 					  <td width='10%' class='center'>$tipocaja</td>
                       <td width='15%' class='center'>$descripcion</td>

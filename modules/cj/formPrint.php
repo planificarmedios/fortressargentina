@@ -141,7 +141,106 @@ if (isset($_POST['imprimir'])) {
 						$cobertura_gold =  $d['cobertura_gold'];
 						$ingreso_boveda =  $d['ingreso_boveda'];
 						$tipo_uso =  $d['tipo_uso'];
-					}
+
+						
+						$get_data=callAPI('GET', $servidor.'/api/servicios/adicionales', false);
+              $response=json_decode($get_data, true);
+              foreach ($response as $a) {
+                if ($id_servicio == $a['id'][0]) {
+                  $precioxxx = $a['precio'];
+                  $coef_comercial = $a['coef_comercial'];
+                  $coef_notificacion = $a['coef_notificacion'];
+                  $coef_gold = $a['coef_gold'];
+                 
+                  $coef_uso = $tipo_uso * $coef_comercial;
+                  
+                  if ($coef_uso == 0) {
+                    $abono_uso = $precioxxx; 
+                  } else {
+                    $abono_uso = $precioxxx * $coef_uso;
+                  } 
+
+                  if ($periodo_contratacion == 1) {
+					$pc = 'Anual';
+					$pagadero = 'mensual';
+                    $coef_tmpo = 1;
+                    $abono_mensual = $abono_uso * $coef_tmpo;
+                    $coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
+                    
+                    if ($cobertura_gold == 1){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = $abono_mensual* $coef_cob_gold ;
+                    } else {
+                      $importe_mensual = $abono_mensual;
+                      $coef_cob_gold = 0;
+                    }
+                  
+                  } elseif ($periodo_contratacion == 2) {
+                    $pc = 'Semestral';
+                    $coef_tmpo = $a['coef_contr_semestral'];
+                    $abono_mensual = $abono_uso * $coef_tmpo;
+					$coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
+					$pagadero = 'mensual';
+                    
+                    if ($cobertura_gold == 1){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = $abono_mensual * $coef_cob_gold ;
+                    } else {
+                      $importe_mensual = $abono_mensual;
+                      $coef_cob_gold = 0;
+                    }
+                  } elseif ($periodo_contratacion == 3) {
+                    $pc = 'Trimestral';
+                    $coef_tmpo = $a['coef_contr_trim'];
+                    $abono_mensual = $abono_uso * $coef_tmpo;
+					$coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
+					$pagadero = 'mensual';
+
+                    if ($cobertura_gold == true){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = $abono_mensual * $coef_cob_gold ;
+                    } else {
+                      $importe_mensual = $abono_mensual;
+                      $coef_cob_gold = 0;
+                    }
+
+                  } elseif ($periodo_contratacion == 4) {
+                    $pc = 'Mensual';
+                    $coef_tmpo = $a['coef_contr_mensual'];
+                    $abono_mensual = $abono_uso * $coef_tmpo;
+					$coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
+					$pagadero = 'mensual';
+
+                    if ($cobertura_gold == 1){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = $abono_mensual * $coef_cob_gold ;
+                    } else {
+                      $importe_mensual = $abono_mensual;
+                      $coef_cob_gold = 0;
+                    }
+
+                  } elseif ($periodo_contratacion == 5) {
+                    $pc = 'Anual Adelantado';
+                    $coef_tmpo = 1;
+                    $abono_mensual = $abono_uso * $coef_tmpo;
+					$coef_notif_bobeda = $ingreso_boveda*$coef_notificacion;
+					$pagadero = 'pagadero por adelantado';
+
+                    if ($cobertura_gold == 1){
+                      $coef_cob_gold =   $cobertura_gold*$coef_gold;
+                      $importe_mensual = ($abono_mensual * $coef_cob_gold) * 12;
+                    } else {
+                      $coef_cob_gold = 0;
+                      $importe_mensual = ($abono_mensual) * 12;
+                    }
+                  } 
+                  
+                      
+
+                }
+              }
+
+	}
 	
 					
 					

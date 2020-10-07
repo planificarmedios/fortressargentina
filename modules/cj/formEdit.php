@@ -502,10 +502,10 @@ if ($_GET['formEdit']=='edit') {
        
               <thead>
               <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
-                <th class="center"># </th>
                 <th class="center"># Caja</th>
-                <th class="center">Servicio</th>
+                
                 <th class="center">Tipo de Caja</th>
+                <th class="center">Dimensiones</th>
                 <th class="center">Estado</th>
                 <th class="center">Acciones</th>
               </tr>
@@ -542,7 +542,7 @@ if ($_GET['formEdit']=='edit') {
 					  echo "<tr>
 					  
                   <td width='5%'  class='center'>$serie</td>
-                  <td width='5%'  class='center'>$servicio</td>
+                 
 					        <td width='10%' class='center'>$tipocaja</td>
                   <td width='15%' class='center'>$descripcion</td>
 					        <td width='7%'  class='center'>$m</td>

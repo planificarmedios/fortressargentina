@@ -168,8 +168,8 @@ h1 {
                       <td width="100%" style="text-align:left">
                         <blockquote>
                           <p><br>
-                            <strong> ($ <?php echo number_format($precio,2,",",".").' '; ?>) </strong>  
-							<?php echo NumeroAletras($precio); ?> mensuales <br>
+                            <strong> ($ <?php echo number_format($importe_mensual,2,",",".").' '; ?>) </strong>  
+							<?php echo NumeroAletras($importe_mensual).' '.$pagadero; ?>  <br>
                              
                           </p>
                         </blockquote>

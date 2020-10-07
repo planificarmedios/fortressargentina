@@ -36,6 +36,7 @@ require_once("../../MP/mailing_transaction/fechaNumber.php");
                         <th bordercolor"#000000" height="20" align="center" valign="middle">Hora Inicio</th>
                         <th bordercolor"#000000" height="20" align="center" valign="middle">Hora Fin</th>
                         <th bordercolor"#000000" height="20" align="center" valign="middle">Cliente</th>
+                        <th bordercolor"#000000" height="20" align="center" valign="middle">Cant. Asistentes</th>
                         <th bordercolor"#000000" height="20" align="center" valign="middle">Estado</th>
 						<th bordercolor"#000000" height="20" align="center" valign="middle">Token</th>
 
@@ -67,7 +68,8 @@ $hoy = date("d/m/Y");
 									<td bordercolor='#000000'  height='13' align='center'  style='color:$color' valign='middle'>$fs</td>
 									<td bordercolor='#000000'  height='13' align='center'  style='color:$color' valign='middle'>$start</td>
 									<td bordercolor='#000000'  height='13' align='center'  style='color:$color' valign='middle'>$end</td>
-									<td bordercolor='#000000'  height='13' align='center' style='color:$color' valign='middle'>$cliente</td>
+                                    <td bordercolor='#000000'  height='13' align='center' style='color:$color' valign='middle'>$cliente</td>
+                                    <td bordercolor='#000000'  height='13' align='center' style='color:$color' valign='middle'>$cant_asist</td>
 									<td bordercolor='#000000'  height='13' align='center' style='color:$color' valign='middle'>$m</td>
 									<td bordercolor='#000000' height='13' align='center' style='color:$color' valign='middle'>$codigo</td>
 

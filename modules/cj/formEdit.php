@@ -61,6 +61,30 @@ if ($_GET['formEdit']=='edit') {
     <div class="row">
       <div class="col-md-12">
         <div class="box box-warning">
+
+        <?php 
+	 
+
+    if (empty($_GET['alert'])) {echo ""; } 
+  
+    elseif ($_GET['alert'] == 1) {
+      echo "<div class='alert alert-success alert-dismissable'>
+              <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+              <h4>  <i class='icon fa fa-check-circle'></i> Almacenado correctamente!</h4>
+             
+            </div>";
+    }
+
+    elseif ($_GET['alert'] == 2) {
+      echo "<div class='alert alert-success alert-dismissable'>
+              <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+              <h4>  <i class='icon fa fa-check-circle'></i> 
+              Modificado correctamente!
+              </h4>
+             
+            </div>";
+    }
+    ?>
           <!-- form start -->
           <form role="form" style="color:#003" id="datos_recibo" class="form-horizontal" action="modules/cj/proses.php?act=updateCaja" method="POST">
             <div class="box-body">

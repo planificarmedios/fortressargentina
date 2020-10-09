@@ -584,7 +584,13 @@ argentina. El monto que podrá guardar dentro de la misma no podrá exceder la
 suma de 100.000 U$S (cien mil dólares) o su equivalente en moneda argentina. En
 caso de siniestro por el cual el Locador debiese responder contractualmente, la
 obligación de resarcimiento por parte del Locador tendrá como límite el importe
-señalado, siempre que se haya contratado la cobertura correspondiente.<o:p></o:p></span></p>
+señalado, siempre que se haya contratado la cobertura correspondiente. Las partes 
+acuerdan que el pago de la prima debida por el Locador y/o Asegurado y/o Compañía 
+Aseguradora, como así también el pago de las eventuales indemnizaciones que puedan 
+resultar a cargo de la entidad en caso de siniestro, asumidas en moneda extranjera 
+serán abonadas al Locatario, en la moneda de curso legal, para lo cual se convertirán 
+de acuerdo a la cotización del Banco de la Nación Argentina, al tipo de cambio vendedor 
+de cierre del día hábil anterior a la fecha de pago de la prestación.-<o:p></o:p></span></p>
 
 <p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
 8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><b><u><span

@@ -82,14 +82,14 @@
       
               echo "<tr>
                       <td width='5%'   class='center'>$id</td> 
-                      <td width='20%' class='center'>$razon_social</td>
+                      <td width='15%' class='center'>$razon_social</td>
                       <td width='15%'   class='center'>$tipo_iva</td>
                       <td width='5%'   class='center'>$tp</td>
                       <td width='10%'  class='center'>$numero_doc</td>
                       <td width='20%'  class='center'>$domicilio</td>
 					            <td width='10%'  class='center'>$email</td>
                       <td width='5%'  class='center'>$cp</td>
-                      <td width='10%'  class='center'>$localidad</td>
+                      <td width='15%'  class='center'>$localidad</td>
                       <div>
                     ";
          

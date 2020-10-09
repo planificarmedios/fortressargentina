@@ -122,7 +122,7 @@ if ($_GET['act']=='asociado') {
 
 									
 	
-					header("location: ../../main.php?module=cj&alert=2");
+				   header("location: ../../main.php?module=formEdit_cj&formEdit=edit&id=$idcaja&nrocaja=$nrocaja");
 		
 			
 } elseif ($_GET['act']=='enableasociado') {
@@ -153,7 +153,7 @@ include_once ("../../parametros.php");
 						'Content-Length: ' . strlen($data_string))
 						);
 				        $result = curl_exec($ch);   
-	                    header("location: ../../main.php?module=formEdit_cj&formEdit=edit&id=$i&nrocaja=$nro_caja");
+	                    header("location: ../../main.php?module=formEdit_cj&formEdit=edit&id=$i&nrocaja=$nro_caja&alert=1");
 	                    
 					
 }

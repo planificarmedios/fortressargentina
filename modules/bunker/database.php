@@ -12,7 +12,8 @@ require_once ("../../fechaNumber.php");
 					    $id = $d['id']; //id cliente sql
 						  $id_evento = $d['ID']; //id orden del evento
 						  $CLIENTE = ' '.$d['CLIENTE']; 
-					      $alias = $d['alias']; 
+						  $alias = $d['alias']; 
+						  $descripcion = $d['descripcion']; 
 						  if ($alias == null or $alias == '') {
 							  $CLIENTE = ' '.$d['CLIENTE'];
 						  } else {
@@ -38,7 +39,8 @@ require_once ("../../fechaNumber.php");
     	                <td width='5%'   class='center'>$hh</td>
 		                <td width='5%'   class='center'>$id</td>
                         <td width='20%'   class='center'>$CLIENTE</td>
-			            <td $st  width='10%'  class='center'>$s</td>
+						<td $st  width='10%'  class='center'>$s</td>
+						<td width='10%'   class='center'>$descripcion</td>
 		                <td class='center' width='10%'>
                    <div>
 

@@ -41,6 +41,7 @@ function fechaCastellano ($fecha) {
                 <th class="center">#Cliente</th>
                 <th class="center">Nombre o Alias </th>
                 <th class="center">Situación Asistente </th>
+                <th class="center">Permiso </th>
                 <th class="center">Acciones</th>
               </tr>
             </thead>

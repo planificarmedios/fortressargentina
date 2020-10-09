@@ -1,5 +1,6 @@
 <?php
-if ($_GET['formPrintModule']=='listar') { 
+
+if ($_GET['formPrintModule']=='listarDisponibles') { 
 ?>
   <section class="content-header" style="color:#000">
   <h1>
@@ -64,8 +65,82 @@ if ($_GET['formPrintModule']=='listar') {
   </section><!-- /.content -->
   </form>  
 
+  <?php
+
+} elseif ($_GET['formPrintModule']=='listarOcupadas') { 
+
+?>
+  <section class="content-header" style="color:#000">
+  <h1>
+  <i class="fa fa-list icon-title" style="color:#000"></i> Listar Cajas Ocupadas 
+
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="?module=cj"> Cajas </a></li>
+    <li class="active"> Listar Ocupadas </li>
+  </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-warning">
+          <!-- form start -->
+          <form role="form" style="color:#003" action="?module=formEdit_cj&formEdit=listarOcupadas" class="form-horizontal"  method="POST">
+            <div class="box-body">
+
+       
+         <fieldset> 
+             <div class="form-group">
+               	<div> 
+                 <div class="col-sm-4 col-md-4">
+						            
+                            <select  required="required" class="chosen-select" name="tamano" id="tamano">					                
+                                              <option selected value="">------------------ Ingresar una opción del Menú ------------------ </option>
+                                              <?php 
+                                              include_once ("callAPI.php");
+                                              require_once ("parametros.php");
+                                              $get_data = callAPI('GET', $servidor.'/api/cajas/detalle',false);
+                                              $response = json_decode($get_data, true);
+                                              foreach ($response as $d) {
+                                                  $id = $d['id'];
+                                                  $nombre = $d['nombre'];
+                                                  $descripcion = $d['descripcion'];
+                                                  echo "    <option value=\"$id\"> $nombre: $descripcion </option>";
+                                              }
+                                              ?>
+                          </select>
+                       </div>
+              	</div>
+              </div>
+		</fieldset>
+        
+        
+         <div class="box-footer">
+             
+            <div class="form-group"> 
+                <div class="col-sm-offset-2 col-sm-10">
+                  <input type='submit' class="btn btn-primary" name="imprimir" value="Listar" >
+                  <a href='?module=cj' class="btn btn-danger">Volver</a>
+                </div>
+              </div>
+
+            </div>
+           </div>
+        </div><!-- /.box -->
+      </div><!--/.col -->
+    </div>   <!-- /.row -->
+  </section><!-- /.content -->
+  </form>  
+
 
 <?php
+
+
+
+
+
+
 } else if ($_GET['formPrintModule']=='auditoria') { 
   if (isset($_GET['id']) and isset($_GET['nro_caja']) and isset($_GET['serie'])) {
     require_once("fechaNumber.php");  

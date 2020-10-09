@@ -27,8 +27,14 @@
             </div>
 
             <div class="col-md-2 pull-left">
-              <a class="btn btn-primary btn-social" href="?module=formPrintModule_cj&formPrintModule=listar">
+              <a class="btn btn-primary btn-social" href="?module=formPrintModule_cj&formPrintModule=listarDisponibles">
               <i class="fa fa-list"></i> Listar Cajas Disponibles
+                </a>
+            </div>
+
+            <div class="col-md-2 pull-left">
+              <a class="btn btn-danger btn-social" href="?module=formPrintModule_cj&formPrintModule=listarOcupadas">
+              <i class="fa fa-list"></i> Listar Cajas Ocupadas
                 </a>
             </div>
 

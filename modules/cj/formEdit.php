@@ -7,6 +7,7 @@ function validarFinalizacion (input){
 
 </script>
 
+
 <?php
 
 if ($_GET['formEdit']=='edit') { 
@@ -507,7 +508,7 @@ if ($_GET['formEdit']=='edit') {
             </div>
 
             <div class="col-md-2 pull-left">
-              <a class="btn btn-danger btn-social" href="?module=formPrintModule_cj&formPrintModule=listar">
+              <a class="btn btn-danger btn-social" href="?module=formPrintModule_cj&formPrintModule=listarDisponibles">
                 <i class="fa fa-undo"></i> Volver
               </a>
             </div>
@@ -612,10 +613,137 @@ if ($_GET['formEdit']=='edit') {
       </div><!-- /.box -->
     </div><!--/.col -->
   </div>   <!-- /.row -->
-</section><!-- /.content
+</section>
 
+<?php
 
+} if ($_GET['formEdit']=='listarOcupadas') { 
+  if ($_POST['tamano']) {
+    $tamano = $_POST['tamano'];
+  }
+?>
+    <section class="content-header" style="color:#003">
 
+<ol class="breadcrumb">
+  <li><a href="?module=start"><i class="fa fa-home"></i> Inicio</a></li>
+  <li class="active">Cajas</li>
+  <li class="active"> Listar</li>
+</ol>
+
+<div class="row">
+      <div class="col-md-11">
+        
+        <div class="col-md-2 pull-left">
+          <a class="btn btn-success btn-social" href="?module=formAddCaja_cj&formAddCaja=add">
+            <i class="fa fa-plus"></i> Agregar Caja
+          </a>
+        </div>
+
+        <div class="col-md-2 pull-left">
+          <a class="btn btn-info btn-social" href="modules/cj/exportTotales.php" target="_blank">
+          <i class="fa fa-file-excel-o"></i> Informe Auditoría 
+            </a>
+        </div>
+
+        <div class="col-md-2 pull-left">
+          <a class="btn btn-danger btn-social" href="?module=formPrintModule_cj&formPrintModule=listarOcupadas">
+            <i class="fa fa-undo"></i> Volver
+          </a>
+        </div>
+
+      </div>  
+    </div>
+  </section>
+
+  <section class="content">
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="box box-warning" style="color:#003">
+      <div class="box-body">
+        <table border=10 bordercolor="#000000" id="dataTables1" class="table table-bordered table-striped table-hover">
+   
+          <thead>
+          <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
+            <th class="center"># Caja</th>
+            
+            <th class="center">Tipo de Caja</th>
+            <th class="center">Dimensiones</th>
+            <th class="center">Estado</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+    
+    
+    <?php
+  include_once ("callAPI.php");
+  include_once ("parametros.php");
+  include_once ("fechaNumber.php");
+    $get_data = callAPI('GET', $servidor.'/api/cajas/ocupadasTamano/'.$tamano,false);
+  $response = json_decode($get_data, true);
+  
+
+   foreach ($response as $d) {
+          $id = $d['id'];
+          $serie = $d['serie'];
+          $tipocaja = $d['tipocaja'];
+          $servicio = $d['id_servicio'];
+          $id_cliente = $d['id_cliente'];
+          $descripcion= $d['descripcion'];
+          $nrocaja= $d['nro_caja'];
+          if ($id_cliente == 0) 
+          {
+            $m = 'Disponible'; $color = "#00993"; 
+            $f_inicio = '';
+            $f_final  = '';
+          } else {
+            $m = $id_cliente;
+          };
+          
+          
+        echo "<tr>
+        
+              <td width='5%'  class='center'>$serie</td>
+              <td width='10%' class='center'>$tipocaja</td>
+              <td width='15%' class='center'>$descripcion</td>
+              <td width='7%'  class='center'>Ocupada</td>
+              
+                  <div>
+        
+           
+          <a></a>";
+     
+  if ($id_cliente <> 0) {
+  ?> 
+     		 
+  <?php 
+  }
+     
+          
+        if ($id_cliente == 0) {
+  ?> 
+        	 
+  <?php 
+  }
+  ?>  
+    
+    
+        <?php
+
+          echo "    </div>
+                  </td>
+                </tr>";
+        }
+    ?>
+        </tbody>
+      </table>
+    </div><!-- /.box-body -->
+  </div><!-- /.box -->
+</div><!--/.col -->
+</div>   <!-- /.row -->
+</section>
 <?php
 }
 ?> 
+

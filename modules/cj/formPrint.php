@@ -362,6 +362,7 @@ if (isset($_POST['imprimir'])) {
 									if ($impresiones[$n] == "d001" ) { include_once "res/d001.php"; }
 									if ($impresiones[$n] == "d002" ) { include_once "res/d002.php"; }
 									if ($impresiones[$n] == "f007" ) { include_once "res/f007.php"; }
+									if ($impresiones[$n] == "f008" ) { include_once "res/f008.php"; }
 								}
 						} 
 

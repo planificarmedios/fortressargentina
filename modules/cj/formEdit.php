@@ -442,13 +442,13 @@ if ($_GET['formEdit']=='edit') {
 						  if ($d['status']==0) {$m = 'Inactivo';} else {$m = 'Activo';};
 			
               echo "<tr>
-			  		  <td width='5%'   class='center'>$id_caja</td> 
-					  <td width='5%'   class='center'>$id_asociado</td>
-                      <td width='30%' class='center'>$nombre$apellido</td>
+			  		<td width='5%'   class='center'>$id_caja</td> 
+					  <td width='10%'   class='center'>$id_asociado</td>
+            <td width='30%' class='center'>$nombre$apellido</td>
 					  <td width='30%' class='center'>$email</td>
 					  <td width='10%' class='center'>$dni</td>
-					  <td width='5%' class='center'>$m</td>
-				      <td class='center' width='5%'>
+					  <td width='10%' class='center'>$m</td>
+				      <td class='center' width='10%'>
                         <div>
 						 
                           <a></i></a>";

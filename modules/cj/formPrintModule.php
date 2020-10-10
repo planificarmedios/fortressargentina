@@ -385,7 +385,7 @@ if ($_GET['formPrintModule']=='listarDisponibles') {
                                               <option value="f005">(Anexo V) Uso y Reserva de Sala de Reuniones</option>
                                               <option value="r002">(Anexo VI)  Medidas de Seguridad y Detección de Metales</option>
                                               <option value="d001">(Anexo VII) Persona Políticamente Expuesta</option>
-                                              <option value="">    (Anexo VIII) Baja del Servicio</option>
+                                              <option value="f008">(Anexo VIII) Baja del Servicio</option>
                                               <option value="f004">(Anexo IX) Pago de Servicio </option>
                                               <option value="d002">(Anexo X) Asignación de Nuevas Llaves </option>
                                               <option value="f005"> Horarios y Días Laborables </option>

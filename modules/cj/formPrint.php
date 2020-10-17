@@ -341,12 +341,11 @@ if (isset($_POST['imprimir'])) {
 						for ($n=0;$n<count($impresiones);$n++)  
 						{     
 								if ($impresiones[$n] == "c000" ) { 
-									    include_once "res/c000.php"; 
+									     
 										include_once "res/c001.php"; 
 										include_once "res/r001.php"; 
 										include_once "res/f001.php"; 
 										include_once "res/f003.php";	
-									    include_once "res/f005.php";
 									    include_once "res/r002.php"; 
 										include_once "res/d001.php";
 										    

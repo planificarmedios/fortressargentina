@@ -38,8 +38,7 @@ h1 {
     				CIERRE DE CAJA DE SEGURIDAD </br> DEVOLUCIÓN DE LLAVES.
     </h1>
  
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
+  
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   
@@ -78,7 +77,7 @@ h1 {
             </div>
 		</div><!--.row-->
           <p>&nbsp;</p>
-          <p>&nbsp;</p><p>&nbsp;</p>
+          <p>&nbsp;</p>
         
         <div class="row section" style="margin-top:-1rem">
             <div class="col-1">
@@ -93,9 +92,9 @@ h1 {
                       <td width="100%" style="text-align:left">
                         <blockquote>
                           <p><br>
-                            <strong> Número de Caja: </strong> <?php echo $serie; ?><br>
-                            <strong> Tamaño: </strong><?php echo $descripcion2; ?> <br>
-                            <strong> Tipo de Uso: </strong> <?php echo $tu; ?> <br>
+                            <strong> Número de Caja: </strong> <?php echo $serie; ?>
+                            <strong> Tamaño: </strong><?php echo $descripcion2; ?> 
+                            <strong> Tipo de Uso: </strong> <?php echo $tu; ?> 
                             <strong> Inicio de contratación: </strong> <?php echo $fi; ?> <br>
                           </p>
                         </blockquote>
@@ -124,18 +123,12 @@ h1 {
         con motivo de haber decidido cancelar la locación de la Caja de Seguridad detallada previamente, .............. (SI/NO) hago entrega a Uds. de las llaves correspondientes. dejando expresa constancia que la caja mencionada se encuentra vacía 
         y además en este mismo acto .............. (SI/NO) hago entrega a Uds. de las llaves correspondientes. </br></br></br> Saludo a Uds. muy atentamente, <o:p></o:p></span></p> 
         <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-      <div class="row section" align="center">
+       
+        <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th align="left" width="50%" >ACLARACIÓN: </th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -151,23 +144,24 @@ h1 {
                   </tbody>
                   <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >FIRMA CLIENTE: </th>
+                      <th width="50%" >FIRMA TITULAR</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" >ACLARACIÓN</th>
                      </tr> 
                     </thead>
                 </table>
             </div><!--.row-->
+
           
-          <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           
           <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE FORTRESS ARGENTINA SA</th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -181,6 +175,14 @@ h1 {
                         </blockquote>
                     </tr>
                   </tbody>
+                  <thead contenteditable>
+                    <tr class="invoice_detail">
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" > ACLARACIÓN</th>
+                     </tr> 
+                    </thead>
                 </table>
             </div><!--.row-->
 <div style="width:100%; border-top:dashed 1px;margin-top:10mm;margin-bottom:10mm" > </div>
@@ -192,5 +194,4 @@ h1 {
 
 	<div style="width:100%; border-top:dashed 1px;margin-top:10mm;margin-bottom:10mm" > </div>
 	
-</page>	
-   
+</page>

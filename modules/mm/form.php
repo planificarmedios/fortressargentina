@@ -31,7 +31,10 @@ if ($_GET['form']=='edit') {
              </form>
         
                 <h1>     
-                <div class="box-footer">
+           <?php 
+           if ($_SESSION['permisos_acceso'] == 'Administrador') {
+          ?>
+            <div class="box-footer">
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <input type="submit" class="btn btn-success btn-submit" id="guardar" name="guardar" value="Modificar">
@@ -40,7 +43,19 @@ if ($_GET['form']=='edit') {
               </div>
             </div>
 
-                
+            <?php
+           } else {
+          ?>
+            <div class="box-footer">
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <a href="?module=mm" class="btn btn-danger btn-reset">Volver</a>
+                </div>
+              </div>
+            </div>
+           <?php
+           }
+           ?>
                 </h1>
 
                 <div >
@@ -59,29 +74,37 @@ if ($_GET['form']=='edit') {
                         <tbody>
                         
           <?php
-		  	include_once ("callAPI.php");
-        include_once ("parametros.php");
-        $get_data = callAPI('GET', $servidor.'/api/asistentes/'.$codigo,false);
-        $response = json_decode($get_data, true);
-        foreach ($response as $d) {
-          $id = $d['id'];
-          $nombre = $d['nombre'];
-          $apellido = $d['apellido'];
-          $dni = $d['dni'];
-          $celular = $d['celular'];
-          $email = $d['email'];
-			
-              echo "<tr>
-			  		          <td width='5%'   class='center'>$id</td> 
-					            <td width='20%'   class='center'>$nombre</td>
-                      <td width='20%' class='center'>$apellido</td>
-					            <td width='10%' class='center'>$dni</td>
-					            <td width='10%' class='center'>$celular</td>
-                      
-                      
-                    </tr>";
-            }
-		    ?>
+              include_once ("callAPI.php");
+              include_once ("parametros.php");
+              $get_data = callAPI('GET', $servidor.'/api/asistentes/'.$codigo,false);
+              $response = json_decode($get_data, true);
+              foreach ($response as $d) {
+                $id = $d['id'];
+                $nombre = $d['nombre'];
+                $apellido = $d['apellido'];
+                $dni = $d['dni'];
+                $celular = $d['celular'];
+                $email = $d['email'];
+
+                if ($_SESSION['permisos_acceso'] <> 'Administrador') {
+                  $nombre = 'Anónimo';
+                  $apellido = 'Anónimo';
+                  $dni = 'Anónimo';
+                  $celular = 'Anónimo';
+                  $email = 'Anónimo';
+                }  
+            
+                    echo "<tr>
+                            <td width='5%'   class='center'>$id</td> 
+                            <td width='20%'   class='center'>$nombre</td>
+                            <td width='20%' class='center'>$apellido</td>
+                            <td width='10%' class='center'>$dni</td>
+                            <td width='10%' class='center'>$celular</td>
+                            
+                            
+                          </tr>";
+                  }
+              ?>
             </tbody>
           </table>    
   

@@ -257,16 +257,14 @@ h1 {
           
             <p>&nbsp;</p>
           
-          <p>&nbsp;</p>
+            <p>&nbsp;</p>
           <p>&nbsp;</p>
           
-          <div class="row section" style="margin-top:-1rem">
+          <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE FORTRESS ARGENTINA SA</th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -280,11 +278,19 @@ h1 {
                         </blockquote>
                     </tr>
                   </tbody>
+                  <thead contenteditable>
+                    <tr class="invoice_detail">
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" > ACLARACIÓN</th>
+                     </tr> 
+                    </thead>
                 </table>
             </div><!--.row-->
+
             <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
+            <p>&nbsp;</p>
           <p>&nbsp;</p>
 
         

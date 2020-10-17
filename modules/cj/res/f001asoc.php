@@ -42,8 +42,6 @@ h1 {
   <p>&nbsp;</p>
 
 
-  
-  
   		<div class="row section" style="margin-top:-1rem">
             <div class="col-1">
                 <table style='width:100%'>
@@ -59,13 +57,13 @@ h1 {
                         	<br>
                           <p><strong> Asociado: </strong> <?php echo $nombre.' '.$apellido; ?><br>
                             <strong> Domicilio: </strong> <?php echo $dom. '' ?> ( <?php echo $cp3. '' ?>). <?php echo $l ?><br>
-                            <strong> Tipo: </strong><?php echo $doc. ' '; ?> <strong> 
-                            Nro. Doc: </strong> <?php echo $nro_doc. ' '; ?>   <br>
-							<strong> Estado Civil: </strong><?php echo $estado_civil ?> <br>
+                            <?php echo $doc. ' '; ?> <strong> Nro. Doc: </strong> <?php echo $nro_doc. ' '; ?>   
+                            <strong> Estado Civil: </strong><?php echo $estado_civil ?> <br>
                             <strong> Email: </strong><?php echo $email. ' '; ?><br> 
+                            <strong> Fecha Nac.:  </strong>  <?php if (!isset($fn)){ echo 'No Indica';} else { echo fechaNumber($fn);}?> <br> 
                             <strong>Tel. Fijo: </strong> <?php echo $telf. ' '; ?>   <strong> 
                             Tel. Móvil: </strong><?php echo $telm. ' '; ?> <br>
-                            <strong> Alias: </strong> <?php echo $alias. ' '; ?> <br>
+                            <strong> Id: </strong><?php if (!isset($USRID)){ echo ''; } else { echo ($USRID); } ?> <strong> Alias: </strong> <?php if (!isset($alias)){ echo 'No Indica'; } else { echo ($alias); } ?> <br>
                           </p>
                         </blockquote>
                     </tr>
@@ -95,7 +93,7 @@ h1 {
                            <strong> Tipo de Uso: </strong> <?php echo $tu; ?> <strong> Frecuencia de Uso: <?php if ($tu == 'Personal') { echo 4; } else { echo  8; }?> mensuales.
                             </strong><br>
 							              <strong> Desde: </strong> <?php echo $fi; ?>  <strong>  - Hasta: </strong><?php echo $ff; ?> 
-							              <strong> CON PRÓRROGA ANUAL AUTOMÁTICA <br>
+							              <strong> CON PRÓRROGA AUTOMÁTICA <br>
 							
                           </p>
                         </blockquote>
@@ -104,14 +102,18 @@ h1 {
                 </table>
             </div><!--.row-->
           <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
+          
         
           <p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
         8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><span
         lang=ES style='font-size:10.0pt;line-height:107%;mso-ascii-font-family:Calibri;
         mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
-        minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>De conformidad con lo establecido en las Condiciones generales y particulares del Contrato de Locación de Cajas de Seguridad y Reglamento de Uso, por la presente y a mi riesgo, autorizo a la persona de datos obrantes en el apartado a y cuya firma auténtica obra en la presente; para abrir y disponer del contenido que hubiere exclusivamente en la Caja de Seguridad,  indicada en el apartado b y   que tengo alquilada en esta Entidad. Manifiesto que el representante que nombro, ha leído y firmado de conformidad el Reglamento de Uso de FORTRESS ARGENTINA SA,  y de cuyos actos me hago responsable en las mismas condiciones que he aceptado para mí y que rigen la locación de la citada Caja.
+        minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>De conformidad con lo establecido en las Condiciones generales y particulares 
+        del Contrato de Locación de Cajas de Seguridad y Reglamento de Uso, por la presente y a mi riesgo, autorizo a la persona de datos obrantes en el apartado 
+        "A" y cuya firma auténtica obra en la presente; para abrir y disponer del contenido que hubiere exclusivamente en la Caja de Seguridad,  
+        indicada en el apartado "B" y  que tengo contratada en esta Entidad. Manifiesto que el representante que nombro, ha leído y firmado de conformidad el 
+        Reglamento de Uso de SEGURIDAD FORTRESS SA,  y de cuyos actos me hago responsable en las mismas condiciones que he aceptado para mí y que rigen la 
+        locación de la citada Caja.
 
 
         <p>&nbsp;</p>
@@ -126,11 +128,9 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
        
 <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th align="left" width="50%" >ACLARACIÓN: </th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -146,19 +146,22 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                   </tbody>
                   <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >FIRMA TITULAR: </th>
+                      <th width="50%" >FIRMA TITULAR</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" >ACLARACIÓN</th>
                      </tr> 
                     </thead>
                 </table>
             </div><!--.row-->
 
-            <div class="row section" align="center">
-            <div class="col-1">
-                <table style='width:50%'>
+        
+          <p>&nbsp;</p>
+
+           <div class="col-1">
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th align="left" width="50%" >ACLARACIÓN: </th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -174,21 +177,23 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                   </tbody>
                   <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >FIRMA ASOCIADO: </th>
+                      <th width="50%" >FIRMA ASOCIADO</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" >ACLARACIÓN</th>
                      </tr> 
                     </thead>
                 </table>
             </div><!--.row-->
           
+          <p>&nbsp;</p>
          
           
-         <div class="row section" align="center">
+          <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE FORTRESS ARGENTINA SA</th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -202,17 +207,31 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                         </blockquote>
                     </tr>
                   </tbody>
+                  <thead contenteditable>
+                    <tr class="invoice_detail">
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" > ACLARACIÓN</th>
+                     </tr> 
+                    </thead>
                 </table>
             </div><!--.row-->
 
- <p>&nbsp;</p>
- <p>&nbsp;</p>
- <p>&nbsp;</p>
+       
+        <p>&nbsp;</p>
+        
+
+        <h1 align="center" contenteditable>
+    <img align="left"  style="width:30%" src="sales_invoice/assets/img/logo.png"></br></br>
+    				REVOCACIÓN DE AUTORIZACIÓN</br>
+    </h1>
+    <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
         <p>&nbsp;</p>
-        <p>&nbsp;</p>
+
 <p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
         8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><span
         lang=ES style='font-size:10.0pt;line-height:107%;mso-ascii-font-family:Calibri;
@@ -234,13 +253,11 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
 <p>&nbsp;</p>
 <p>&nbsp;</p>         
        
-      <div class="row section" align="center">
+<div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th width="50%" >FIRMA Y ACLARACIÓN DEL TITULAR</th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -249,23 +266,31 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                           <p>
                           <p>&nbsp;</p>
                             <p>&nbsp;</p>
-                            
+                            <p>&nbsp;</p>
                           </p>
                         </blockquote>
                     </tr>
                   </tbody>
+                  <thead contenteditable>
+                    <tr class="invoice_detail">
+                      <th width="50%" >FIRMA TITULAR</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" >ACLARACIÓN</th>
+                     </tr> 
+                    </thead>
                 </table>
             </div><!--.row-->
 
-       
           
-         <div class="row section" align="center">
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          
+          <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE FORTRESS ARGENTINA SA</th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -279,8 +304,16 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                         </blockquote>
                     </tr>
                   </tbody>
+                  <thead contenteditable>
+                    <tr class="invoice_detail">
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" > ACLARACIÓN</th>
+                     </tr> 
+                    </thead>
                 </table>
-            </div><!--.row--
+            </div><!--.row-->
 
 
          

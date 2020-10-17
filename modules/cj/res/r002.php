@@ -60,7 +60,6 @@ h1 {
         En este acto, el Titular y Autorizados declaran conocer estas medidas de seguridad y deberán seguir las instrucciones impartidas por el personal de SEGURIDAD FORTRESS SA, en cuanto al desplazamiento por la sucursal. El Cliente será responsable civil y penalmente de los actos de sus autorizados.  </br></br></br>
         
         <o:p></o:p></span></span></p>
-        <p>&nbsp;</p>
           <p>&nbsp;</p>
         <p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
 8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><b><span
@@ -72,14 +71,12 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
 
          
           <p>&nbsp;</p>
-          <p>&nbsp;</p>
+          
           <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th align="left" width="50%" >ACLARACIÓN: </th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -95,23 +92,24 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                   </tbody>
                   <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >FIRMA CLIENTE: </th>
+                      <th width="50%" >FIRMA TITULAR</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" >ACLARACIÓN</th>
                      </tr> 
                     </thead>
                 </table>
             </div><!--.row-->
+
           
           <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
           
-          <div class="row section" style="margin-top:-1rem">
+          
+          <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE FORTRESS ARGENTINA SA</th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -125,12 +123,18 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                         </blockquote>
                     </tr>
                   </tbody>
+                  <thead contenteditable>
+                    <tr class="invoice_detail">
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" > ACLARACIÓN</th>
+                     </tr> 
+                    </thead>
                 </table>
             </div><!--.row-->
 
-
-        
-        
+    
          
     </div><!--.me-->
   </header>

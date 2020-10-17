@@ -132,7 +132,7 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                 <table style='width:50%'>
                     <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE FORTRESS ARGENTINA SA</th>
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
                      </tr> 
                     </thead>
                   <tbody contenteditable>

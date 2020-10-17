@@ -473,7 +473,7 @@ require_once("fechaNumber.php");
                   <select class="chosen-select" id="tipo_documento" name="tipo_documento" >
                       <option value="1" <?php if ($d['tipo_documento']==1){?>  selected="<?php echo 'selected';};?>">DNI</option>
                       <option value="2" <?php if ($d['tipo_documento']==2){?> selected="<?php echo 'selected';};?>">CUIL</option>
-                      <option value="3" <?php if ($d['tipo_documento']==3){?> selected="<?php echo 'selected';};?>">CUIL</option>
+                      <option value="3" <?php if ($d['tipo_documento']==3){?> selected="<?php echo 'selected';};?>">CUIT</option>
                   </select>
                 </div>
                 

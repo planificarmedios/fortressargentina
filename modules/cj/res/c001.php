@@ -63,7 +63,7 @@ h1 {
                             ?>
                             <strong> Nombre / Razón Social Titular: </strong> <?php echo $nombre.' '.$apellido; ?><br>
                             <strong> Domicilio: </strong> <?php echo $dom. '' ?> ( <?php echo $cp3. '' ?>). <?php echo $l ?><br>
-                            <strong> Tipo: </strong><?php echo $doc. ' '; ?> <strong> Nro. Doc: </strong> <?php echo $nro_doc ?><br>
+                            <strong> </strong><?php echo $doc. ' '; ?> <strong> Nro. Doc: </strong> <?php echo $nro_doc ?><br>
                             <strong> Fecha Nac.:  </strong>  <?php if (!isset($fn)){ echo 'No indica'; } else { echo fechaNumber($fn); } ?> <br>
                             <strong> Estado Civil: </strong><?php echo $estado_civil; ?> <br>
                             <strong> Email: </strong><?php echo $email. ' '; ?><br> 
@@ -111,7 +111,7 @@ h1 {
                 <table style='width:100%'>
                     <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="100%" >C. PERÍODO DE CONTRATACIÓN <?php echo $per_contrat ?></th>
+                      <th width="100%" >C. PERÍODO DE CONTRATACIÓN </th>
                      </tr> 
                     </thead>
                   <tbody contenteditable>
@@ -121,6 +121,7 @@ h1 {
                           <p><br>
                             <strong> Desde: </strong> <?php echo $fi; ?><br>
                             <strong> Hasta: </strong><?php echo $ff; ?> <br>
+                            
                             
                           </p>
                         </blockquote>
@@ -193,7 +194,7 @@ h1 {
                       <td width="100%" style="text-align:left">
                         <blockquote>
                           <p><br>
-                            <strong> Dirección: </strong> Sarmiento 2685 1° Subsuelo Oficina(7600) Mar del Plata<br>
+                            <strong> Dirección: </strong> Sarmiento 2685 1° Subsuelo Oficina 6 (7600) Mar del Plata<br>
                             <strong> CUIT: 30-71614962-1</strong>  <br>
                             <strong> Email: info@fortressargentina.com</strong>  <br>
                           </p>
@@ -208,6 +209,9 @@ h1 {
 		<body lang=ES-AR link="#0563C1" vlink="#954F72" style='tab-interval:35.4pt'>
 
         <div class=WordSection1>
+        <p>&nbsp;</p><p>&nbsp;</p>
+
+        <center><p><strong>  Hoja 1 / 4</strong><o:p></o:p></span></p></center> 
         
         <p class=MsoListParagraphCxSpFirst style='margin-top:0cm;margin-right:29.5pt;
         margin-bottom:10.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
@@ -218,7 +222,10 @@ h1 {
         lang=ES style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:Calibri;
         mso-bidi-theme-font:minor-latin'></span></b><span lang=ES
         style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:Calibri;
-        mso-bidi-theme-font:minor-latin'>Entre los suscriptos, por una <strong> EL PRESTATARIO DEL SERVICIO/LOCATARIO o CLIENTE </strong>, (arriba mencionado en el punto “A” y con sus datos obrantes en la Ficha del Cliente, en adelante Anexo I) , solicita a <strong>SEGURIDAD FORTRESS SA</strong>, en adelante <strong>EL
+        mso-bidi-theme-font:minor-latin'>
+        Entre los suscriptos, por una <strong> EL PRESTATARIO DEL SERVICIO/LOCATARIO o CLIENTE </strong>, (antes mencionado en el punto “A” y con sus datos obrantes en la Ficha del Cliente, 
+        en adelante Anexo I) , solicita a 
+        <strong>SEGURIDAD FORTRESS SA</strong>, en adelante <strong>EL
         PRESTADOR o LOCADOR o EMPRESA</strong>, el servicio de caja de seguridad, que quedará sujeto al siguiente
         contrato de locación de caja de seguridad y su respectivo reglamento de uso, de acuerdo a las siguientes claúsulas:<o:p></o:p></span></p>
         <p>&nbsp;</p>
@@ -444,11 +451,25 @@ precio vigente al momento de la firma del contrato y que puede ser modificado
 por el Locador previa notificación al cliente con un plazo no menor a 30 días.
 El Contrato es de renovación automática por período consecutivo salvo selección de
 plazo determinado para períodos menores a 1 año. Durante el plazo de vigencia
-del presente Contrato el Locatario tendrán derecho de uso de servicios
-adicionales por la Locadora dentro del local brindado por ella o por terceros,
+del presente Contrato el Locatario tendrán derecho de uso de servicios adicionales por la Locadora dentro del local
+
+<center><p><strong>  Hoja 2 / 4</strong><o:p></o:p></span></p></center>  
+
+        <p class=MsoListParagraphCxSpFirst style='margin-top:0cm;margin-right:29.5pt;
+        margin-bottom:10.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
+        text-justify:inter-ideograph;text-indent:0cm;line-height:115%;mso-list:l12 level2 lfo21'><![if !supportLists]><b><span
+        lang=ES style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:Calibri;
+        mso-bidi-theme-font:minor-latin'><span style='mso-list:Ignore'><span
+        style='font:7.0pt "Times New Roman"'> </span></span></span></b><![endif]><b><span
+        lang=ES style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:Calibri;
+        mso-bidi-theme-font:minor-latin'></span></b><span lang=ES
+        style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:Calibri;
+        mso-bidi-theme-font:minor-latin'>brindado por ella o por terceros,
 previo pago de la tarifa correspondiente y bajo las condiciones específicas para
 ese servicio. Como, por ejemplo, el acceso a una sala de reuniones por tiempo determinado.
 <o:p></o:p></span></p>
+
+
 
 <p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
 8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><b><u><span
@@ -605,6 +626,9 @@ caso fortuito o fuerza mayor pero no responde por los objetos que ella contenga
 en cuanto a su naturaleza, cantidad, demérito, valor, etc., y su conservación,
 cuidado y retiro corresponde al titular.<o:p></o:p></span></p>
 
+<p>&nbsp;</p>
+<center><p><strong>  Hoja 3 / 4</strong><o:p></o:p></span></p></center>>  
+
 <p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
 8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><b><u><span
 lang=ES style='font-size:10.0pt;line-height:107%;mso-ascii-font-family:Calibri;
@@ -705,11 +729,9 @@ minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>En Mar
           <p>&nbsp;</p>
       <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th align="left" width="50%" >ACLARACIÓN: </th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -725,7 +747,10 @@ minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>En Mar
                   </tbody>
                   <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >FIRMA CLIENTE: </th>
+                      <th width="50%" >FIRMA CLIENTE</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" >ACLARACIÓN</th>
                      </tr> 
                     </thead>
                 </table>
@@ -737,11 +762,9 @@ minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>En Mar
           
           <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE FORTRESS ARGENTINA SA</th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -755,16 +778,37 @@ minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>En Mar
                         </blockquote>
                     </tr>
                   </tbody>
+                  <thead contenteditable>
+                    <tr class="invoice_detail">
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" > ACLARACIÓN</th>
+                     </tr> 
+                    </thead>
                 </table>
             </div><!--.row-->
-<div style="width:100%; border-top:dashed 1px;margin-top:10mm;margin-bottom:10mm" > </div>
-	
-           
-    </div><!--.me-->
-  </header>
-</div><!--.notec001-->
 
-	<div style="width:100%; border-top:dashed 1px;margin-top:10mm;margin-bottom:10mm" > </div>
-	
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            p>&nbsp;</p>
+            <p>&nbsp;</p>
+            p>&nbsp;</p>
+            <p>&nbsp;</p>
+           
+            <center><p><strong>  Hoja 4 / 4</strong><o:p></o:p></span></p></center>  
+             
+    
+  </header>
+
+
+
+<p>&nbsp;</p>
+
+        
 </page>	
    

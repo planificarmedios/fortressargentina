@@ -360,7 +360,7 @@ h1 {
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.0pt;color:black'>DNI ORGINAL Y COPIA</span></p>
+  normal'><span style='font-size:9.0pt;color:black'>COPIA DNI</span></p>
   </td>
   <td width=47 nowrap valign=bottom style='width:35.0pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -374,7 +374,7 @@ h1 {
   background:white;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-size:16.0pt;
-  color:black'>x</span></p>
+  color:black'></span></p>
   </td>
   <td width=67 nowrap valign=bottom style='width:50.0pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -394,7 +394,7 @@ h1 {
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.0pt;color:black'>COMPROBANTE DE SERVICIOS</span></p>
+  normal'><span style='font-size:9.0pt;color:black'>COPIA TARJETA</span></p>
   </td>
   <td width=47 nowrap valign=bottom style='width:35.0pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -427,7 +427,7 @@ h1 {
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.0pt;color:black'>RESUMEN TARJETA/EXTRACTO
+  normal'><span style='font-size:9.0pt;color:black'>
   </span></p>
   </td>
   <td width=47 nowrap valign=bottom style='width:35.0pt;border-top:none;
@@ -435,14 +435,14 @@ h1 {
   background:white;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-size:16.0pt;
-  color:black'>x</span></p>
+  color:black'></span></p>
   </td>
   <td width=57 nowrap valign=bottom style='width:43.0pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   background:white;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-size:16.0pt;
-  color:black'>x</span></p>
+  color:black'></span></p>
   </td>
   <td width=67 nowrap valign=bottom style='width:50.0pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -461,7 +461,39 @@ h1 {
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.0pt;color:black'>COMPROBANTE DE IMPUESTOS</span></p>
+  normal'><span style='font-size:9.0pt;color:black'></span></p>
+  </td>
+  <td width=47 nowrap valign=bottom style='width:35.0pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:16.0pt;color:black'>&nbsp;</span></p>
+  </td>
+  <td width=57 nowrap valign=bottom style='width:43.0pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
+  text-align:center;line-height:normal'><span style='font-size:16.0pt;
+  color:black'></span></p>
+  </td>
+  <td width=67 nowrap valign=bottom style='width:50.0pt;border-top:none;
+  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:16.0pt;color:black'>&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr style='height:15.0pt'>
+  <td width=63 nowrap valign=bottom style='width:47.0pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:9.0pt;color:black'>&nbsp;</span></p>
+  </td>
+  <td width=243 nowrap style='width:182.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
+  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal'><span style='font-size:9.0pt;color:black'>COPIA ESTATUTO SOCIAL</span></p>
   </td>
   <td width=47 nowrap valign=bottom style='width:35.0pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -493,39 +525,7 @@ h1 {
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.0pt;color:black'>ESTATUTO SOCIAL</span></p>
-  </td>
-  <td width=47 nowrap valign=bottom style='width:35.0pt;border-top:none;
-  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:16.0pt;color:black'>&nbsp;</span></p>
-  </td>
-  <td width=57 nowrap valign=bottom style='width:43.0pt;border-top:none;
-  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  background:white;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
-  text-align:center;line-height:normal'><span style='font-size:16.0pt;
-  color:black'>x</span></p>
-  </td>
-  <td width=67 nowrap valign=bottom style='width:50.0pt;border-top:none;
-  border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:16.0pt;color:black'>&nbsp;</span></p>
-  </td>
- </tr>
- <tr style='height:15.0pt'>
-  <td width=63 nowrap valign=bottom style='width:47.0pt;border:solid windowtext 1.0pt;
-  border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.0pt;color:black'>&nbsp;</span></p>
-  </td>
-  <td width=243 nowrap style='width:182.0pt;border-top:none;border-left:none;
-  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
-  padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
-  <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.0pt;color:black'>ACTA DESIGNACION
+  normal'><span style='font-size:9.0pt;color:black'>ACTA ASAMBLEA
   AUTORIDADES</span></p>
   </td>
   <td width=47 nowrap valign=bottom style='width:35.0pt;border-top:none;
@@ -558,7 +558,7 @@ h1 {
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.0pt;color:black'>ACTA DIRECTORIO/ASAMBLEA</span></p>
+  normal'><span style='font-size:9.0pt;color:black'>ACTA DIRECTORIO AUTORIDADES</span></p>
   </td>
   <td width=47 nowrap valign=bottom style='width:35.0pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
@@ -590,7 +590,7 @@ h1 {
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0cm 3.5pt 0cm 3.5pt;height:15.0pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-size:9.0pt;color:black'>PODER</span></p>
+  normal'><span style='font-size:9.0pt;color:black'> Ó PODER</span></p>
   </td>
   <td width=47 nowrap valign=bottom style='width:35.0pt;border-top:none;
   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;

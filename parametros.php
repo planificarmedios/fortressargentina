@@ -5,7 +5,8 @@
 //$urlweb = 'www.fortressargentina.com';
 
 $servidor = '192.168.0.14:2999';
-$urlweb = 'localhost/fortressargentina';
+$urlweb = 'localhost/fortressargentina'; // url de mercadoPago
+//$urlweb = 'www.fortressargentina.com';
 
 //clave de sitio 6LdludYUAAAAAHuKYB88n72h66UUBzncrxKvZHOm //seguridadfortresssa@g
 //clave secreta 6LdludYUAAAAACyqn0islF1QxAZ8vX-h766hbaRC  //seguridadfortresssa@g

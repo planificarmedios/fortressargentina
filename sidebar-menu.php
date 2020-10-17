@@ -43,6 +43,54 @@ if ($_SESSION['permisos_acceso'] == 'Usuario')  { ?>
 		<?php
 		}
 
+        if ($_GET["module"]=="s_inventory") { ?>
+			<li class="active treeview">
+					<a href="javascript:void(0);">
+					  <i class="fa fa-file-text"></i> <span>Reservas y Consultas</span> <i class="fa fa-angle-left pull-right"></i>
+					</a>
+				  <ul class="treeview-menu">
+					
+					
+					<li><a href="?module=mm"><i class="fa fa-list"></i> Listar</a></li>
+					
+				  </ul>
+			  </li>
+			<?php
+		  }
+		  elseif ($_GET["module"]=="stock_report") { ?>
+			<li class="active treeview">
+					<a href="javascript:void(0);">
+					  <i class="fa fa-file-text"></i> <span>Reservas y Consultas</span> <i class="fa fa-angle-left pull-right"></i>
+					</a>
+				  <ul class="treeview-menu">
+					
+					
+					<li><a href="?module=mm"><i class="fa fa-list"></i> Listar</a></li>
+					
+				  </ul>
+			  </li>
+			<?php
+		  }
+		  else { ?>
+			<li class="treeview">
+					<a href="javascript:void(0);">
+					  <i class="fa fa-file-text"></i> <span>Reservas y Consultas</span> <i class="fa fa-angle-left pull-right"></i>
+					</a>
+				  <ul class="treeview-menu">
+					
+					
+					<li><a href="?module=mm"><i class="fa fa-list"></i> Listar</a></li>
+					
+				  </ul>
+			  </li>
+			<?php
+		}
+
+
+
+
+
+
 } elseif ($_SESSION['permisos_acceso'] == 'Facturacion')  { ?>
 
 			<ul class="sidebar-menu"> <li class="header">MENU</li>

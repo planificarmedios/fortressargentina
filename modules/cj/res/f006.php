@@ -105,11 +105,9 @@ ciudad de Mar del Plata, a los ……… del mes …………………………�
 
           <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th align="left" width="50%" >ACLARACIÓN: </th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -125,7 +123,43 @@ ciudad de Mar del Plata, a los ……… del mes …………………………�
                   </tbody>
                   <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >FIRMA CLIENTE: </th>
+                      <th width="50%" >FIRMA TITULAR</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" >ACLARACIÓN</th>
+                     </tr> 
+                    </thead>
+                </table>
+            </div><!--.row-->
+
+          
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          
+          <div class="row section" align="center">
+            <div class="col-1">
+                <table style='width:80%'>
+                    <thead contenteditable>
+                    
+                    </thead>
+                  <tbody contenteditable>
+                    <tr class="invoice_detail">
+                      <td width="100%" style="text-align:left">
+                        <blockquote>
+                          <p>
+                          <p>&nbsp;</p>
+                            <p>&nbsp;</p>
+                            <p>&nbsp;</p>
+                          </p>
+                        </blockquote>
+                    </tr>
+                  </tbody>
+                  <thead contenteditable>
+                    <tr class="invoice_detail">
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" > ACLARACIÓN</th>
                      </tr> 
                     </thead>
                 </table>
@@ -141,7 +175,7 @@ ciudad de Mar del Plata, a los ……… del mes …………………………�
                 <table style='width:50%'>
                     <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE FORTRESS ARGENTINA SA</th>
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
                      </tr> 
                     </thead>
                   <tbody contenteditable>

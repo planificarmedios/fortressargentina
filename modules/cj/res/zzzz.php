@@ -732,7 +732,7 @@ class=GramE>…….</span>. se firman dos ejemplares del mismo tenor.<o:p></o:p>
                 <table style='width:50%'>
                     <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE FORTRESS ARGENTINA SA</th>
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
                      </tr> 
                     </thead>
                   <tbody contenteditable>
@@ -1651,7 +1651,7 @@ deberán completar la correspondiente DDJJ de <span class=SpellE>PEP´s</span>.
                 <table style='width:50%'>
                     <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE FORTRESS ARGENTINA SA</th>
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
                      </tr> 
                     </thead>
                   <tbody contenteditable>

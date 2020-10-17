@@ -165,6 +165,17 @@ margin-bottom:8.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
 text-justify:inter-ideograph'><span lang=ES style='font-size:10.0pt;line-height:
 107%;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
 
+<center><strong><p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
+8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><span
+lang=ES style='font-size:10.0pt;line-height:107%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Hoja 1 / 5</span></p></strong></center>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
+margin-bottom:8.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
+text-justify:inter-ideograph'><span lang=ES style='font-size:10.0pt;line-height:
+107%;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
+
 <p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
 margin-bottom:10.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
 text-justify:inter-ideograph;text-indent:0cm;line-height:115%;mso-list:l24 level1 lfo19'><![if !supportLists]><span
@@ -340,6 +351,20 @@ mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-f
 minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>IV.
 DEL ACCESO.<o:p></o:p></span></b></p>
 
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
+margin-bottom:8.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
+text-justify:inter-ideograph'><span lang=ES style='font-size:10.0pt;line-height:
+107%;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<strong><p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
+8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><span
+lang=ES style='font-size:10.0pt;line-height:107%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Hoja 2 / 5</span></p></strong>
+
+
+
 <p class=MsoListParagraphCxSpFirst style='margin-top:0cm;margin-right:29.5pt;
 margin-bottom:10.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
 text-justify:inter-ideograph;text-indent:0cm;line-height:115%;mso-list:l35 level1 lfo20'><![if !supportLists]><span
@@ -468,7 +493,7 @@ lang=ES style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:Calibri;
 mso-bidi-theme-font:minor-latin'>SALAS:</span></u></b><span lang=ES
 style='font-size:10.0pt;line-height:115%;mso-bidi-font-family:Calibri;
 mso-bidi-theme-font:minor-latin'> El locador dispondrá dentro del local de <b>SEGURIDAD
-FORTRESS <span class=GramE>SA ,</span></b> de distintas salas de reuniones para la firma de escriguras o 
+FORTRESS <span class=GramE>SA ,</span></b> de distintas salas de reuniones para la firma de escrituras o 
 uso comercial para que el Locatario y/o los autorizados puedan hacer uso.<o:p></o:p></span></p>
 
 <p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
@@ -512,6 +537,18 @@ se hace responsable bajo ningún aspecto de los negocios, operaciones, conteo de
 dinero o cualquier otro acto o suceso que ocurra dentro de las salas. Dichos
 actos o negocios deben ser lícitos y bajo exclusiva responsabilidad de los
 clientes.<o:p></o:p></span></p>
+
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
+margin-bottom:8.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
+text-justify:inter-ideograph'><span lang=ES style='font-size:10.0pt;line-height:
+107%;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<strong><p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
+8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><span
+lang=ES style='font-size:10.0pt;line-height:107%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Hoja 3 / 5</span></p></strong>
 
 <p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
 margin-bottom:8.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
@@ -749,6 +786,18 @@ Locatario luego de haber sido notificado fehacientemente.<u><o:p></o:p></u></spa
 margin-bottom:10.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
 text-justify:inter-ideograph;text-indent:0cm;line-height:115%;mso-list:l7 level1 lfo22'>&nbsp;</p>
 
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
+margin-bottom:8.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
+text-justify:inter-ideograph'><span lang=ES style='font-size:10.0pt;line-height:
+107%;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<strong><p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
+8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><span
+lang=ES style='font-size:10.0pt;line-height:107%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Hoja 4 / 5</span></p></strong>
+
 <p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
 margin-bottom:10.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
 text-justify:inter-ideograph;text-indent:0cm;line-height:115%;mso-list:l7 level1 lfo22'><![if !supportLists]><span
@@ -870,7 +919,7 @@ class=SpellE>PEP´s</span> <span class=SpellE>Politically</span> Exponed People)
 deberán completar la correspondiente DDJJ de <span class=SpellE>PEP´s</span>.
 (Anexo VII)<o:p></o:p></span></p>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
+
 
 <p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
 8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><b><span
@@ -880,18 +929,14 @@ minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>En la
 ciudad de Mar del Plata, a los …… del mes …………………………………………  del año …………… </span> <o:p></o:p></span></b></p>
          <o:p></o:p></span></b></p>
 
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
+         
+                  
 
-           <div class="row section" align="center">
+          <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th align="left" width="50%" >ACLARACIÓN: </th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -907,23 +952,22 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                   </tbody>
                   <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >FIRMA CLIENTE: </th>
+                      <th width="50%" >FIRMA CLIENTE</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" >ACLARACIÓN</th>
                      </tr> 
                     </thead>
                 </table>
             </div><!--.row-->
           
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          
-          <div class="row section" style="margin-top:-1rem">
+         
+            
+          <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE FORTRESS ARGENTINA SA</th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -937,8 +981,29 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                         </blockquote>
                     </tr>
                   </tbody>
+                  <thead contenteditable>
+                    <tr class="invoice_detail">
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" > ACLARACIÓN</th>
+                     </tr> 
+                    </thead>
                 </table>
             </div><!--.row-->
+
+                      
+
+            <p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
+margin-bottom:8.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
+text-justify:inter-ideograph'><span lang=ES style='font-size:10.0pt;line-height:
+107%;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></p>
+
+<strong><p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
+8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><span
+lang=ES style='font-size:10.0pt;line-height:107%;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-hansi-font-family:Calibri;mso-hansi-theme-font:
+minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>Hoja 5 / 5</span></p></strong>
 
 
         

@@ -4,7 +4,7 @@
 
 <section class="content">
   <div class="row">
-    <div class="col-md-13">
+    <div class="col-md-12">
     <?php 
 	 
 
@@ -47,6 +47,9 @@
 
             <thead>
               <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
+              <?php 
+              if ($_SESSION['permisos_acceso'] == 'Administrador') {
+              ?>    
                 <th class="center">Sala</th>
                 <th class="center">Cliente</th>
                 <th class="center">Fecha Reserva</th>
@@ -55,6 +58,16 @@
                 <th class="center">Cod Reserva</th>
                 <th class="center">Estado</th>
                 <th class="center">Acciones</th>
+                <?php } else {
+                ?>    
+                <th class="center">Sala</th>
+                <th class="center">Acciones</th>
+                <th class="center">Estado</th>
+                <th class="center">Fecha</th>
+                <th class="center">Horario</th>
+                 <?php 
+                }
+                ?>
               </tr>
             </thead>
             <tbody>
@@ -76,33 +89,46 @@
 						  $ss = substr($fecha_reserva, 0,10);
 						  //fechaNumber($ss)
 						  $end = $d['end'];
-						  $cliente= $d['apellido_nombre'];
+              if ($_SESSION['permisos_acceso'] == 'Administrador') { $cliente = $d['apellido_nombre']; } else { $cliente = 'Reservado'; };
 						  $estado = $d['estado'];
               $codigo = $d['codigo'];
               
-						  if ($estado == '0'){$m = 'Cancelado';}else {$m = 'Reservado';}
-		   
+						  if ($estado == '0'){$m = 'No confirmado';}else {$m = 'Reservado';}
+       
+              if ($_SESSION['permisos_acceso'] == 'Administrador') {
               echo "<tr>
-                      <td width='80'  class='center'>$sala</td>
-					            <td width='180'  class='center'>$cliente</td>
-                      <td width='100'  class='center'>"?> <?php echo fechaNumber($ss);?>
+                      <td width='15%'  class='center'>$sala</td>
+					            <td width='15%'  class='center'>$cliente</td>
+                      <td width='10%'  class='center'>"?> <?php echo fechaNumber($ss);?>
+                      
                       <?php echo "
                       </td>
+                      
                       <td width='10%'  class='center'>$start</td>
                       <td width='10%'  class='center'>$end</td>
                       <td width='10%'  class='center'>$codigo</td>
                       <td width='15%'  class='center'>$m</td>
-					            <td class='center' width='10%'>
-                        <div>
+					            <td class='center' width='15%'>
+                      <div>
 
-                        <a data-toggle='tooltip' data-placement='top' title='Asistentes' style='margin-right:5px' class='btn btn-success btn-sm' href='?module=form_mm&form=edit&codigo=$codigo'><i style='color:#fff' class='glyphicon glyphicon-user'></i></a>
-
-                            
-                        <a data-toggle='tooltip' data-placement='top' title='Imprimir Detalle' style='margin-right:5px' class='btn btn-primary btn-sm' href='modules/s_inventory/printDetalle.php?&codigo=$codigo'>
+                        <a data-toggle='tooltip' data-placement='top' title='Imprimir Anexo de Reunión' style='margin-right:5px' class='btn btn-primary btn-sm' href='modules/s_inventory/printAnexoReunion.php?&codigo=$codigo'>
                               <i style='color:#fff' class='glyphicon glyphicon-print'></i>
-                          </a>";
-			if ($estado == 1 ) {			  
-            ?>
+                        </a>
+
+                        <a data-toggle='tooltip' data-placement='top' title='Asistentes' style='margin-right:5px' class='btn btn-success btn-sm' href='?module=form_mm&form=edit&codigo=$codigo'>
+                        <i style='color:#fff' class='glyphicon glyphicon-user'></i></a>
+                        
+                        <a data-toggle='tooltip' data-placement='top' title='Imprimir Detalle' style='margin-right:5px' class='btn btn-warning btn-sm' href='modules/s_inventory/printDetalle.php?&codigo=$codigo'>
+                              <i style='color:#fff' class='glyphicon glyphicon-search'></i>
+                        </a>"
+                        ;
+                        
+                        
+                        
+                                 
+			      if ($estado == 1 ) {			  
+            ?>            
+                          
                           <a data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-sm" href="modules/mm/proses.php?act=delete&codigo=<?php echo $codigo;?>" onclick="return confirm('Se eliminará la reserva código <?php echo $codigo; ?> ?');">
                               <i style="color:#fff" class="glyphicon glyphicon-trash"></i>
                           </a>
@@ -114,8 +140,36 @@
 			<?php } 
               echo "    </div>
                       </td>
+                      
                     </tr>";
+            } else {
+
+              "<tr>
+                      <td width='15%'  class='center'>$sala</td>
+					            <td width='10%'  class='center'>"?> <?php ?>
+                      
+                      <?php echo "
+                      </td>
+                      
+                      <td width='10%'  class='center'>$sala</td>
+                      
+					            <td class='center' width='3%'>
+                      <div>
+
+                        <a data-toggle='tooltip' data-placement='top' title='Asistentes' style='margin-right:5px' class='btn btn-success btn-sm' href='?module=form_mm&form=edit&codigo=$codigo'>
+                        <i style='color:#fff' class='glyphicon glyphicon-user'></i></a>";
+                        
+                                 
+			      
+              echo "    </div>
+                      </td>
+                      <td width='15%'  class='center'>$m</td>
+                       <td width='15%'  class='center'>$ss</td>
+                      <td width='15%'  class='center'>$start -  $end</td>
+                    </tr>";
+
             }
+          }
 		    ?>
             </tbody>
           </table>
@@ -123,4 +177,4 @@
       </div><!-- /.box -->
     </div><!--/.col -->
   </div>   <!-- /.row -->
-</section><!-- /.content
+</section><!-- /.content1718501986

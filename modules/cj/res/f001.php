@@ -55,16 +55,13 @@ h1 {
                       <td width="100%" style="text-align:left">
                         <blockquote>
                         	<br>
-                          <p><strong> Nombre / Razón Social Titular: </strong> <?php echo $nombre.' '.$apellido; ?><br>
+                          <p><strong> Nombre / Razón Social: </strong> <?php echo $nombre.' '.$apellido; ?><?php echo $doc. ' '; ?> <strong> Nro. Doc: </strong> <?php echo $nro_doc. ' '; ?> <br>
+                          <strong> Estado Civil: </strong><?php echo $estado_civil ?> <br>
                             <strong> Domicilio: </strong> <?php echo $dom. '' ?> ( <?php echo $cp3. '' ?>). <?php echo $l ?><br>
-                            <strong> Tipo: </strong><?php echo $doc. ' '; ?> <strong> Nro. Doc: </strong> <?php echo $nro_doc. ' '; ?>   
-                            <strong> Estado Civil: </strong><?php echo $estado_civil ?> <br>
-                            <strong> Email: </strong><?php echo $email. ' '; ?><br> 
-                            <strong> Fecha Nac.:  </strong>  <?php if (!isset($fn)){ echo 'No Indica';} else { echo fechaNumber($fn);}?> <br> 
-                            <strong>Tel. Fijo: </strong> <?php echo $telf. ' '; ?>   <strong> 
-                            Tel. Móvil: </strong><?php echo $telm. ' '; ?> <br>
-                            <strong> Id: </strong><?php if (!isset($USRID)){ echo ''; } else { echo ($USRID); } ?> <br>
-                            <strong> Alias: </strong> <?php if (!isset($alias)){ echo 'No Indica'; } else { echo ($alias); } ?> <br>
+                            
+                            <strong> Email: </strong><?php echo $email. ' '; ?> <strong> Fecha Nac.:  </strong>  <?php if (!isset($fn)){ echo 'No Indica';} else { echo fechaNumber($fn);}?> <br> 
+                            <strong>Tel. Fijo: </strong> <?php echo $telf. ' '; ?>   <strong> Tel. Móvil: </strong><?php echo $telm. ' '; ?> 
+                            <strong> Id: </strong><?php if (!isset($USRID)){ echo ''; } else { echo ($USRID); } ?> <strong> Alias: </strong> <?php if (!isset($alias)){ echo 'No Indica'; } else { echo ($alias); } ?> <br>
                           </p>
                         </blockquote>
                     </tr>
@@ -89,7 +86,7 @@ h1 {
                         <blockquote>
                           <p><br>
                             
-                            <strong> Caja: </strong> <?php echo $serie; ?><br>
+                            <strong> Caja: </strong> <?php echo $serie; ?>
                             <strong> Tamaño: </strong><?php echo $descripcion2; ?> <br>
                             <strong> Tipo de Uso: </strong> <?php echo $tu; ?> <strong> Frecuencia de Uso: <?php if ($tu == 'Personal') { echo 4; } else { echo  8; }?> mensuales.
                             </strong><br>
@@ -196,8 +193,7 @@ h1 {
             </div>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
+          
           <p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
 8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><b><span
 lang=ES style='font-size:10.0pt;line-height:107%;mso-ascii-font-family:Calibri;
@@ -206,13 +202,11 @@ minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>En la
 ciudad de Mar del Plata, a los …… del mes …………………………………………  del año …………… </span> <o:p></o:p></span></b></p>
           
        
-          <div class="row section" align="center">
+<div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th align="left" width="50%" >ACLARACIÓN: </th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -228,23 +222,22 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                   </tbody>
                   <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >FIRMA CLIENTE: </th>
+                      <th width="50%" >FIRMA CLIENTE</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" >ACLARACIÓN</th>
                      </tr> 
                     </thead>
                 </table>
             </div><!--.row-->
           
           <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          
-          
+                    
           <div class="row section" align="center">
             <div class="col-1">
-                <table style='width:50%'>
+                <table style='width:80%'>
                     <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE FORTRESS ARGENTINA SA</th>
-                     </tr> 
+                    
                     </thead>
                   <tbody contenteditable>
                     <tr class="invoice_detail">
@@ -258,8 +251,19 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                         </blockquote>
                     </tr>
                   </tbody>
+                  <thead contenteditable>
+                    <tr class="invoice_detail">
+                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" > ACLARACIÓN</th>
+                     </tr> 
+                    </thead>
                 </table>
             </div><!--.row-->
+
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
          
     </div><!--.me-->
   </header>

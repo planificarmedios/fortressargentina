@@ -286,7 +286,7 @@ $_SESSION["idServicio"] = 1; ///////////////cambiar
 						$status = $g['status'];
 						if ($status == 1){$s='Activo';}else{$s='Inactivo';};
 						?> 
-                         <option value= "<?php echo $id2 ?>" label="<?php echo $nombre?>"> <?php echo 'Cliente: '. $id2.' - '.$nombre.$apellido.' - '.$s?> </option>
+                         <option value= "<?php echo $id2 ?>" label="<?php echo $nombre?>"> <?php echo 'Cliente: '. $id2.' - '.$nombre.' '.$apellido.' - '.$s?> </option>
 					<?php	  
 					}
 					?>

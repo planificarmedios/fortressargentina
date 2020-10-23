@@ -121,7 +121,7 @@ if (isset($_POST['imprimir'])) {
 					}
 					 
 		 
-					$get_data = callAPI('GET', $servidor.'/api/cajas/'.$idcaja,false);
+					$get_data = callAPI('GET', $servidor.'/api/cajasRazonSocial/'.$idcaja,false);
 					$response = json_decode($get_data, true);
 					foreach ($response as $d) {
 						$id = $d['id'];
@@ -141,6 +141,21 @@ if (isset($_POST['imprimir'])) {
 						$cobertura_gold =  $d['cobertura_gold'];
 						$ingreso_boveda =  $d['ingreso_boveda'];
 						$tipo_uso =  $d['tipo_uso'];
+						$IDFISCAL =  $d['IDFISCAL'];
+						$DENOMINACIONFISCAL=  $d['DENOMINACIONFISCAL'];
+						$TIPODOCFISCAL =  $d['TIPODOCFISCAL'];
+						if ($TIPODOCFISCAL == 1) { 
+							$TIPODOCFISCAL = 'DNI';
+						} elseif  ($TIPODOCFISCAL == 2) {
+							$TIPODOCFISCAL = 'CUIL';
+						} elseif  ($TIPODOCFISCAL == 3) {
+							$TIPODOCFISCAL = 'CUIT';
+						}		 
+						$NRODOCFISCAL=  $d['NRODOCFISCAL'];
+						$CONDFISCAL=  $d['CONDFISCAL'];
+						$DOMICILIOFISCAL=  $d['DOMICILIOFISCAL'];
+						$CPFISCAL=  $d['CPFISCAL'];
+						$LOCFISCAL=  $d['LOCFISCAL'];
 
 						
 						$get_data=callAPI('GET', $servidor.'/api/servicios/adicionales', false);

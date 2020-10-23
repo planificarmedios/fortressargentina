@@ -101,7 +101,7 @@ include_once ("../../fechaNumber.php");
           echo $f_final.","; 
           echo $cg.","; 
           echo $tipo_uso.",";
-          echo $pc.",";
+          echo $periodo_contratacion .",";
           echo "'$ ".$precio.",";
           echo "'% ".$coef_comercial.",";
           echo "'% ".$coef_gold.",";

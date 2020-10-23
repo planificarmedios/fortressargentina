@@ -23,6 +23,7 @@ if (isset($_POST['imprimir']))
         foreach ($response as $r) {
           $idcliente = $r['id'];
           $nombre = $r['nombre'];
+          $USRID = $r['USRID'];
           $apellido = $r['apellido'];
           $fn = substr($r['fecha_nacimiento'], 0,10); 
           $telm = $r['telefono_movil'];
@@ -64,7 +65,8 @@ if (isset($_POST['imprimir']))
 					$response = json_decode($get_data, true);
 					foreach ($response as $r) {
 						$id = $r['id'];
-						$serie = $r['serie'];
+            $serie = $r['serie'];
+            
 						$tipocaja = $r['tipocaja'];
 						$f_inicio = $r['f_inicio'];
 						$f_final = $r['f_final'];
@@ -118,7 +120,7 @@ if (isset($_POST['imprimir']))
               { 
                 include_once "res/r001.php";
                 include_once "res/f001asoc.php"; 
-                include_once "res/f005.php";
+                //include_once "res/f005.php";
                 include_once "res/d001.php"; 
 				include_once "res/r002.php";  
               

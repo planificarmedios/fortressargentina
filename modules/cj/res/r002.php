@@ -92,7 +92,7 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                   </tbody>
                   <thead contenteditable>
                     <tr class="invoice_detail">
-                      <th width="50%" >FIRMA TITULAR</th>
+                      <th width="50%" >FIRMA CLIENTE</th>
                      </tr> 
                      <tr class="invoice_detail">
                       <th  width="80%" >ACLARACIÓN</th>

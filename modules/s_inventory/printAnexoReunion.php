@@ -117,8 +117,8 @@ $hoy = date("d/m/Y");
 							  <thead style='background:#e8ecee' bordercolor='#000000'>
 								  <tr class='tr-title'>
 									  
-									  <th  height='20' align='left'></th>
-									  <th  height='20 align='left'></th>
+									  <th  height='20' align='left' ></th>
+									  <th  height='20 align='left' ></th>
 									 
 									  
 								  </tr>
@@ -129,8 +129,8 @@ $hoy = date("d/m/Y");
 					      echo "  <tr>
 									
                 
-									<td  height='13'  align='left'>Asistente: $nombre</td>
-									<td  height='13'  align='left'>Dni: $dni </td>
+									<td  height='13'  align='left'  >Asistente: $nombre</td>
+									<td  height='13'  align='left'  >Dni: $dni </td>
                   
                   									
 							</tr>

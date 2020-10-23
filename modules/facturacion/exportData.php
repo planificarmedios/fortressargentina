@@ -1,4 +1,7 @@
 <?php
+ob_start();
+?>
+<?php
 // Decir a PHP que vamos generar un archivo que debe descargarse
 include_once ("../../callAPI.php");
 include_once ("../../parametros.php");
@@ -185,11 +188,11 @@ echo "FECHA ULT. MODIFICACION\n";
                 
             } 
 
- $csv_file = 'Informe_de_Cajas_facturacion_'.date('Y-m-d') .'.csv';
+ $csv_file = 'Informe_facturacion_'.date('Y-m-d') .'.csv';
 //header("Content-Type: text/csv");
 header("Content-Type: application/csv");
 header("Content-Disposition: attachment; filename=$csv_file");
-
-
-
+?>
+<?php
+ob_end_flush();
 ?>

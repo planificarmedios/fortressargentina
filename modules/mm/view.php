@@ -97,7 +97,7 @@
        
               if ($_SESSION['permisos_acceso'] == 'Administrador') {
               echo "<tr>
-                      <td width='15%'  class='center'>$sala</td>
+                      <td width='10%'  class='center'>$sala</td>
 					            <td width='15%'  class='center'>$cliente</td>
                       <td width='10%'  class='center'>"?> <?php echo fechaNumber($ss);?>
                       

@@ -296,13 +296,13 @@ if ($_GET['formEdit']=='edit') {
                	<div class="row">
                	 <div class="col-sm-12 col-md-6">
                     <label class="control-label">Razón Social</label>
-                      <select id="id_rsocial" name="id_rsocial" class="chosen-select" required>
-                      <option value="0">-- Seleccionar --</option>
+                      <select id="id_rsocial" name="id_rsocial" class="chosen-select"  required>
+                      
 						<?php 
                         session_start(); 
                         include_once ("callAPI.php");
                         require_once ("parametros.php");
-                        $get_data = callAPI('GET', $servidor.'/api/fiscales/listar',false);
+                        $get_data = callAPI('GET', $servidor.'/api/DatosFiscales/listar',false);
                         $response = json_decode($get_data, true);
                         
                             foreach ($response as $rs) {
@@ -327,7 +327,7 @@ if ($_GET['formEdit']=='edit') {
                   <div class="col-sm-12 col-md-6">
                     <label class="control-label">Tarjeta Asociada</label>
                         <select id="id_tarjeta" name="id_tarjeta" class="chosen-select"  required>
-                            <option value="0">-- Seleccionar --</option>
+                            
                              <?php 
 							session_start(); 
 							include_once ("callAPI.php");

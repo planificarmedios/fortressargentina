@@ -57,13 +57,13 @@ h1 {
                         	<br>
                           <p><strong> Asociado: </strong> <?php echo $nombre.' '.$apellido; ?><br>
                             <strong> Domicilio: </strong> <?php echo $dom. '' ?> ( <?php echo $cp3. '' ?>). <?php echo $l ?><br>
-                            <?php echo $doc. ' '; ?> <strong> Nro. Doc: </strong> <?php echo $nro_doc. ' '; ?>   
+                            <?php echo $doc. ' '; ?> <strong> Nro. : </strong> <?php echo $nro_doc. ' '; ?>   
                             <strong> Estado Civil: </strong><?php echo $estado_civil ?> <br>
                             <strong> Email: </strong><?php echo $email. ' '; ?><br> 
                             <strong> Fecha Nac.:  </strong>  <?php if (!isset($fn)){ echo 'No Indica';} else { echo fechaNumber($fn);}?> <br> 
                             <strong>Tel. Fijo: </strong> <?php echo $telf. ' '; ?>   <strong> 
                             Tel. Móvil: </strong><?php echo $telm. ' '; ?> <br>
-                            <strong> Id: </strong><?php if (!isset($USRID)){ echo ''; } else { echo ($USRID); } ?> <strong> Alias: </strong> <?php if (!isset($alias)){ echo 'No Indica'; } else { echo ($alias); } ?> <br>
+                            <strong> Id Asociado: </strong><?php if (!isset($USRID)){ echo ''; } else { echo ($USRID); } ?> <strong> Alias: </strong> <?php if (!isset($alias)){ echo 'No Indica'; } else { echo ($alias); } ?> <br>
                           </p>
                         </blockquote>
                     </tr>

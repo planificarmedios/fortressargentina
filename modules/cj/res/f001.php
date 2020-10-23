@@ -55,13 +55,14 @@ h1 {
                       <td width="100%" style="text-align:left">
                         <blockquote>
                         	<br>
-                          <p><strong> Nombre / Razón Social: </strong> <?php echo $nombre.' '.$apellido; ?><?php echo $doc. ' '; ?> <strong> Nro. Doc: </strong> <?php echo $nro_doc. ' '; ?> <br>
-                          <strong> Estado Civil: </strong><?php echo $estado_civil ?> <br>
-                            <strong> Domicilio: </strong> <?php echo $dom. '' ?> ( <?php echo $cp3. '' ?>). <?php echo $l ?><br>
-                            
-                            <strong> Email: </strong><?php echo $email. ' '; ?> <strong> Fecha Nac.:  </strong>  <?php if (!isset($fn)){ echo 'No Indica';} else { echo fechaNumber($fn);}?> <br> 
+                          <p>
+                             <strong> Cliente: </strong> <?php echo $nombre.' '.$apellido.'. '; ?><?php echo $doc. ' '; ?> <strong>: </strong> <?php echo $nro_doc. ' '; ?> <strong> Estado Civil: </strong><?php echo $estado_civil ?> <strong> Fecha Nac.:  </strong>  <?php if (!isset($fn)){ echo 'No Indica';} else { echo fechaNumber($fn);}?> <br>
+                             <strong> Domicilio: </strong> <?php echo $dom. '' ?> ( <?php echo $cp3. '' ?>). <?php echo $l ?> <strong> Email: </strong><?php echo $email. ' '; ?>  <br> 
                             <strong>Tel. Fijo: </strong> <?php echo $telf. ' '; ?>   <strong> Tel. Móvil: </strong><?php echo $telm. ' '; ?> 
                             <strong> Id: </strong><?php if (!isset($USRID)){ echo ''; } else { echo ($USRID); } ?> <strong> Alias: </strong> <?php if (!isset($alias)){ echo 'No Indica'; } else { echo ($alias); } ?> <br>
+                            <p><strong> Razón Social: </strong> <?php echo $DENOMINACIONFISCAL.'. '; ?><?php echo $TIPODOCFISCAL. ' '; ?> <strong> </strong> <?php echo $NRODOCFISCAL. ' '; ?> Condic. : </strong> <?php echo $CONDFISCAL. ' '; ?> <br>
+                           
+                           
                           </p>
                         </blockquote>
                     </tr>
@@ -92,6 +93,7 @@ h1 {
                             </strong><br>
 							              <strong> Desde: </strong> <?php echo $fi; ?>  <strong>  - Hasta: </strong><?php echo $ff; ?> 
 							              <strong>  <?php echo $per_contrat; ?> <br>
+                            
                           </p>
                         </blockquote>
                     </tr>
@@ -231,8 +233,6 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                 </table>
             </div><!--.row-->
           
-          <p>&nbsp;</p>
-                    
           <div class="row section" align="center">
             <div class="col-1">
                 <table style='width:80%'>
@@ -262,8 +262,8 @@ ciudad de Mar del Plata, a los …… del mes ……………………………�
                 </table>
             </div><!--.row-->
 
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
+            
+            
          
     </div><!--.me-->
   </header>

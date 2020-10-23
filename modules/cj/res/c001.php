@@ -61,9 +61,9 @@ h1 {
                            
                             
                             ?>
-                            <strong> Nombre / Razón Social Titular: </strong> <?php echo $nombre.' '.$apellido; ?><br>
+                            <strong> Cliente: </strong> <?php echo $nombre.' '.$apellido; ?><br>
                             <strong> Domicilio: </strong> <?php echo $dom. '' ?> ( <?php echo $cp3. '' ?>). <?php echo $l ?><br>
-                            <strong> </strong><?php echo $doc. ' '; ?> <strong> Nro. Doc: </strong> <?php echo $nro_doc ?><br>
+                            <strong> </strong><?php echo $doc. ' '; ?> <strong> Nro. : </strong> <?php echo $nro_doc ?><br>
                             <strong> Fecha Nac.:  </strong>  <?php if (!isset($fn)){ echo 'No indica'; } else { echo fechaNumber($fn); } ?> <br>
                             <strong> Estado Civil: </strong><?php echo $estado_civil; ?> <br>
                             <strong> Email: </strong><?php echo $email. ' '; ?><br> 

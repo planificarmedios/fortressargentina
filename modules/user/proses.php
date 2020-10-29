@@ -260,7 +260,7 @@ require_once ("../../parametros.php");
 					
 } 
 
-elseif ($_GET['act']=='on') {
+elseif ($_GET['vip']=='on') {
 include_once ("../../callAPI.php");
 require_once ("../../parametros.php");	
 					if (isset($_GET['id'])) { 
@@ -273,7 +273,7 @@ require_once ("../../parametros.php");
 					                        'usuario' => "$usuario"
 					                     );
 						$data_string = json_encode($jsonData);
-						$ch = curl_init($servidor.'/api/enablecliente');
+						$ch = curl_init($servidor.'/api/enableclienteVIP');
 						curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 						curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 						curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -285,5 +285,36 @@ require_once ("../../parametros.php");
 	                    header("location: ../../main.php?module=user&alert=6");
 					
 } 
+
+elseif ($_GET['vip']=='off') {
+	include_once ("../../callAPI.php");
+	require_once ("../../parametros.php");	
+						if (isset($_GET['id'])) { 
+							$id = $_GET['id'];
+							$nombre_usuario = $_SESSION['name_user'];
+						}
+							$usuario = $_SESSION['name_user'];
+							$jsonData = array(  'id' => "$id",
+												'nombre_usuario' => "$nombre_usuario",
+												'usuario' => "$usuario"
+											 );
+							$data_string = json_encode($jsonData);
+							$ch = curl_init($servidor.'/api/disableclienteVIP');
+							curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+							curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+							curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+								curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+								'Content-Type: application/json',
+								'Content-Length: ' . strlen($data_string))
+								);
+							$result = curl_exec($ch);    
+							header("location: ../../main.php?module=user&alert=6");
+						
+	} 
+
+
+
+
+
 
 ?>

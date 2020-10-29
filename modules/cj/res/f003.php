@@ -275,8 +275,7 @@ minor-latin;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>En la
             <o:p></o:p></span>
         </b></p>
 
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
+ 
     <div class="row section" align="center">
             <div class="col-1">
                 <table style='width:80%'>

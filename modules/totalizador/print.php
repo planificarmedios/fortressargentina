@@ -64,11 +64,14 @@ if (isset($_GET['tgl_awal'])) {
             <table width="80%" border="1" align="center">
                 <thead style="border-color:#000" style="background:#e8ecee">
                     <tr class="tr-title">
-				        <th height="20" align="center" valign="middle">Totalizador</th>
+				        <th height="10" align="center" valign="middle">Totalizador</th>
                         <th height="20" align="center" valign="middle">Tipo Uso</th>
+                        <th height="20" align="center" valign="middle">Permitidos</th>
                         <th height="20" align="center" valign="middle">Caja</th>
                         <th height="20" align="center" valign="middle">Serie Caja</th>
                         <th height="20" align="center" valign="middle">Cliente</th>
+                        <th height="20" align="center" valign="middle">VIP</th>
+                        <th height="20" align="center" valign="middle">A Facturar</th>
 				    </tr>
                 </thead>
                 <tbody>
@@ -80,20 +83,37 @@ if (isset($_GET['tgl_awal'])) {
 				 $totalizador = $data['TOTALIZADOR'];
 			     $idcaja = $data['CAJA'];
 			     $serie = $data['SERIE'];
-			     $idtitular = $data['ID_TITULAR'];
+                 $idtitular = $data['ID_TITULAR'];
+                 $vip = $data['VIP'];
+                 
                  $uso = $data['USO'];			
                     if ($uso == 0) { 
                         $tipo_uso = 'Personal';
+                        $accesos = 4;
                     } else  { 
                         $tipo_uso = 'Comercial';
+                        $accesos = 8;
                     };
+
+                    if ($vip == True){ 
+                        $v = 'SI';
+                        $accesos = $accesos * 2;
+                    } else { 
+                        $v = 'NO';
+                    };
+                    $facturar = $totalizador - $accesos ;
+
+                    if ($facturar < 1) { $facturar = 0;};
                     
 						echo "  <tr>
-									<td  height='13' align='center'  valign='middle'>$totalizador</td>
-									<td  height='13' align='center'  valign='middle'>$tipo_uso</td>
+									<td  height='10' align='center'  valign='middle'>$totalizador</td>
+                                    <td  height='13' align='center'  valign='middle'>$tipo_uso</td>
+                                    <td  height='13' align='center'  valign='middle'>$accesos</td>
 									<td  height='13' align='center'  valign='middle'>$idcaja</td>
 									<td  height='13' align='center' valign='middle'>$serie</td>
                                     <td  height='13' align='center' valign='middle'>$idtitular</td>
+                                    <td  height='13' align='center' valign='middle'>$v</td>
+                                    <td  height='10' align='center' valign='middle'>$facturar</td>
 								</tr>";
                       
                     }

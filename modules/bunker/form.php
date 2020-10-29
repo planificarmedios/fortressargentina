@@ -71,6 +71,15 @@ if ($_GET['form']=='edit') {
                  <div class="col-sm-12 col-md-6"> 
                    <?php  
 
+                     if ($d['vip']== true) {
+                                                  
+                      $style2 = "border:1px solid #eaeaea;border-radius:100px;background-color:#EABE3F;";
+                    } else {
+                      $style2 = "border:1px solid #eaeaea;border-radius:100px;background-color:grey;";
+
+                    }                  
+
+
                     if ($d['protesis_metalica']== true) {
 					 
                       $style = "border:1px solid #eaeaea;border-radius:100px;background-color:red;";
@@ -78,8 +87,8 @@ if ($_GET['form']=='edit') {
                       $style = "border:1px solid #eaeaea;border-radius:100px;background-color:green;";
 						
                     }
-						
-						
+
+                    
 
                     if ($d['foto']=="") { ?>
                       <img style="border:1px solid #eaeaea;border-radius:5px;" src="images/user/user-default.png"  width="100">
@@ -88,11 +97,10 @@ if ($_GET['form']=='edit') {
                     else { ?>
                       <img src="images/user/<?php echo $d['foto']; ?>" width="150" height="150" style="border:1px solid #eaeaea;border-radius:100px;"> 
                       <img  width="150" height="150" style="<?php echo $style?>"> 
+                      <img  width="150" height="150" style="<?php echo $style2?>"> 
                     <?php
                     }
-                    ?>
-                </div>
-				           
+				           ?>
                 		
                  			 
 					  

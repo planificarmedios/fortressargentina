@@ -36,6 +36,7 @@ if ($_GET['act']=='insert') {
 					$domicilio = $_POST['domicilio'];
 					$provincia = $_POST['provincia'];
 					$localidad = $_POST['localidad'];
+					$vip = $_POST['vip'];
 					$alias = $_POST['alias'];
 					$protesis = $_POST['protesis'];
 					$chqFiscal = $_POST['chqFiscal'];
@@ -44,10 +45,6 @@ if ($_GET['act']=='insert') {
 					$estado_civil = $_POST['estado_civil'];
 					$dni_matrimonio = $_POST['dni_matrimonio'];
 					$nombre_apell_matrimonio = $_POST['nombre_apell_matrimonio'];
-			
-			
-					
-			
 			
 			
 					if ($permisos_acceso == 1){	$id_autorizante = 0;
@@ -74,6 +71,7 @@ if ($_GET['act']=='insert') {
 										   'telefono' => "$telefono_movil",
 										   'permiso' => "$permisos_acceso",
 										   'foto' => "$foto",
+										   'vip' => "$vip",
 										   'alias' => "$alias",
 										   'condicion_iva' => "$condicion_iva",
 										   'protesis' => "$protesis", 
@@ -147,6 +145,7 @@ require_once ("../../parametros.php");
 					$protesis = $_POST['protesis'];
 					$estado_civil = $_POST['estado_civil'];
 					$condicion_iva = $_POST['condicion_iva'];
+					$vip = $_POST['vip'];
 					$dni_matrimonio = $_POST['dni_matrimonio'];
 					$nombre_apell_matrimonio = $_POST['nombre_apell_matrimonio'];
 					$chqFiscal = $_POST['chqFiscal'];
@@ -206,7 +205,8 @@ require_once ("../../parametros.php");
 										   'foto' => "$foto",
 										   'domicilio' => "$domicilio",
 										   'email' => "$email",
-									  	   'alias' => "$alias",
+										   'alias' => "$alias",
+										   'vip' => "$vip",
 										   'token' => "$token",
 										   'condicion_iva' => "$condicion_iva", 
 										   'protesis' => "$protesis",

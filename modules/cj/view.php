@@ -133,7 +133,7 @@
 		  include_once ("callAPI.php");
 		  include_once ("parametros.php");
 		  include_once ("fechaNumber.php");
-	      $get_data = callAPI('GET', $servidor.'/api/cajas/consulta',false);
+	      $get_data = callAPI('GET', $servidor.'/api/cajas/consultaOcupadas',false);
 		  $response = json_decode($get_data, true);
 		  
 		

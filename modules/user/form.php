@@ -427,11 +427,18 @@ require_once("fechaNumber.php");
 						};
 						?>
 
-					<div class="col-sm-12 col-md-4">
+					<div class="col-sm-12 col-md-2">
 						<label class="control-label">Fecha Nacimiento <?php echo $fn ?> </label>
 						<input type="text"  class="form-control date-picker" data-date-format="yyyy-mm-dd"  value='<?php echo  $d['fecha_nacimiento'];?>'  id="fnacimiento" name="fnacimiento" autocomplete="off">
 						</div>
-              		</div>
+
+						<div class="col-sm-12 col-md-2">
+                        	<label class="control-label">Cliente VIP</label>
+                				<select class="chosen-select" id="vip" name="vip" >
+									<option value="0" <?php if ($d['vip']==0){?>  selected="<?php echo 'selected';};?>">NO</option>
+									<option value="1" <?php if ($d['vip']==1){?> selected="<?php echo 'selected';};?>">SI</option>
+								</select>
+	              		</div>
               </div>
              </fieldset>
              

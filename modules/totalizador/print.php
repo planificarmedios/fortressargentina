@@ -95,15 +95,17 @@ if (isset($_GET['tgl_awal'])) {
                         $accesos = 8;
                     };
 
-                    if ($vip == True){ 
+                    if ($vip == true){ 
                         $v = 'SI';
-                        $accesos = $accesos * 2;
+                        $facturar = 'PASE LIBRE';
                     } else { 
                         $v = 'NO';
+                        $facturar = $totalizador - $accesos ;
+                        if ($facturar < 1) { $facturar = 0;};
                     };
-                    $facturar = $totalizador - $accesos ;
+                    
 
-                    if ($facturar < 1) { $facturar = 0;};
+                    
                     
 						echo "  <tr>
 									<td  height='10' align='center'  valign='middle'>$totalizador</td>

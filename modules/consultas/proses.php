@@ -7,15 +7,18 @@ include_once ("../../parametros.php");
 	    $id_cliente = $_POST['id_cliente'];
 		$tipo_caja = $_POST['tipo_caja'];
 		$nombre = $_POST['nombre'];
+		$comentario = 'Reserva de Caja';
 		$celular= $_POST['celular'];
 		$email= $_POST['email'];
+		$tipo_consulta= $_POST['tipo_consulta'];
 		
 		$jsonData = array( 'id_cliente' => "$id_cliente", 
-		                   'tipo_caja' => "$tipo_caja",
+						   'tipo_caja' => "$tipo_caja",
 						   'contacto' => "$nombre",
 						   'tel' => "$celular",
 						   'email' => "$email",
-						   'tipo_consulta' => 1
+						   'comentario' => "$comentario",
+						   'tipo_consulta' => "$tipo_consulta"
 						   );
 		$data_string = json_encode($jsonData);
 		$ch = curl_init($servidor.'/api/consultas/add');
@@ -28,7 +31,72 @@ include_once ("../../parametros.php");
 		);
 		$result = curl_exec($ch);    
         header("location: ../../main.php?module=consultas&alert=1");
-		}
+	}
+
+
+} elseif ($_GET['act']=='temporal') {
+
+			if (isset($_POST['guardar'])) {
+			$id_cliente = $_POST['id_cliente'];
+			$serie= $_POST['serie'];
+			$tipo_consulta= $_POST['tipo_consulta'];
+			$inicio= $_POST['inicio'];
+			$fin= $_POST['fin'];
+			$comentario= $_POST['comentario'];
+			
+			$jsonData = array( 'id_cliente' => "$id_cliente", 
+							   'serie' => "$serie",
+							   'tipo_consulta' => "$tipo_consulta",
+							   'inicio' => "$inicio",
+							   'fin' => "$fin",
+							   'comentario' => "$comentario"
+							   );
+			$data_string = json_encode($jsonData);
+			$ch = curl_init($servidor.'/api/consultas/temporal');
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'Content-Type: application/json',
+			'Content-Length: ' . strlen($data_string))
+			);
+			$result = curl_exec($ch);    
+			header("location: ../../main.php?module=consultas&alert=1");
+			}
+
+
+		} elseif ($_GET['act']=='permanente') {
+
+			if (isset($_POST['guardar'])) {
+			$id_cliente = $_POST['id_cliente'];
+			$serie= $_POST['serie'];
+			$tipo_consulta= $_POST['tipo_consulta'];
+			$inicio= $_POST['inicio'];
+			$fin= $_POST['fin'];
+			$comentario= $_POST['comentario'];
+			
+			$jsonData = array( 'id_cliente' => "$id_cliente", 
+							   'serie' => "$serie",
+							   'tipo_consulta' => "$tipo_consulta",
+							   'inicio' => "$inicio",
+							   'fin' => "2999-12-31",
+							   'comentario' => "$comentario"
+							   );
+			$data_string = json_encode($jsonData);
+			$ch = curl_init($servidor.'/api/consultas/temporal');
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'Content-Type: application/json',
+			'Content-Length: ' . strlen($data_string))
+			);
+			$result = curl_exec($ch);    
+			header("location: ../../main.php?module=consultas&alert=1");
+			}
+
+
+
 
 } elseif ($_GET['act']=='delete') {
 		if (isset($_GET['id']) and isset($_GET['nrocaja'])) { 

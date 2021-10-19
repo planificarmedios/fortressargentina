@@ -6,7 +6,7 @@ ob_start();
 include_once ("../../callAPI.php");
 include_once ("../../parametros.php");
 include_once ("../../fechaNumber.php");
-$get_data = callAPI('GET', $servidor.'/api/cajas/facturarOcupadas',false);
+$get_data = callAPI('GET', $servidor.'/api/totalizadorventas_planes/cajas',false);
 $response = json_decode($get_data, true);
 
 //cabecera del .csv
@@ -41,11 +41,21 @@ echo "% Cf.Notif.,";
 echo "Cb.Gold,"; 
 echo "% Cf.Gold,"; 
 echo "$ ABONO A FACTURAR,"; 
+echo "ID_PLAN,"; 
+echo "PLAN ACTIVO,"; 
+echo "PLAN DESC,"; 
+echo "PLAN INICIO,";
+echo "PLAN FIN,";
+echo "IMPORTE FINAL,";
 echo "FECHA ULT. MODIFICACION\n"; 
 
 
 //registros del .csv
-   foreach ($response as $data) {
+foreach ($response as $data) {
+$PLAN_INICIO = fechaNumber ($data['PLAN_INICIO']);
+$PLAN_FIN = fechaNumber ($data['PLAN_FIN']);
+
+
     echo $data['serie'].",";
     echo $data['id_cliente'].",";
 
@@ -58,11 +68,13 @@ echo "FECHA ULT. MODIFICACION\n";
     }
 
     $nro_tarjeta = "'".$data['numero'];
+    $inicio = fechaNumber ($data['INICIO_CONTRATO']);
+    $fin = fechaNumber ($data['FINAL_CONTRATO']);
 
     echo $s.",";
     echo $data['CLIENTE'].",";
-    echo $data['INICIO_CONTRATO'].",";
-    echo $data['FINAL_CONTRATO'].",";
+    echo $inicio.",";
+    echo $fin.",";
     echo $data['id_rsocial'].",";
     echo $data['razon_social'].",";
     echo $data['tipo_doc'].","; 
@@ -75,7 +87,7 @@ echo "FECHA ULT. MODIFICACION\n";
     echo $data['tipo'].",";  
     echo $nro_tarjeta.","; 
     echo $data['marca'].",";  
-    $vencimiento = "'".date("Y-m", strtotime($data['vencimiento']));
+    $vencimiento = "'".date("m-Y", strtotime($data['vencimiento']));
     echo $vencimiento.","; 
     echo $data['tipocaja'].","; 
 
@@ -87,6 +99,13 @@ echo "FECHA ULT. MODIFICACION\n";
                   $coef_gold = $data['coef_gold'];
                   $ingreso_boveda = $data['ingreso_boveda'];
                   $cobertura_gold = $data['cobertura_gold'];
+                  $ID_PLAN = $data['ID_PLAN'];
+                  $PLAN_ACTIVO = $data['PLAN_ACTIVO'];
+                  $PLAN_DESC = $data['PLAN_DESC'];
+                  $PLAN_INICIO = fechaNumber ($data['PLAN_INICIO']);
+                  $PLAN_FIN = fechaNumber ($data['PLAN_FIN']);
+
+                  
 
                   $coef_uso = $tipo_uso * $coef_comercial;
                   
@@ -171,6 +190,12 @@ echo "FECHA ULT. MODIFICACION\n";
                 } else {
                   $cg = ''; 
                 }
+
+                if ($PLAN_ACTIVO == 1) {
+                  $importe_final = $importe_mensual - ($importe_mensual * $PLAN_DESC / 100 );
+                } else {
+                  $importe_final = $importe_mensual;
+                }
                 
                 echo "'$ ".$precioxxx.",";
                 echo "'% ".$coef_uso.",";
@@ -183,6 +208,12 @@ echo "FECHA ULT. MODIFICACION\n";
                 echo $cg.",";
                 echo "'% ".$coef_cob_gold.",";
                 echo "'$ ".$importe_mensual.",";
+                echo $ID_PLAN .",";
+                echo $PLAN_ACTIVO .",";
+                echo "'% ".$PLAN_DESC .",";
+                echo $PLAN_INICIO.",";
+                echo $PLAN_FIN.",";
+                echo "'$ ".$importe_final.",";
                 $modificado = date("d/m/Y", strtotime($data['MODIFICADO']));
                 echo $modificado."\n"; 
                 

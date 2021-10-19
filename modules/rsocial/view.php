@@ -43,7 +43,7 @@
                 <th class="center">Tipo</th>
                 <th class="center">N° Doc.</th>
                 <th class="center">Domicilio</th>
-                <th class="center">Email</th> 
+                
                 <th class="center">Cp</th>  
                 <th class="center">Localidad</th>
               </tr>
@@ -54,7 +54,7 @@
       include_once ("callAPI.php");
       require_once ("parametros.php");
       
-      $get_data = callAPI('GET', $servidor.'/api/fiscales/listar',false);
+      $get_data = callAPI('GET', $servidor.'/api/fiscales/listarTop',false);
       $response = json_decode($get_data, true);
         
         foreach ($response as $d) {
@@ -87,7 +87,7 @@
                       <td width='5%'   class='center'>$tp</td>
                       <td width='10%'  class='center'>$numero_doc</td>
                       <td width='20%'  class='center'>$domicilio</td>
-					            <td width='10%'  class='center'>$email</td>
+					         
                       <td width='5%'  class='center'>$cp</td>
                       <td width='15%'  class='center'>$localidad</td>
                       <div>

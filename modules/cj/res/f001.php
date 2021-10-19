@@ -60,8 +60,8 @@ h1 {
                              <strong> Domicilio: </strong> <?php echo $dom. '' ?> ( <?php echo $cp3. '' ?>). <?php echo $l ?> <strong> Email: </strong><?php echo $email. ' '; ?>  <br> 
                             <strong>Tel. Fijo: </strong> <?php echo $telf. ' '; ?>   <strong> Tel. Móvil: </strong><?php echo $telm. ' '; ?> 
                             <strong> Id: </strong><?php if (!isset($USRID)){ echo ''; } else { echo ($USRID); } ?> <strong> Alias: </strong> <?php if (!isset($alias)){ echo 'No Indica'; } else { echo ($alias); } ?> <br>
-                            <p><strong> Razón Social: </strong> <?php echo $DENOMINACIONFISCAL.'. '; ?><?php echo $TIPODOCFISCAL. ' '; ?> <strong> </strong> <?php echo $NRODOCFISCAL. ' '; ?> Condic. : </strong> <?php echo $CONDFISCAL. ' '; ?> <br>
-                           
+                            <p><strong> Razón Social: </strong> <?php echo $DENOMINACIONFISCAL. ' '; ?><?php echo $TIPODOCFISCAL. ' '; ?> <strong> </strong> <?php echo $NRODOCFISCAL. ' '; ?> Condic. : </strong> <?php echo $CONDFISCAL. ' '; ?> <br>
+                            <p><strong> Domicilio Fiscal: </strong> <?php echo $DOMICILIOFISCAL. ' ('.$CPFISCAL. ') '.' '.$LOCFISCAL  ?> <br>
                            
                           </p>
                         </blockquote>
@@ -183,7 +183,7 @@ h1 {
                         <blockquote>
                           <p><br>
                             <strong> Forma de cobro: </strong> <?php $form_pago; ?>
-							              <strong> Marca: </strong> <?php echo $marca; ?><br>
+							              <strong> Marca / Tipo: </strong> <?php echo $marca.' '.$tipo; ?><br>
                             <strong> Número de Tarjeta: </strong><?php echo $num_tarj; ?> 
                             <strong> Banco: </strong> <?php echo $banco; ?> 
 							              <strong> Vencimiento: </strong> <?php echo $v; ?> <br>

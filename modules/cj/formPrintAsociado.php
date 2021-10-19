@@ -122,7 +122,8 @@ if (isset($_POST['imprimir']))
                 include_once "res/f001asoc.php"; 
                 //include_once "res/f005.php";
                 include_once "res/d001.php"; 
-				include_once "res/r002.php";  
+                include_once "res/r002.php"; 
+                include_once "res/r003.php";
               
               } else {
               

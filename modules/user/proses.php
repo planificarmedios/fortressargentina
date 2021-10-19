@@ -96,6 +96,18 @@ if ($_GET['act']=='insert') {
 						$result = curl_exec($ch);    
                         header("location: ../../main.php?module=user&alert=1");
 		}
+}
+
+if ($_GET['act']=='editarNuevoCliente') {
+	if (isset($_POST['consultar'])) {
+		
+		
+
+		$id_cliente= $_POST['id_cliente'];
+			
+		 
+					header("location: ../../main.php?module=form_user&form=edit&id=$id_cliente");
+	}
 } 
 
 elseif ($_GET['act']=='update') {
@@ -260,6 +272,32 @@ require_once ("../../parametros.php");
 					
 } 
 
+elseif ($_GET['act']=='on') {
+	include_once ("../../callAPI.php");
+	require_once ("../../parametros.php");	
+						if (isset($_GET['id'])) { 
+							$id = $_GET['id'];
+							$nombre_usuario = $_SESSION['name_user'];
+						}
+							$usuario = $_SESSION['name_user'];
+							$jsonData = array(  'id' => "$id",
+												'nombre_usuario' => "$nombre_usuario",
+												'usuario' => "$usuario"
+											 );
+							$data_string = json_encode($jsonData);
+							$ch = curl_init($servidor.'/api/enablecliente');
+							curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+							curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+							curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+								curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+								'Content-Type: application/json',
+								'Content-Length: ' . strlen($data_string))
+								);
+							$result = curl_exec($ch);    
+							header("location: ../../main.php?module=user&alert=5");
+						
+	} 
+
 elseif ($_GET['vip']=='on') {
 include_once ("../../callAPI.php");
 require_once ("../../parametros.php");	
@@ -310,11 +348,8 @@ elseif ($_GET['vip']=='off') {
 							$result = curl_exec($ch);    
 							header("location: ../../main.php?module=user&alert=6");
 						
-	} 
+	}  
 
-
-
-
-
+	
 
 ?>

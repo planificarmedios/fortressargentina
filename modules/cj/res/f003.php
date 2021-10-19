@@ -255,7 +255,7 @@ $response=json_decode($get_data, true);
 
                                 <strong> Contratación con renovación automática anual, semestral, trimestral o mensual 
                                 con pago mensual adelantado sólo por débito automático por tarjeta de crédito<br>
-                                <strong> Pago por adelantado en un sólo pago congela el precio por todo el año<br>
+                               
 
 
                             </p>

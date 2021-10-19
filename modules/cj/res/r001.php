@@ -283,7 +283,7 @@ mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>se reserva el
 derecho de no alquilar cajas de seguridad bajo titularidad conjunta. <span
 style='color:black;mso-themecolor:text1'><o:p></o:p></span></span></p>
 
-<p class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
+<p contenteditable class=MsoListParagraphCxSpMiddle style='margin-top:0cm;margin-right:29.5pt;
 margin-bottom:8.0pt;margin-left:21.3pt;mso-add-space:auto;text-align:justify;
 text-justify:inter-ideograph'><span lang=ES style='font-size:10.0pt;line-height:
 107%;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin;color:black;

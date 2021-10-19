@@ -3,26 +3,450 @@ if (empty($_SESSION['name_user']) && empty($_SESSION['password'])){
 	header("Location: index.php?alert=33"); 
 }
 
+        include_once ("callAPI.php");
+        require_once ("parametros.php");
+
+		$get_data = callAPI('GET', $servidor.'/api/cajas/totalTamano/1027',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $total_extragrande = $d['cantidad'];
+		}
+
+        $get_data = callAPI('GET', $servidor.'/api/cajas/totalTamano/1004',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $total_grande = $d['cantidad'];
+		}
+
+ 		$get_data = callAPI('GET', $servidor.'/api/cajas/totalTamano/1003',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $total_mediana = $d['cantidad'];
+		}
+
+		$get_data = callAPI('GET', $servidor.'/api/cajas/totalTamano/1002',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $total_chica = $d['cantidad'];
+		}
+
+
+       $get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/ocupadas',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $ocupadas = $d['cantidad'];
+        }
+        
+        $get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/reparacion',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+                $enreparacion = $d['cantidad'];
+        }
+        
+        $get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/ocupadasFortress',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+                $reservadasfortress = $d['cantidad'];
+        }
+        
+        $get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/totales',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $c = $d['cantidad'];
+		}
+
+	  
+		
+		$get_data = callAPI('GET', $servidor.'/api/estadisticas/reservas/ocupadas/dia',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $dd = $d['cantidad'];
+		}
+
+
+		$get_data = callAPI('GET', $servidor.'/api/totalizarAvencerse',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $tt = $d['cantidad'];
+		}
+
+		
+
+		
+
 ?>
-<style type="text/css">
-.black {
-	color: #000;
+<style>
+
+body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", 
+Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
+
+
+
+#chartdiv {
+  width: 100%;
+  height: 250px;
+}
+
+
+#chartdiv3 {
+  width: 50%;
+  height: 250px;
+}
+
+#chartdiv2 {
+  width: 100%;
+  height: 250px;
+}
+
+#chartdiv4 {
+  width: 50%;
+  height: 250px;
+}
+
+
+
+
+  
 </style>
 
+  <!-- Resources -->
+  <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+  
+  <!-- Chart code -->
+<script>
+	
+var container = am4core.create("chartdiv", am4core.Container);
+container.width = am4core.percent(100);
+container.height = am4core.percent(100);
+container.layout = "horizontal";
 
-<section class="content-header">
-    <h1 class="black">
-      <i class="fa fa-home icon-title"></i> <span class="black">Inicio</span>
-  </h1>
-    <ol class="breadcrumb">
-      <li><a href="?module=start"> <span class="black">Inicio</span></a></li>
-    </ol>
-  </section>
+function createChart(data) {
+
+  // Create chart
+  var chart = container.createChild(am4charts.PieChart3D);
+
+  // Add data
+  chart.data = data;
+
+  // Add and configure Series
+  var pieSeries = chart.series.push(new am4charts.PieSeries3D());
+ 
+  pieSeries.dataFields.value = "litres";
+  pieSeries.dataFields.category = "country";
+ 
+  pieSeries.labels.template.disabled = true;
+  pieSeries.ticks.template.disabled = true;
+  pieSeries.slices.template.propertyFields.fill = "color";
+  chart.legend = new am4charts.Legend();
+  chart.legend.fontSize = 15;
+
+
+  
+
+  
+};
+	  
+//caja extragrande
+createChart([{
+   
+   "country": "Disponible",
+  <?php
+	            include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/ocupadas/1027',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $ocupadas_extragrande = $d['cantidad'];
+				}
+				
+  ?>
+  "litres": <?php echo ($total_extragrande-$ocupadas_extragrande);?>,
+  "color": am4core.color("#00a65a")
+}, {
+  "country": "Fortress",
+  <?php
+	            include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/ocupadasFortress/1027',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $fortress_extragrande = $d['cantidad'];
+				}
+  ?>
+  "litres": <?php echo $fortress_extragrande;?>,
+  "color": am4core.color("#00c0ef")
+
+},  
+		 
+{
+  "country": "En reparacion",
+  <?php
+	            include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/reparacion/1027',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $reparacion_extragrande = $d['cantidad'];
+				}
+  ?>
+  "litres": <?php echo $reparacion_extragrande;?>,
+  "color": am4core.color("grey")
+},
+			 
+			 
+{
+  "country": "Alquilada",
+  "litres": <?php echo ($ocupadas_extragrande-$fortress_extragrande-$reparacion_extragrande); ?>,
+    "color": am4core.color("#dd4b39"),
+      "config": {
+          "isActive": true,
+          "stroke": am4core.color("#3787ac"),
+          "filters": [{
+          "type": "DropShadowFilter"
+          }]
+      }
+}, 
+	
+			
+			
+]);
+	  
+	  
+///////////////////////////////// caja grande ///////////////////////////////// 
+	  
+createChart([{
+   "country": "Disponible",
+  <?php
+	            include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/ocupadas/1004',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $ocupadas_grande = $d['cantidad'];
+				}
+				
+  ?>
+  "litres": <?php echo ($total_grande-$ocupadas_grande);?>,
+  "color": am4core.color("#00a65a")
+}, {
+  "country": "Fortress",
+  <?php
+	            include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/ocupadasFortress/1004',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $fortress_grande = $d['cantidad'];
+				}
+  ?>
+  "litres": <?php echo $fortress_grande;?>,
+  "color": am4core.color("#00c0ef")
+
+},  
+		 
+{
+  "country": "En reparacion",
+  <?php
+	            include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/reparacion/1004',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $reparacion_grande = $d['cantidad'];
+				}
+  ?>
+  "litres": <?php echo $reparacion_grande;?>,
+  "color": am4core.color("grey")
+},
+			 
+			 
+{
+  "country": "Alquilada",
+  "litres": <?php echo ($ocupadas_grande-$fortress_grande-$reparacion_grande); ?>,
+    "color": am4core.color("#dd4b39"),
+      "config": {
+          "isActive": true,
+          "stroke": am4core.color("#3787ac"),
+          "filters": [{
+          "type": "DropShadowFilter"
+          }]
+      }
+}, 
+	
+			
+			
+]);
+	  
+/////////////////////////////////////////// caja mediana ///////////////////////////////////////////////////////////////////////
+	  
+createChart([{
+   "country": "Disponible",
+  <?php
+	            include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/ocupadas/1003',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $ocupadas_mediana = $d['cantidad'];
+				}
+				
+  ?>
+  "litres": <?php echo ($total_mediana-$ocupadas_mediana);?>,
+  "color": am4core.color("#00a65a")
+}, {
+  "country": "Fortress",
+  <?php
+	            include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/ocupadasFortress/1003',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $fortress_mediana = $d['cantidad'];
+				}
+  ?>
+  "litres": <?php echo $fortress_mediana;?>,
+  "color": am4core.color("#00c0ef")
+
+},  
+		 
+{
+  "country": "En reparacion",
+  <?php
+	            include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/reparacion/1003',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $reparacion_mediana = $d['cantidad'];
+				}
+  ?>
+  "litres": <?php echo $reparacion_mediana;?>,
+  "color": am4core.color("grey")
+},
+			 
+			 
+{
+  "country": "Alquilada",
+  "litres": <?php echo ($ocupadas_mediana-$fortress_mediana-$reparacion_mediana); ?>,
+    "color": am4core.color("#dd4b39"),
+      "config": {
+          "isActive": true,
+          "stroke": am4core.color("#3787ac"),
+          "filters": [{
+          "type": "DropShadowFilter"
+          }]
+      }
+}, 
+	
+			
+			
+]);
+	  
+	  
+	  
+///////////////////////////////////// caja chica //////////////////////////////////////////////////////////
+	  
+createChart([{
+   "country": "Disponible",
+  <?php
+	            include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/ocupadas/1002',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $ocupadas_chica = $d['cantidad'];
+				}
+				
+  ?>
+  "litres": <?php echo ($total_chica-$ocupadas_chica);?>,
+  "color": am4core.color("#00a65a")
+}, {
+  "country": "Fortress",
+  <?php
+	            include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/ocupadasFortress/1002',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $fortress_chica = $d['cantidad'];
+				}
+  ?>
+  "litres": <?php echo $fortress_chica;?>,
+  "color": am4core.color("#00c0ef")
+
+},  
+		 
+{
+  "country": "En reparacion",
+  <?php
+	            include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/reparacion/1002',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $reparacion_chica = $d['cantidad'];
+				}
+  ?>
+  "litres": <?php echo $reparacion_chica;?>,
+  "color": am4core.color("grey")
+},
+			 
+			 
+{
+  "country": "Alquilada",
+  "litres": <?php echo ($ocupadas_chica-$fortress_chica-$reparacion_chica); ?>,
+    "color": am4core.color("#dd4b39"),
+      "config": {
+          "isActive": true,
+          "stroke": am4core.color("#3787ac"),
+          "filters": [{
+          "type": "DropShadowFilter"
+          }]
+      }
+}, 
+	
+			
+			
+]);
+
+
+  </script>
+
+
+
+
   
  
   <!-- Main content -->
   <section class="content">
+
+  
   
 
     <!-- Small boxes (Stat box) -->
@@ -30,54 +454,152 @@ if (empty($_SESSION['name_user']) && empty($_SESSION['password'])){
   <div class="row">
     <div class="col-md-13">
 
+
+
  
 <div class="box box-warning" style="color:#003">
 <div class="box-body">
 
- <!-- Small boxes (Stat box) -->
- <div class="row"><!-- ./col --><!-- ./col -->
-      <div class="col-lg-3 col-xs-4">
+<div id="chartdiv2"></div>
+
+
+     
+	  <div class="col-lg-3 col-xs-4" id="chartdiv3"></div>
+	  <div class="col-lg-3 col-xs-4" id="chartdiv4"></div>
+	  
+
+	
+	 <div class="col-lg-3 col-xs-4">
+        <!-- small box -->
+        <div class="info-box">
+		  <span class="info-box-icon bg-info"><i class="fa fa-lock"></i></span>
+		  <div class="info-box-content">
+			<span class="info-box-text">Total Cajas en Bóveda</span>
+			<span class="info-box-number">
+				<?php echo $c; ?>
+			  </span>
+		  </div>
+		</div>
+      </div><!-- ./col -->
+
+     <div class="col-lg-3 col-xs-4">
+        <!-- small box -->
+        <div class="info-box">
+		  <span class="info-box-icon bg-info"><i class="fa fa-lock"></i></span>
+		  <div class="info-box-content">
+			<span class="info-box-text">Cajas Ocupadas</span>
+			<span class="info-box-number">
+				<?php echo $ocupadas; ?>
+			  </span>
+		  </div>
+		</div>
+      </div><!-- ./col -->
+
+     <div class="col-lg-3 col-xs-4">
+       <!-- small box -->
+        <div class="info-box">
+		  <span class="info-box-icon bg-info"><i class="fa fa-lock"></i></span>
+		  <div class="info-box-content">
+			<span class="info-box-text">Cajas Disponibles</span>
+			<span class="info-box-number">
+				<?php echo $c - $ocupadas; ?>
+			  </span>
+		  </div>
+		</div>
+      </div><!-- ./col -->
+    
+   
+    <div class="col-lg-3 col-xs-4">
+       <!-- small box -->
+        <div class="info-box">
+		  <span class="info-box-icon bg-red"><i class="fa fa-lock"></i></span>
+		  <div class="info-box-content">
+			<span class="info-box-text">Cajas Próximo a Vencerse</span>
+			<span class="info-box-number">
+				<?php echo $tt; ?>
+			</span>
+
+			
+           <a href="?module=formEdit_cj&formEdit=vencerse" class="small-box-footer" title="Listar" data-toggle="tooltip"><i style="color:#000" class="fa fa-search"></i></a>
+         
+
+		  </div>
+		</div>
+      </div><!-- ./col -->
+	
+	<div class="col-lg-3 col-xs-4">
+        <!-- small box -->
+        <div class="info-box">
+		  <span class="info-box-icon bg-info"><i class="fa fa-unlock"></i></span>
+		  <div class="info-box-content">
+			<span class="info-box-text">Cajas Ocupadas</span>
+			<span class="info-box-number">
+				<?php echo $ocupadas; ?>
+			  </span>
+		  </div>
+		</div>
+      </div><!-- ./col -->
+	
+	<div class="col-lg-3 col-xs-4">
+        <!-- small box -->
+        <div class="info-box">
+		  <span class="info-box-icon bg-info"><i class="fa fa-unlock"></i></span>
+		  <div class="info-box-content">
+			<span class="info-box-text">Cajas Alquiladas</span>
+			<span class="info-box-number">
+				<?php echo ($ocupadas-$reservadasfortress-$enreparacion); ?>
+			  </span>
+		  </div>
+		</div>
+      </div><!-- ./col -->
+	
+	<div class="col-lg-3 col-xs-4">
+        <!-- small box -->
+        <div class="info-box">
+		  <span class="info-box-icon bg-info"><i class="fa fa-unlock"></i></span>
+		  <div class="info-box-content">
+			<span class="info-box-text">Reservadas Fortress</span>
+			<span class="info-box-number">
+				<?php echo $reservadasfortress; ?>
+			  </span>
+		  </div>
+		</div>
+      </div><!-- ./col -->
+	
+	<div class="col-lg-3 col-xs-4">
+        <!-- small box -->
+        <div class="info-box">
+		  <span class="info-box-icon bg-info"><i class="fa fa-unlock"></i></span>
+		  <div class="info-box-content">
+			<span class="info-box-text">En Reparación</span>
+			<span class="info-box-number">
+				<?php echo $enreparacion; ?>
+			  </span>
+		  </div>
+		</div>
+      </div><!-- ./col -->
+	
+	
+    
+  
+   </div><!-- /.row -->
+
+   <div class="col-lg-3 col-xs-4">
         <!-- small box -->
         <div style="background-color:#dbc76c;color:#fff" class="small-box">
           <div class="inner">
             <?php  
          	 	include_once ("callAPI.php");
           		require_once ("parametros.php");
-				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/totales',false);
+				$get_data = callAPI('GET', $servidor.'/api/cajas/totalTamano/1027',false);
 				$response = json_decode($get_data, true);
 				//$c = '44';
 				foreach ($response as $d) {
-					      $c = $d['cantidad'];
-				}
-            ?>
-            <h3 style="color:#000"><?php echo $c; ?></h3>
-            <h4 style="color:#000">Total de Cajas en Bóveda</h4>
-          </div>
-          <div class="icon">
-            <i class="fa fa-lock"></i>
-          </div>
-          
-            <a  class="small-box-footer" data-toggle="tooltip"><i style="color:#dbc76c" class="fa fa-plus"></i></a>
-           
-        </div>
-      </div><!-- ./col -->
-  
-       <div class="col-lg-3 col-xs-4">
-        <!-- small box -->
-        <div style="background-color:#FADBD8;color:#fff" class="small-box">
-          <div class="inner">
-            <?php  
-         	 	include_once ("callAPI.php");
-          		require_once ("parametros.php");
-				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/ocupadas',false);
-				$response = json_decode($get_data, true);
-				//$c = '44';
-				foreach ($response as $d) {
-					      $o = $d['cantidad'];
+					      $extragrande = $d['cantidad'];
 				}
 		    ?>
-                <h3 style="color:#000"><?php echo $o; ?></h3>
-                <h4 style="color:#000">Total de Cajas Ocupadas</h4>
+                <h3 style="color:#000"><?php echo $extragrande; ?></h3>
+                <h4 style="color:#000">TOTAL DE CAJAS EXTRA-GRANDES</h4>
               </div>
               <div class="icon">
                 <i class="fa fa-lock"></i>
@@ -85,62 +607,90 @@ if (empty($_SESSION['name_user']) && empty($_SESSION['password'])){
            <a href="?module=cj" class="small-box-footer" title="Ir a cajas" data-toggle="tooltip"><i style="color:#000" class="fa fa-search"></i></a>
          </div>
       </div><!-- ./col -->
+
       
-       <div class="col-lg-3 col-xs-4">
+
+   <div class="col-lg-3 col-xs-4">
         <!-- small box -->
-        <div style="background-color:#D5F5E3;color:#fff" class="small-box">
-          <div class="inner">
-            <?php  
+        <div style="background-color:#dbc76c;color:#fff" class="small-box">
+		  <div class="inner">
+           <?php  
          	 	include_once ("callAPI.php");
           		require_once ("parametros.php");
-				$get_data = callAPI('GET', $servidor.'/api/estadisticas/cajas/disponibles',false);
+				$get_data = callAPI('GET', $servidor.'/api/cajas/totalTamano/1004',false);
 				$response = json_decode($get_data, true);
 				//$c = '44';
 				foreach ($response as $d) {
-					      $d = $d['cantidad'];
+					      $grande = $d['cantidad'];
 				}
 		    ?>
-                <h3 style="color:#000"><?php echo ($c - $o); ?></h3>
-                <h4 style="color:#000">Total de Cajas Disponibles</h4>
+                <h3 style="color:#000"><?php echo $grande; ?></h3>
+                <h4 style="color:#000">TOTAL DE CAJAS GRANDES</h4>
               </div>
               <div class="icon">
-                <i class="fa fa-unlock"></i>
+                <i class="fa fa-lock"></i>
               </div>
            <a href="?module=cj" class="small-box-footer" title="Ir a cajas" data-toggle="tooltip"><i style="color:#000" class="fa fa-search"></i></a>
          </div>
       </div><!-- ./col -->
-   
-  
-   
 
+
+		
+ <div class="row">
       <div class="col-lg-3 col-xs-4">
         <!-- small box -->
-        <div style="background-color:#CCC;color:#fff" class="small-box">
+        <div style="background-color:#dbc76c;color:#fff" class="small-box">
           <div class="inner">
-            <?php  
+           <?php  
          	 	include_once ("callAPI.php");
           		require_once ("parametros.php");
-				$get_data = callAPI('GET', $servidor.'/api/estadisticas/reservas/ocupadas/dia',false);
+				$get_data = callAPI('GET', $servidor.'/api/cajas/totalTamano/1003',false);
 				$response = json_decode($get_data, true);
 				//$c = '44';
 				foreach ($response as $d) {
-					      $dd = $d['cantidad'];
+					      $grande = $d['cantidad'];
 				}
-            ?>
-            <h3 style="color:#000"><?php echo $dd; ?></h3>
-            <h4 style="color:#000">Reservas de la fecha</h4>
+		    ?>
+                <h3 style="color:#000"><?php echo $grande; ?></h3>
+                <h4 style="color:#000">TOTAL DE CAJAS MEDIANAS</h4>
           </div>
           <div class="icon">
-            <i class="fa fa-calendar"></i>
+            <i class="fa fa-lock"></i>
           </div>
           
-            <a href="?module=s_inventory" class="small-box-footer" title="Listar" data-toggle="tooltip"><i style="color:#000" class="fa fa-search"></i></a>
+            <a href="?module=cj" class="small-box-footer" title="Ir a cajas" data-toggle="tooltip"><i style="color:#000" class="fa fa-search"></i></a>
            
         </div>
       </div><!-- ./col -->
-  
-       
-   </div><!-- /.row -->
+
+      <div class="col-lg-3 col-xs-4">
+        <!-- small box -->
+        <div style="background-color:#dbc76c;color:#fff" class="small-box">
+           <div class="inner">
+           <?php  
+         	 	include_once ("callAPI.php");
+          		require_once ("parametros.php");
+				$get_data = callAPI('GET', $servidor.'/api/cajas/totalTamano/1002',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+					      $grande = $d['cantidad'];
+				}
+		    ?>
+                <h3 style="color:#000"><?php echo $grande; ?></h3>
+                <h4 style="color:#000">TOTAL DE CAJAS CHICAS</h4>
+          </div>
+          <div class="icon">
+            <i class="fa fa-lock"></i>
+          </div>
+          
+            <a href="?module=cj" class="small-box-footer" title="Ir a cajas" data-toggle="tooltip"><i style="color:#000" class="fa fa-search"></i></a>
+           
+        </div>
+      
+
+
+      </div><!-- /.row -->
 
 
 
@@ -151,183 +701,13 @@ if (empty($_SESSION['name_user']) && empty($_SESSION['password'])){
 <center>
 <table border="1" cellpadding="0" cellspacing="0" width="567" style="border-collapse:
  collapse;table-layout:fixed;width:428pt">
- <colgroup><col width="54" style="mso-width-source:userset;mso-width-alt:1974;width:41pt">
- <col width="23" style="mso-width-source:userset;mso-width-alt:841;width:17pt">
- <col width="54" style="mso-width-source:userset;mso-width-alt:1974;width:41pt">
- <col width="33" style="mso-width-source:userset;mso-width-alt:1206;width:25pt">
- <col width="80" span="3" style="mso-width-source:userset;mso-width-alt:2925;
- width:60pt">
- <col width="33" style="mso-width-source:userset;mso-width-alt:1206;width:25pt">
- <col width="54" style="mso-width-source:userset;mso-width-alt:1974;width:41pt">
- <col width="22" style="mso-width-source:userset;mso-width-alt:804;width:17pt">
- <col width="54" style="mso-width-source:userset;mso-width-alt:1974;width:41pt">
- </colgroup><tbody><tr height="20" style="height:15.0pt">
-  <td colspan="11" height="20" bgcolor="black" class="xl70" width="567" style="height:15.0pt;
-  width:428pt">&nbsp;</td>
- </tr>
- <tr height="20" style="mso-height-source:userset;height:15.0pt">
-  <td bgcolor="grey" rowspan="4" height="80" class="xl75" width="54" style="border-bottom:.5pt solid black;
-  height:60.0pt;width:41pt">Mod B</td>    
-
-<?php
-include_once ("callAPI.php");
-		  include_once ("parametros.php");
-		  include_once ("fechaNumber.php");
-      
-      $get_data = callAPI('GET', $servidor.'/api/caja/'.'B1',false);
-		  $response = json_decode($get_data, true);
-		  foreach ($response as $d) {
-        if($d['id_cliente'] == 0 ){
-              $B1 = '<td class="xl69" bgcolor="green" style="border-left:none">B1</td>';
-        } else { 
-              $B1 = '<td class="xl69" bgcolor="red" style="border-left:none">B1</td>';
-        }
-        echo $B1;
-      }
-
-      $get_data = callAPI('GET', $servidor.'/api/caja/'.'B9',false);
-		  $response = json_decode($get_data, true);
-		  foreach ($response as $d) {
-        if($d['id_cliente'] == 0 ){
-              $B9 = '<td class="xl69" bgcolor="green" style="border-left:none">B9</td>';
-        } else { 
-              $B9= '<td class="xl69" bgcolor="red" style="border-left:none">B9</td>';
-        }
-        echo $B9;
-      }
-
-               
-?>
-	
-  <td rowspan="2" class="xl76" 
-  <?php
-     $get_data = callAPI('GET', $servidor.'/api/caja/'.'B17',false);
-      $response = json_decode($get_data, true);
-      foreach ($response as $d) {
-          if($d['id_cliente'] == 0 ){
-                echo 'bgcolor ="green"';
-          } else { 
-            echo 'bgcolor ="red"';
-          }
-      }
-  ?>
-  style="border-bottom:.5pt solid black">B17</td>
- 
-  <td rowspan="2" class="xl76" style="border-bottom:.5pt solid black">21B</td>
-  <td bgcolor="black"></td> 
-  <td rowspan="2" class="xl76" style="border-bottom:.5pt solid black">21C</td>
-  <td rowspan="2" class="xl76" style="border-bottom:.5pt solid black">17C</td>
-  <td class="xl69" style="border-left:none">9C</td>
-  <td class="xl69" style="border-left:none">1C</td>
-  <td bgcolor="grey" rowspan="4" class="xl75" width="54" style="border-bottom:.5pt solid black;
-  width:41pt">Mod C</td>
- </tr>
- <tr height="20" style="mso-height-source:userset;height:15.0pt">
-  <td height="20" class="xl65" style="height:15.0pt;border-top:none;border-left:
-  none">B2</td>
-  <td class="xl65" style="border-top:none;border-left:none">B10</td>
-  <td bgcolor="black"></td> 
-  <td class="xl65" style="border-top:none;border-left:none">10C</td>
-  <td class="xl65" style="border-top:none;border-left:none">2C</td>
- </tr>
- <tr height="20" style="height:15.0pt">
-  <td height="20" class="xl65" style="height:15.0pt;border-top:none;border-left:
-  none">3B</td>
-  <td class="xl65" style="border-top:none;border-left:none">11B</td>
-  <td rowspan="2" class="xl67" style="border-bottom:.5pt solid black;border-top:
-  none">18B</td>
-  <td rowspan="2" class="xl67" style="border-bottom:.5pt solid black;border-top:
-  none">22B</td>
-  <td bgcolor="black"></td> 
-  <td rowspan="2" class="xl67" style="border-bottom:.5pt solid black;border-top:
-  none">22C</td>
-  <td rowspan="2" class="xl67" style="border-bottom:.5pt solid black;border-top:
-  none">18C</td>
-  <td class="xl65" style="border-top:none;border-left:none">11C</td>
-  <td class="xl65" style="border-top:none;border-left:none">3C</td>
- </tr>
- <tr height="20" style="height:15.0pt">
-  <td height="20" class="xl65" style="height:15.0pt;border-top:none;border-left:
-  none">4B</td>
-  <td class="xl65" style="border-top:none;border-left:none">12B</td>
-  <td bgcolor="black"></td> 
-  <td class="xl65" style="border-top:none;border-left:none">12C</td>
-  <td class="xl65" style="border-top:none;border-left:none">4C</td>
- </tr>
- <tr height="31" style="mso-height-source:userset;height:23.25pt">
-  <td colspan="5" height="31" bgcolor="black" class="xl71" width="244" style="height:23.25pt;
-  width:184pt">&nbsp;</td>
-  <td bgcolor="black"></td> 
-  <td colspan="5" bgcolor="black" class="xl71" width="243" style="width:184pt">&nbsp;</td>
- </tr>
- <tr height="20" style="mso-height-source:userset;height:15.0pt">
-  <td bgcolor="grey" rowspan="4" height="80" class="xl72" width="54" style="height:60.0pt;border-top:
-  none;width:41pt">Mod A</td>
-  <td class="xl65" bgcolor="<?php echo $color ?>" style="border-top:none;border-left:none">A1</td>
-  <td class="xl65" style="border-top:none;border-left:none">9A</td>
-  <td rowspan="2" class="xl66" style="border-top:none">17A</td>
-  <td rowspan="2" class="xl66" style="border-top:none">21A</td>
-  <td bgcolor="black"></td> 
-  <td rowspan="2" class="xl66" style="border-top:none">21D</td>
-  <td rowspan="2" class="xl66" style="border-top:none">17D</td>
-  <td class="xl65" style="border-top:none;border-left:none">9D</td>
-  <td class="xl65" style="border-top:none;border-left:none">1D</td>
-  <td bgcolor="grey" rowspan="4" class="xl72" width="54" style="border-top:none;width:41pt">Mod D</td>
- </tr>
- <tr height="20"  style="mso-height-source:userset;height:15.0pt">
-  <td height="20" class="xl65" style="height:15.0pt;border-top:none;border-left:
-  none">A2</td>
-  <td class="xl65" style="border-top:none;border-left:none">10A</td>
-  <td bgcolor="black"></td> 
-  <td class="xl65" style="border-top:none;border-left:none">10D</td>
-  <td class="xl65" style="border-top:none;border-left:none">2D</td>
- </tr>
- <tr height="20" style="height:15.0pt">
-  <td height="20" class="xl65" style="height:15.0pt;border-top:none;border-left:
-  none">3A</td>
-  <td class="xl65" style="border-top:none;border-left:none">11A</td>
-  <td rowspan="2" class="xl66" style="border-top:none">18A</td>
-  <td rowspan="2" class="xl66" style="border-top:none">22A</td>
-  <td bgcolor="black"></td> 
-  <td rowspan="2" class="xl66" style="border-top:none">22D</td>
-  <td rowspan="2" class="xl66" style="border-top:none">18D</td>
-  <td class="xl65" style="border-top:none;border-left:none">11D</td>
-  <td class="xl65" style="border-top:none;border-left:none">3D</td>
- </tr>
- <tr height="20" style="height:15.0pt">
-  <td height="20" class="xl65" style="height:15.0pt;border-top:none;border-left:
-  none">4A</td>
-  <td class="xl65" style="border-top:none;border-left:none">12A</td>
-  <td bgcolor="black"></td> 
-  <td class="xl65" style="border-top:none;border-left:none">12D</td>
-  <td class="xl65" style="border-top:none;border-left:none">4D</td>
- </tr>
- <tr class="xl73" height="20" style="height:15.0pt">
-  <td colspan="5" height="20" bgcolor="black" class="xl71" width="244" style="height:15.0pt;width:184pt">&nbsp;</td>
-  <td bgcolor="black"></td> 
-  <td colspan="5" bgcolor="black" bgcolor="black" class="xl71" width="243" style="width:184pt">&nbsp;</td>
- </tr>
- <!--[if supportMisalignedColumns]-->
- <tr height="0" style="display:none">
-  <td width="54" style="width:41pt"></td>
-  <td width="23" style="width:17pt"></td>
-  <td width="54" style="width:41pt"></td>
-  <td width="33" style="width:25pt"></td>
-  <td width="80" style="width:60pt"></td>
-  <td width="80" style="width:60pt"></td>
-  <td width="80" style="width:60pt"></td>
-  <td width="33" style="width:25pt"></td>
-  <td width="54" style="width:41pt"></td>
-  <td width="22" style="width:17pt"></td>
-  <td width="54" style="width:41pt"></td>
- </tr>
- <!--[endif]-->
-</tbody></table>
-
-
+ </table>
 
 
 </body>
+	
+	<div id="chartdiv"></div>
+	
 
 
         </div>
@@ -336,3 +716,166 @@ include_once ("callAPI.php");
   </div>   
 </section>
 
+<script>
+am4core.useTheme(am4themes_animated);
+var chart = am4core.create("chartdiv2", am4charts.XYChart);
+chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+chart.data = [ {
+
+  <?php 
+  include_once ("callAPI.php");
+  require_once ("parametros.php");
+  $get_data = callAPI('GET', $servidor.'/api/totalizadorventas/cajas',false);
+				$response = json_decode($get_data, true);
+				//$c = '44';
+				foreach ($response as $d) {
+                $concatenado = $d['CONCATENADO'];
+                $suma= $d['Suma'];
+        ?>
+        }, {
+          "country": "<?php echo  $concatenado ?>",
+          "value": "<?php echo $suma ?>"
+        <?php
+		    }
+   ?>
+} ];
+
+
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.dataFields.category = "country";
+categoryAxis.renderer.minGridDistance = 40;
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+var series = chart.series.push(new am4charts.CurvedColumnSeries());
+series.dataFields.categoryX = "country";
+series.dataFields.valueY = "value";
+series.tooltipText = "{valueY.value}"
+series.columns.template.strokeOpacity = 0;
+series.columns.template.tension = 1;
+series.columns.template.fillOpacity = 0.75;
+var hoverState = series.columns.template.states.create("hover");
+hoverState.properties.fillOpacity = 1;
+hoverState.properties.tension = 0.8;
+chart.cursor = new am4charts.XYCursor();
+// Add distinctive colors for each column using adapter
+series.columns.template.adapter.add("fill", function(fill, target) {
+  return chart.colors.getIndex(target.dataItem.index);
+});
+
+chart.scrollbarX = new am4core.Scrollbar();
+chart.scrollbarY = new am4core.Scrollbar();
+</script>
+
+
+
+<script>
+var chart = am4core.create("chartdiv3", am4charts.XYChart);
+
+/* Add data */
+chart.data = [ {
+
+<?php 
+include_once ("callAPI.php");
+require_once ("parametros.php");
+$get_data = callAPI('GET', $servidor.'/api/totalizadoringresoscajas',false);
+			  $response = json_decode($get_data, true);
+			  //$c = '44';
+			  foreach ($response as $d) {
+			  $concatenado = $d['CONCATENADO'];
+			  $suma= $d['Suma'];
+	  ?>
+	  }, {
+		"country": "<?php echo  $concatenado ?>",
+		"value": "<?php echo $suma ?>"
+	  <?php
+		  }
+ ?>
+} ];
+
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.dataFields.category = "country";
+categoryAxis.renderer.minGridDistance = 40;
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+var series = chart.series.push(new am4charts.CurvedColumnSeries());
+series.dataFields.categoryX = "country";
+series.dataFields.valueY = "value";
+series.tooltipText = "{valueY.value}"
+series.columns.template.strokeOpacity = 0;
+series.columns.template.tension = 1;
+series.columns.template.fillOpacity = 0.75;
+var hoverState = series.columns.template.states.create("hover");
+hoverState.properties.fillOpacity = 1;
+hoverState.properties.tension = 0.8;
+chart.cursor = new am4charts.XYCursor();
+
+series.columns.template.adapter.add("fill", function(fill, target) {
+  return chart.colors.getIndex(target.dataItem.index);
+});
+
+chart.scrollbarX = new am4core.Scrollbar();
+chart.scrollbarY = new am4core.Scrollbar();
+</script>
+
+
+
+<script>
+am4core.useTheme(am4themes_animated);
+
+// Create chart instance
+var chart = am4core.create("chartdiv4", am4charts.XYChart);
+
+// Add data
+chart.data = [ {
+
+<?php 
+include_once ("callAPI.php");
+require_once ("parametros.php");
+require_once ("fechaNumber.php");
+$get_data = callAPI('GET', $servidor.'/api/access/promedioUsoBoxes',false);
+			  $response = json_decode($get_data, true);
+			   foreach ($response as $d) {
+			  $concatenado = $d['CONCATENADO'];
+			  $promedio= $d['PROMEDIO'];
+			  $usos= $d['USOS'];
+			  $totalizador= $d['TOTALIZADOR'];
+	  ?>
+	  }, {
+		"ejex":  "<?php echo $concatenado ?>",
+		"value": "<?php echo $promedio	  ?>",
+		"value2": "<?php echo $totalizador	  ?>",
+		
+	  <?php
+	 }
+ ?>
+} ];
+
+var categoryAxis = chart.xAxes.push(new am4charts.DateAxis());
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.renderer.minGridDistance = 60;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+// Create series
+function createSeries(field, name) {
+  var series = chart.series.push(new am4charts.LineSeries());
+  series.dataFields.valueY = field;
+  series.dataFields.dateX = "ejex";
+  series.name = name;
+  series.tooltipText = "{dateX}: [b]{valueY}[/]";
+  series.strokeWidth = 2;
+  
+var bullet = series.bullets.push(new am4charts.CircleBullet());
+bullet.events.on("hit", function(ev) {
+  alert("Clicked on " + ev.target.dataItem.dateX + ": " + ev.target.dataItem.valueY);
+});
+}
+
+createSeries("value", "Promedio Diario (minutos)");
+createSeries("value2", "Promedio Estadístico (minutos)");
+
+chart.legend = new am4charts.Legend();
+chart.cursor = new am4charts.XYCursor();
+
+</script>

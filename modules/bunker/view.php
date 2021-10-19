@@ -30,7 +30,7 @@
 		setInterval(
 			function() {
 				$('#seccionRecargar').load('modules/bunker/RecargarSeccion.php');
-			}, 2000
+			}, 150000
 		);
 	});
 </script>

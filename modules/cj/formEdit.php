@@ -10,6 +10,325 @@ function validarFinalizacion (input){
 
 <?php
 
+
+if ($_GET['formEdit']=='libro') { 
+
+  if (isset($_GET['id']) and isset($_GET['nrocaja'])) {
+    require_once("fechaNumber.php");  
+  $i = $_GET['id']; //id_caja
+  $nrocaja = $_GET['nrocaja']; //nrocaja
+    
+        include_once ("callAPI.php");
+        include_once ("parametros.php");
+        $get_data = callAPI('GET', $servidor.'/api/cajas/'.$i,false);
+        $response = json_decode($get_data, true);
+        foreach ($response as $d) {
+          $id = $d['id'];
+          $id_cliente = $d['id_cliente'];
+          $id_servicio = $d['id_servicio'];
+          $serie = $d['serie'];
+          $nro_caja = $d['nro_caja'];
+          $tipocaja = $d['tipocaja'];
+          $descripcion = $d['descripcion'];
+          $apellido = $d['apellido'];
+          $nombre = $d['nombre'];
+          $libro = $d['libro'];
+          $cliente = $nombre.' '.$apellido;
+          $id_rsocial = $d['id_rsocial'];
+          $id_tarjeta = $d['id_tarjeta'];
+          $f_inicio = $d['f_inicio'];
+          $f_final = $d['f_final'];
+          $fi_original =  $d['f_inicio'];
+          $ff_original =  $d['f_final'];
+          $tipo_uso = $d['tipo_uso'];
+          $periodo_contratacion = $d['periodo_contratacion'];
+          $cobertura_gold = $d['cobertura_gold'];
+          $ingreso_boveda =  $d['ingreso_boveda'];
+          
+        ?>
+
+
+<section class="content-header" style="color:#000">
+  <h1>
+    <i class="fa fa-edit icon-title" style="color:#000"></i> # <?php echo $nro_caja; ?> 
+    <i class="fa fa-lock icon-title"></i> Caja Serie <?php echo $serie; ?>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="?module=cj"> Cajas </a></li>
+    <li class="active"> Registro Ministerio </li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-warning">
+
+      <?php 
+ 
+
+  if (empty($_GET['alert'])) {echo ""; } 
+
+  elseif ($_GET['alert'] == 1) {
+    echo "<div class='alert alert-success alert-dismissable'>
+            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+            <h4>  <i class='icon fa fa-check-circle'></i> Almacenado correctamente!</h4>
+           
+          </div>";
+  }
+
+  elseif ($_GET['alert'] == 2) {
+    echo "<div class='alert alert-success alert-dismissable'>
+            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+            <h4>  <i class='icon fa fa-check-circle'></i> 
+            Modificado correctamente!
+            </h4>
+           
+          </div>";
+  }
+  ?>
+        <!-- form start -->
+        <form role="form" style="color:#003" id="datos_recibo" class="form-horizontal" action="modules/cj/proses.php?act=updateIndice" method="POST">
+          <div class="box-body">
+          
+           <fieldset> 
+             <div class="form-group">
+               <div class="row">
+
+               <?php
+              if (($d['f_inicio'] == null) or ($d['f_inicio'] <= '1900-01-01') or ($d['f_inicio'] == '') ){ 
+                 $fi = ''; $ff = '';
+              } else {
+                  $type = 'text'; 
+                  $ff = fechaNumber(substr($d['f_final'], 0,10));
+                  $fi = fechaNumber(substr($d['f_inicio'], 0,10));
+                };
+              ?>
+
+         
+              
+              <div class="col-sm-12 col-md-2">
+                 <label class="control-label">Registro en Ministerio  </label>
+                 <input type="number"  value='<?php echo  $d['libro'];?>' id="libro" name="libro" autocomplete="off">
+              </div>
+
+              <input hidden  value='<?php echo  $i;?>' id="id" name="id" autocomplete="off">
+              <input hidden  value='<?php echo  $nro_caja;?>' id="nro_caja" name="nro_caja" autocomplete="off">
+              <input hidden  value='<?php echo  $serie;?>' id="serie" name="serie" autocomplete="off">
+
+
+              <div class="col-sm-12 col-md-2">
+                 <label class="control-label">Contratacion</label>
+                     <select disabled id="periodo_contratacion" name="periodo_contratacion" class="chosen-select" onchange="validarFinalizacion(this)" required>
+                    <?php
+                      $t0 = 0; $t1 = 1;  $t2 = 2; $t3 = 3; $t4 = 4; $t5 = 5; 
+                      if ($d['periodo_contratacion'] == 1) {
+                        echo "    <option selected='selected' value=\"$t1\"> Anual </option>";
+                        echo "    <option value=\"$t2\"> Semestral </option>"; 
+                        echo "    <option value=\"$t3\"> Trimestral </option>"; 
+                        echo "    <option value=\"$t4\"> Mensual  </option>"; 
+                        echo "    <option value=\"$t5\"> Anual Pago adelantado </option>";
+
+                      } else if ($d['periodo_contratacion'] == 2) {
+                        echo "    <option value=\"$t1\"> Anual </option>";
+                        echo "    <option selected='selected' value=\"$t2\"> Semestral </option>"; 
+                        echo "    <option value=\"$t3\"> Trimestral </option>"; 
+                        echo "    <option value=\"$t4\"> Mensual </option>"; 
+                        echo "    <option value=\"$t5\"> Anual Pago adelantado </option>";
+                      } else if  ($d['periodo_contratacion'] == 3) {
+                        echo "    <option value=\"$t1\"> Anual </option>";
+                        echo "    <option value=\"$t2\"> Semestral </option>"; 
+                        echo "    <option selected='selected' value=\"$t3\"> Trimestral </option>"; 
+                        echo "    <option value=\"$t4\"> Mensual </option>"; 
+                        echo "    <option value=\"$t5\"> Anual Pago adelantado </option>";
+                      } else if  ($d['periodo_contratacion'] == 4) {
+                        echo "    <option value=\"$t1\"> Anual </option>";
+                        echo "    <option value=\"$t2\"> Semestral </option>"; 
+                        echo "    <option value=\"$t3\"> Trimestral </option>"; 
+                        echo "    <option selected='selected' value=\"$t4\"> Mensual </option>"; 
+                        echo "    <option value=\"$t5\"> Anual Pago adelantado </option>";
+                      } else if  ($d['periodo_contratacion'] == 5) {
+                        echo "    <option value=\"$t1\"> Anual </option>";
+                        echo "    <option value=\"$t2\"> Semestral </option>"; 
+                        echo "    <option value=\"$t3\"> Trimestral </option>"; 
+                        echo "    <option value=\"$t4\"> Mensual </option>"; 
+                        echo "    <option selected='selected' value=\"$t5\"> Anual Pago adelantado </option>";  
+
+                      } else {
+                        echo "    <option value=\"$t0\"> ---- Ingresar Opción ---- </option>";
+                        echo "    <option value=\"$t1\"> Anual </option>";
+                        echo "    <option value=\"$t2\"> Semestral </option>"; 
+                        echo "    <option value=\"$t3\"> Trimestral </option>"; 
+                        echo "    <option  value=\"$t4\"> Mensual </option>"; 
+                        echo "    <option  value=\"$t5\"> Anual pago adelantado </option>";
+                      }
+                      ?> 
+                      </select> 
+               </div>
+
+               <div class="col-sm-12 col-md-2">
+                 <label disabled class="control-label">Tipo Uso</label>
+                     <select disabled id="tipo_uso" name="tipo_uso" class="chosen-select" >
+                    <?php
+                      if ($d['tipo_uso'] == 0) {
+                      $t1 = 0; $t2 = 1;  
+                      echo "    <option selected='selected' value=\"$t1\"> Uso Personal </option>";
+                      echo "    <option value=\"$t2\"> Uso Comercial </option>"; 
+                      } else {
+                      $t1 = 1; $t2 = 0;
+                      echo "    <option selected='selected' value=\"$t1\"> Uso Comercial </option>";
+                      echo "    <option value=\"$t2\"> Uso Personal </option>";
+                      }
+                      ?>
+                      </select> 
+               </div>          
+
+
+
+              
+              <div class="col-sm-12 col-md-2">
+                 <label class="control-label">Aviso de Ingreso</label>
+                 <select disabled id="ingreso_boveda" name="ingreso_boveda" class="chosen-select" >
+            <?php
+                                   if ($d['ingreso_boveda'] == 0) {
+                  $t1 = 0; $t2 = 1;  
+                  echo "    <option selected='selected' value=\"$t1\"> No Contratado </option>";
+                  echo "    <option value=\"$t2\"> Contratado </option>"; 
+                  } else {
+                   $t1 = 1; $t2 = 0;
+                  echo "    <option selected='selected' value=\"$t1\"> Contratado </option>";
+                   echo "    <option value=\"$t2\"> No Contratado </option>";
+                  }
+            ?>
+                      </select> 
+              
+              </div>
+              
+              <div class="col-sm-12 col-md-2">
+              <label class="control-label">Cobertura Gold</label>
+                    <select disabled id="cobertura_gold" name="cobertura_gold" class="chosen-select" >
+                              <?php
+                                   if ($d['cobertura_gold'] == 0) {
+                  $t1 = 0; $t2 = 1;  
+                  echo "    <option selected='selected' value=\"$t1\"> No Contratado </option>";
+                  echo "    <option value=\"$t2\"> Contratado </option>"; 
+                  } else {
+                   $t1 = 1; $t2 = 0;
+                  echo "    <option selected='selected' value=\"$t1\"> Contratado </option>";
+                   echo "    <option value=\"$t2\"> No Contratado </option>";
+                  }
+            ?>
+                      </select> 
+              </div>
+             </div>
+            </div>
+           </fieldset>
+          
+              
+          
+                                   
+           <fieldset> 
+             <div class="form-group">
+               <div class="row"> 
+                <div class="col-sm-12 col-md-4">
+                  <label class="control-label">Titular</label>
+                    <select disabled id="id_cliente" name="id_cliente" class="chosen-select">
+                    <option value="0">-- Restablecer campos --</option>
+          <?php 
+                      session_start(); 
+                      include_once ("callAPI.php");
+                      require_once ("parametros.php");
+                      $get_data = callAPI('GET', $servidor.'/api/titulares/',false);
+                      $response = json_decode($get_data, true);
+                      
+                          foreach ($response as $g) {
+                                $id2 = $g['id']; //id_cliente
+                                $dni2 = $g['dni'];
+                                $_SESSION['nombre'] = $g['nombre'];	
+                                $n2 = $g['nombre'];
+                                $_SESSION['apellido']= $g['apellido'];
+                                $a2 = $g['apellido'];
+                                $usrid = $g['USRID'];
+                                
+                                 if ($g['id'] == 0) {
+                                  echo "    <option selected='selected' value='0'> -- Disponible -- </option>";
+                                } else if ($d['id_cliente'] == $id2) {
+                                  echo "    <option selected='selected' value=\"$id2\"># Cliente: $id2 Doc.: $dni2 | $n2 $a2 </option>";
+                                } else {
+                                  echo "    <option value=\"$id2\"> # Cliente: $id2 Doc.: $dni2 | $n2 $a2  </option>";
+                                }
+                          }
+                      
+                      ?>
+                    </select>
+              </div>
+            
+                <div class="col-sm-12 col-md-4">
+                  <label class="control-label">Tipo de Caja</label>
+                      <select disabled class="chosen-select">
+                          <option value="0">-- Seleccionar --</option>
+                           <?php 
+                              include_once ("/callAPI.php");
+                              require_once ("parametros.php");
+                              $get_data = callAPI('GET', $servidor.'/api/cajas/detalle',false);
+                              $response = json_decode($get_data, true);
+                              foreach ($response as $t) {
+                                    $id3 = $t['id'];
+                                    $nombre = $t['nombre'];
+                                    $descripcion2 = $t['descripcion'];
+                                    $id_servicio2 = $t['$id_servicio'];
+                                    
+                                    if ($id_servicio == $t['id']) {
+                                      echo "    <option selected='selected' value=\"$id3\"> $nombre: $descripcion2 </option>";
+                                    } else {
+                                      echo "    <option value=\"$id3\"> $nombre: $descripcion2 </option>";
+                                    }
+                              }
+                              ?>
+                     </select>
+                 </div>
+              </div>
+            </div>
+  </fieldset>
+           
+          
+        
+          </div><!-- /.btn btn-outline--->
+
+          <div class="box-footer">
+            <div class="form-group"> 
+              <div class="col-sm-offset-2 col-sm-10">
+
+                <input type='submit' class="btn btn-warning" name="Guardar" value="Guardar" id="guardar">
+                <a href='?module=cj' class="btn btn-danger">Cancelar</a>
+              </div>
+            </div>
+          </div>
+          </form>
+        <h1>     
+       
+  </a>
+</h1>
+
+        
+        
+              
+      </div><!-- /.box -->
+    </div><!--/.col -->
+  </div>   <!-- /.row -->
+</section><!-- /.content -->
+
+
+<?php
+}
+}
+
+} 
+
+
+
+////////////////////////////////////////////////////////////////////
 if ($_GET['formEdit']=='edit') { 
 
   	if (isset($_GET['id']) and isset($_GET['nrocaja'])) {
@@ -42,6 +361,7 @@ if ($_GET['formEdit']=='edit') {
             $periodo_contratacion = $d['periodo_contratacion'];
 						$cobertura_gold = $d['cobertura_gold'];
 						$ingreso_boveda =  $d['ingreso_boveda'];
+            $nombre_usuario =  $d['nombre_usuario'];
 						
 					?>
 
@@ -229,7 +549,7 @@ if ($_GET['formEdit']=='edit') {
              <fieldset> 
                <div class="form-group">
                	<div class="row"> 
-               	 <div class="col-sm-12 col-md-6">
+               	 <div class="col-sm-12 col-md-4">
                     <label class="control-label">Titular</label>
                       <select id="id_cliente" name="id_cliente" class="chosen-select">
                       <option value="0">-- Restablecer campos --</option>
@@ -262,7 +582,15 @@ if ($_GET['formEdit']=='edit') {
                       </select>
                 </div>
               
-                  <div class="col-sm-12 col-md-6">
+                  <div class="col-sm-12 col-md-4">
+                    <label class="control-label">Ultima Modificación</label>
+                        <select disabled class="chosen-select">
+                            <option value="0"><?php echo $nombre_usuario ?></option>
+                             
+                       </select>
+                   </div>
+
+                   <div class="col-sm-12 col-md-4">
                     <label class="control-label">Tipo de Caja</label>
                         <select disabled class="chosen-select">
                             <option value="0">-- Seleccionar --</option>
@@ -286,6 +614,7 @@ if ($_GET['formEdit']=='edit') {
                                 ?>
                        </select>
                    </div>
+
               	</div>
               </div>
 		</fieldset>
@@ -384,24 +713,20 @@ if ($_GET['formEdit']=='edit') {
                 <?php 
                 if ($id_cliente > 0)
                   {
-                  echo " <a href='?module=formPrintModule_cj&formPrintModule=print&id=$i&nrocaja=$nro_caja' class='btn btn-primary'>Módulo de Impresiones</a>";
+                  echo " <a href='?module=formPrintModule_cj&formPrintModule=print&id=$i&nrocaja=$nro_caja&id_titular=$id_cliente' class='btn btn-primary'>Módulo de Impresiones</a>";
                   echo " <a href='?module=formPrintModule_cj&formPrintModule=auditoria&id=$i&serie=$serie&nro_caja=$nro_caja' class='btn btn-info'>Auditoría de Caja</a>";
                   }
                 ?>
 
                   <input type='submit' class="btn btn-warning" name="Guardar" value="Guardar">
-                  
                   <a href='?module=cj' class="btn btn-danger">Cancelar</a>
                 </div>
               </div>
             </div>
             </form>
-
-     
-          
           <h1>     
           <i class="fa fa-users icon-title" style="color:#FFF"></i> 
-   <a class="btn btn-success btn-social pull-right" href='?module=form_cj&form=asoc&nro_caja=<?php echo $nro_caja;?>&id_caja=<?php echo $i;?>&serie=<?php echo $serie;?>' title="Agregar Asociado" data-toggle="tooltip">
+       <a class="btn btn-success btn-social pull-right" href='?module=form_cj&form=asoc&nro_caja=<?php echo $nro_caja;?>&id_caja=<?php echo $i;?>&serie=<?php echo $serie;?>' title="Agregar Asociado" data-toggle="tooltip">
       <i class="fa fa-users"></i> Agregar Asociado
     </a>
   </h1>
@@ -417,8 +742,8 @@ if ($_GET['formEdit']=='edit') {
                             
                             <th class="center"># Asociado</th>
                             <th class="center">Nombre Asociado</th>
-							  <th class="center">Email</th>
-							<th class="center">Documento</th>
+							              <th class="center">Email</th>
+							              <th class="center">Documento</th>
                             <th class="center">Estado</th>
                             <th class="center">Acciones</th>
                           </tr>
@@ -479,6 +804,7 @@ if ($_GET['formEdit']=='edit') {
 	<?php
   }
  }
+
 } if ($_GET['formEdit']=='listarDisponibles') { 
   if ($_POST['tamano']) {
     $tamano = $_POST['tamano'];
@@ -616,6 +942,245 @@ if ($_GET['formEdit']=='edit') {
 </section>
 
 <?php
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+} if ($_GET['formEdit']=='agregarpagocuenta') { 
+  
+  ?>
+      <section class="content-header" style="color:#003">
+        <h1>
+          <i class="fa fa-lock icon-title"></i> Agregar Pago a Cuenta
+        </h1>
+      </section>
+
+      <section class="content" style="color:#000">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-warning">
+          <!-- form start -->
+          <form role="form" class="form-horizontal" method="POST"  action="modules/cj/proses.php?act=agregarPagoCuenta" enctype="multipart/form-data">
+            <div class="box-body">
+
+            
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Fecha</label>
+                <div class="col-sm-5">
+                <input type="datetime" class="form-control" name="fecha" readonly value="<?php echo date("d-m-Y");?>">
+                </div>
+              </div>
+
+              <div class="form-group">
+              <label class="col-sm-2 control-label">Caja</label>
+                <div class="col-sm-5">
+                      <select id="serie" name="serie" class="chosen-select" required>
+                      <option value=" ">-- Elegir Opción -- </option> 
+                      <?php 
+                        session_start(); 
+                        include_once ("callAPI.php");
+                        require_once ("parametros.php");
+                        $get_data = callAPI('GET', $servidor.'/api/cajas/consultaOcupadas',false);
+                        $response = json_decode($get_data, true);
+                        
+                            foreach ($response as $d) {
+                              $id = $d['id'];
+                              $nrocaja = $d['nro_caja'];
+                              $serie = $d['serie'];
+                              $tipocaja = $d['tipocaja'];
+                              $id_cliente = $d['id_cliente'];
+                              echo "    <option value=\"$serie\"> # Caja: $serie </option>";
+                                  
+                            }
+                          ?>
+                        </select>
+                      </div>
+              </div>
+
+              <div class="form-group">
+              <label class="col-sm-2 control-label">Titular</label>
+                <div class="col-sm-5">
+                      <select id="id_cliente" name="id_cliente" class="chosen-select" required>
+                      <option value=" ">-- Elegir Opción -- </option> 
+						          <?php 
+                        session_start(); 
+                        include_once ("callAPI.php");
+                        require_once ("parametros.php");
+                        $get_data = callAPI('GET', $servidor.'/api/titulares/',false);
+                        $response = json_decode($get_data, true);
+                        
+                            foreach ($response as $g) {
+                                  $id2 = $g['id']; //id_cliente
+                                  $dni2 = $g['dni'];
+                                  $_SESSION['nombre'] = $g['nombre'];	
+                                  $n2 = $g['nombre'];
+                                  $_SESSION['apellido']= $g['apellido'];
+                                  $a2 = $g['apellido'];
+                                  $usrid = $g['USRID'];
+                                  echo "    <option value=\"$id2\"> # Cliente: $id2 Doc.: $dni2 | $n2 $a2  </option>";
+                            }
+                          ?>
+                        </select>
+                      </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Importe</label>
+                <div class="col-sm-5">
+                  <input type="number" class="form-control" id="importe" name="importe" autocomplete="off" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Fecha Caducidad</label>
+                <div class="col-sm-5">
+                <input type="text" class="form-control date-picker" data-date-format="yyyy-mm-dd"  id="finalizacion" required name="finalizacion" autocomplete="off" >
+                </div>
+              </div>
+              
+             <div class="box-footer">
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <input type="submit" class="btn btn-warning btn-submit" id="guardar" name="guardar" value="Guardar">
+                  <a  href="?module=prices" class="btn btn-default btn-reset">Cancelar</a>
+                </div>
+              </div>
+            </div><!-- /.box footer -->
+          </form>
+        </div><!-- /.box -->
+      </div><!--/.col -->
+    </div>   <!-- /.row -->
+  </section><!-- /.content -->
+<?php
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+} if ($_GET['formEdit']=='vencerse') { 
+  
+?>
+    <section class="content-header" style="color:#003">
+  <h1>
+    <i class="fa fa-lock icon-title"></i> Cajas Próximas a  Vencerse
+
+    <a class="btn btn-success btn-social pull-right" href="?module=formEdit_cj&formEdit=agregarpagocuenta" title="Agregar" data-toggle="tooltip">
+      <i class="fa fa-plus"></i> Agregar Pago a cuenta
+    </a>
+    
+
+  </h1>
+</section>
+
+
+     <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="box box-warning" style="color:#003">
+          <div class="box-body">
+            <table border=10 bordercolor="#000000" id="dataTables1" class="table table-bordered table-striped table-hover">
+       
+              <thead>
+              <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
+                <th class="center"># Caja</th>
+                <th class="center">Cliente</th>
+                <th class="center">Fecha Inicio</th>
+                <th class="center">Fecha  Final</th>
+                <th class="center">Tipo Contrato</th>
+                <th class="center">Situación</th>
+                <th class="center">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+        
+        
+        <?php
+		  include_once ("callAPI.php");
+		  include_once ("parametros.php");
+		  include_once ("fechaNumber.php");
+	      $get_data = callAPI('GET', $servidor.'/api/DescripcionTotalizarAvencerse/',false);
+		  $response = json_decode($get_data, true);
+		  
+		
+			 foreach ($response as $d) {
+              $nro_caja = $d['nro_caja'];
+              $id = $d['id'];
+						  $serie = $d['serie'];
+              $f_inicio = fechaNumber($d['f_inicio']);
+              $f_final = fechaNumber($d['f_final']);
+						  $titular = $d['TITULAR'];
+              $periodo_contratacion = $d['periodo_contratacion'];
+              $pendiente = $d['pendiente'];
+
+              if ($pendiente == 1) { 
+                $p = 'Pendiente';
+                $b = 1; 
+              } else { 
+                $p = 'Concluído';
+                $b = 0; 
+              }
+              
+						  
+					  echo "<tr>
+					  
+                  <td width='5%'  class='center'>$serie</td>
+                  <td width='20%' class='center'>$titular</td>
+                  <td width='7%' class='center'>$f_inicio</td>
+                  <td width='7%'  class='center'>$f_final</td>
+                  <td width='15%'  class='center'>$periodo_contratacion</td>
+					        <td width='10%'  class='center'>$p</td>
+                  <td width='10%' class='center'>
+                      <div>
+					  ";
+				 
+			if ($periodo_contratacion == 'PAGO A CUENTA' and $b == 1) {
+      ?> 
+            <a data-toggle="tooltip" data-placement="top" title="Cambiar a Resuelto" style="margin-right:5px" class="btn btn-warning btn-sm" href="modules/cj/proses.php?act=cambiaraResuelto&id=<?php echo $d['id'];?>"><i style="color:#fff" class="glyphicon glyphicon-edit"></i>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Eliminar" style="margin-right:5px" class="btn btn-danger btn-sm" href="modules/cj/proses.php?act=eliminarAcuenta&id=<?php echo $d['id'];?>"><i style="color:#fff" class="glyphicon glyphicon-trash"></i>
+            </a>
+            <?php 
+      } elseif  ($periodo_contratacion == 'PAGO A CUENTA' and $b == 0) {
+          ?> 
+          <a data-toggle="tooltip" data-placement="top" title="Cambiar a Pendiente" style="margin-right:5px" class="btn btn-success btn-sm" href="modules/cj/proses.php?act=cambiaraPendiente&id=<?php echo $d['id'];?>"><i style="color:#fff" class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" title="Eliminar" style="margin-right:5px" class="btn btn-danger btn-sm" href="modules/cj/proses.php?act=eliminarAcuenta&id=<?php echo $d['id'];?>"><i style="color:#fff" class="glyphicon glyphicon-trash"></i>
+            </a>
+          <?php 
+          
+      } 
+      
+      if ($periodo_contratacion == 'PAGO ANUAL ADELANTADO') {
+        ?>  
+        <a data-toggle="tooltip" data-placement="top" title="No se puede editar este registro" class="btn btn-default btn-sm" href="" onclick=""><i style="color:#fff" class="glyphicon glyphicon-trash"></i></a>			 
+        <?php 
+			}
+			?>  
+				
+				
+            <?php
+
+              echo "    </div>
+                      </td>
+                    </tr>";
+            }
+		    ?>
+            </tbody>
+          </table>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div><!--/.col -->
+  </div>   <!-- /.row -->
+</section>
+
+<?php
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////
 
 } if ($_GET['formEdit']=='listarOcupadas') { 
   if ($_POST['tamano']) {
@@ -666,7 +1231,6 @@ if ($_GET['formEdit']=='edit') {
           <thead>
           <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
             <th class="center"># Caja</th>
-            
             <th class="center">Tipo de Caja</th>
             <th class="center">Dimensiones</th>
             <th class="center">Estado</th>

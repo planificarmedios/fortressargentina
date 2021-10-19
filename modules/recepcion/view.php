@@ -12,30 +12,50 @@
 			echo "<div class='alert alert-success alert-dismissable'>
 				<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
 				<h4>  <i class='icon fa fa-check-circle'></i> Ingreso registrado correctamente!</h4>
-				</div>";
+				</div>
+				
+				
+				
+				";
 		}
+
+		echo "
+		<i class='fa fa-cog fa-spin fa-3x fa-fw'></i>
+				<div class='row' pull-left>
+					
+				           <div class='col-md-1' ></div>
+							<div class='col-md-2'>
+								<a class='btn btn-warning btn-social' href='modules/recepcion/proses.php?act=limpiarEstadistica&valor=7'>
+									<i class='fa fa-plus'></i> Limpiar Pedorros
+								</a>
+							</div>
+
+							<div class='col-md-2' >
+											<a class='btn btn-primary btn-social' href='?module=form_recepcion&form=ingresomanual'>
+												<i class='fa fa-plus'></i> Ingreso Manual de Acceso
+											</a>
+							</div>
+			</div>
+		";
+
+
 		?>
 	</div>
 </div>
-
-<section class="content-header" style="color:#003">
-
-	<h1>
-		<i class="fa fa-cog fa-spin fa-3x fa-fw"></i> Registro de Ingresos - Zona Recepción
-	</h1>
-
-</section>
-
 
 <div id="seccionRecargar"></div>
 
 
 <script type="text/javascript">
+try {
 	$(document).ready(function() {
 		setInterval(
 			function() {
 				$('#seccionRecargar').load('modules/recepcion/RecargarSeccion.php');
-			}, 2000
+			}, 1000
 		);
 	});
+} catch (error) {
+	console.error(error);
+}
 </script>

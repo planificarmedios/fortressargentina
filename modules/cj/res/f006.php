@@ -170,28 +170,7 @@ ciudad de Mar del Plata, a los ……… del mes …………………………�
           <p>&nbsp;</p>
           <p>&nbsp;</p>
           
-          <div class="row section" style="margin-top:-1rem">
-            <div class="col-1">
-                <table style='width:50%'>
-                    <thead contenteditable>
-                    <tr class="invoice_detail">
-                      <th width="50%" >REPRESENTANTE SEGURIDAD FORTRESS SA</th>
-                     </tr> 
-                    </thead>
-                  <tbody contenteditable>
-                    <tr class="invoice_detail">
-                      <td width="100%" style="text-align:left">
-                        <blockquote>
-                          <p>
-                          <p>&nbsp;</p>
-                            <p>&nbsp;</p>
-                            <p>&nbsp;</p>
-                          </p>
-                        </blockquote>
-                    </tr>
-                  </tbody>
-                </table>
-            </div><!--.row-->
+         
             <p>&nbsp;</p>
           <p>&nbsp;</p>
           <p>&nbsp;</p>

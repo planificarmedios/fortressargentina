@@ -73,12 +73,14 @@
             <thead>
               <tr style="background-color: #999; color:#FFF"  border=1 bordercolor="#000000">
                 <th class="center">#</th>
-                <th class="center"># Zk</th>
+                <th class="center">Ingreso</th>
                 <th class="center">Cliente</th>
+                <th class="center">Doc</th>
+               
                 <th class="center">VIP</th>
                 <th class="center">Permiso</th>
-                <th class="center">Tel.Móvil</th>
-                <th class="center">Documento.</th>
+                <th class="center">Email</th>
+               
                 <th class="center">Estado</th>
                 <th class="center">Acciones</th>
               </tr>
@@ -87,14 +89,16 @@
         
         <?php
 		  include_once ("callAPI.php");
-          require_once ("parametros.php");
+      require_once ("parametros.php");
+      require_once ("fechaNumber.php");
       
 		  $get_data = callAPI('GET', $servidor.'/api/clientes/',false);
 		  $response = json_decode($get_data, true);
 				
 				foreach ($response as $d) {
 					      $id = $d['id'];
-						  $nombre = $d['nombre']; 
+              $nombre = $d['nombre']; 
+              $ingreso = fechaNumber ($d['fecha_ingreso']);
 						  $apellido = ' '.$d['apellido']; 
 						  $descripcion = $d['descripcion'];
 						  $email = $d['email'];
@@ -103,6 +107,8 @@
 						  $provincia = $d['provincia'];
 						  $tel_movil = $d['telefono_movil'];
               $dni = $d['dni'];
+              $fecha_nacimiento = $d['fecha_nacimiento'];
+              $nacimiento = fechaNumber ($fecha_nacimiento);
               $USRID = $d['USRID'];
 						  $tel_fijo = $d['tel_fijo'];
 						  $id_autorizante = $d['id_autorizante'];
@@ -116,17 +122,19 @@
 			
               echo "<tr>
                       <td width='5%'   class='center'>$id</td> 
-                      <td width='5%'   class='center'>$USRID</td> 
-                      <td width='25%' class='center'>$nombre$apellido</td>
-                      <td width='5%' class='center'>$v</td>
+                      <td width='5%'   class='center'>$ingreso</td>
+                      <td width='20%' class='center'>$nombre$apellido</td>
+                      <td width='5%' class='center'>$dni</td>
+                      
+                      <td width='3%' class='center'>$v</td>
 					            <td width='20%'  class='center'>$descripcion</td>
-                      <td width='5%'  class='center'>$tel_movil</td>
-                      <td width='10%'  class='center'>$dni</td>
-                      <td width='10%'  class='center'>$s</td>
-					            <td class='center' width='20%'>
-                        <div>
+                      <td width='15%'  class='center'>$email</td>
+                     
+                      <td width='5%'  class='center'>$s</td>
+					            <td class='center' width='25%'>
+                      <div>
 						  
-						  <a data-toggle='tooltip' data-placement='top' title='Ver Cajas Asociadas' style='margin-right:5px' class='btn btn-default btn-sm' href='?module=form_recepcion&form=edit&id=$id&id_evento=$evento'><i style='color:#0e001a' class='glyphicon glyphicon-search'></i></a>
+						  <a data-toggle='tooltip' data-placement='top' title='Ver Cajas Asociadas' style='margin-right:5px' class='btn btn-default btn-sm' href='?module=form_recepcion&form=print&id=$id&id_evento=$evento'><i style='color:#0e001a' class='fas fa-arrow-circle-right'></i></a>
 						  
                           <a data-toggle='tooltip' data-placement='top' title='Modificar' style='margin-right:5px' class='btn btn-primary btn-sm' href='?module=form_user&form=edit&id=$id'><i style='color:#fff' class='glyphicon glyphicon-edit'></i></a>";
 						  

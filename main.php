@@ -205,45 +205,15 @@ session_start();
         });
 
               // DataTables
-      $("#dataTables3").dataTable();
+      
         $('#dataTables1').dataTable({
-          "bPaginate": true,
-          "bLengthChange": true,
-          "bFilter": true,
-          "bSort": true,
-          "oPaginate": true,
-          "bInfo": true,
-	        "sPaginationType": "full_numbers",
-	        "iDisplayLength": 10,
-          "bAutoWidth": true,
-          "language": idioma_español
+        
+          "order": [[ 1, "desc" ]],
+          
         });
       });
 
-var idioma_español= {
-    "sProcessing":     "Procesando...",
-    "sLengthMenu":     " _MENU_ ",
-    "sZeroRecords":    "No se encontraron resultados",
-    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-    "sInfoPostFix":    "",
-    "sSearch":         "",
-    "sUrl":            "",
-    "sInfoThousands":  ",",
-    "sLoadingRecords": "Cargando...",
-    "oPaginate": {
-        "sFirst":    "Primero",
-        "sLast":     "Último",
-        "sNext":     "Siguiente",
-        "sPrevious": "Anterior"
-    },
-    "oAria": {
-        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-    }
-}
+
 
     </script>
 

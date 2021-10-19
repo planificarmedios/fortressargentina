@@ -1,3 +1,11 @@
+
+<script type="text/javascript">
+  function prueba(){
+	  alert "Prueaba";
+      
+  }
+</script>
+
 <?php
 //session_start();
 
@@ -8,6 +16,8 @@ if (isset($_POST['imprimir'])) {
 		$id_servicio = $_POST['id_servicio'];
 		$impresiones = $_POST['impresiones'];
 		$idcaja = $_POST['idcaja'];
+		$idtitular = $_POST['idtitular'];
+		$id_titular = $_POST['idtitular'];
 	    $id_rsocial = 0 ;
 	    $id_rsocial = $_POST['id_rsocial'];
 		$alias = $_POST['alias'];
@@ -158,7 +168,7 @@ if (isset($_POST['imprimir'])) {
 						$LOCFISCAL=  $d['LOCFISCAL'];
 
 						
-						$get_data=callAPI('GET', $servidor.'/api/servicios/adicionales', false);
+			  $get_data=callAPI('GET', $servidor.'/api/servicios/adicionales', false);
               $response=json_decode($get_data, true);
               foreach ($response as $a) {
                 if ($id_servicio == $a['id'][0]) {
@@ -266,6 +276,7 @@ if (isset($_POST['imprimir'])) {
 										    									
 									   if ($id_tarjeta == $tj['id']) {
 											$marca = $tj['marca'];
+											$tipo = $tj['tipo'];
 										    $banco = $tj['banco'];
 											$num_tarj = $tj['numero'];
 											$tipo_cobro = $tj['tipo'];
@@ -361,7 +372,8 @@ if (isset($_POST['imprimir'])) {
 										include_once "res/r001.php"; 
 										include_once "res/f001.php"; 
 										include_once "res/f003.php";	
-									    include_once "res/r002.php"; 
+										include_once "res/r002.php"; 
+										include_once "res/r003.php";
 										include_once "res/d001.php";
 										    
 								} else { 
@@ -377,12 +389,15 @@ if (isset($_POST['imprimir'])) {
 									if ($impresiones[$n] == "d002" ) { include_once "res/d002.php"; }
 									if ($impresiones[$n] == "f007" ) { include_once "res/f007.php"; }
 									if ($impresiones[$n] == "f008" ) { include_once "res/f008.php"; }
+									if ($impresiones[$n] == "f009" ) { include_once "res/f009.php"; }
 								}
 						} 
 
 						
 				
 ?> 
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -391,6 +406,7 @@ if (isset($_POST['imprimir'])) {
     <title></title>
     <link rel="stylesheet" href="sales_invoice/assets/css/main.css">
 </head>
+
 
 <body>
 <div class="control-bar">
@@ -403,9 +419,9 @@ if (isset($_POST['imprimir'])) {
       </div>
     
       <div class="col-8 text-right">
-        <a href="javascript:window.print()">Imprimir</a>
-		<a href="javascript:history.back()">Volver</a>
-		<a href="../../main.php?module=form_recepcion&form=edit&id=<?php echo $id_asistente;?>&id_evento=<?php echo $id_evento;?>">Regresar Zona Recepción</a>
+	  <a href="javascript:window.print()">Imprimir</a>
+	  <a href="javascript:history.back()">Volver</a>
+	  <a href="../../modules/recepcion/proses.php?act=update&nro_caja=<?php echo $nrocaja;?>&id_titular=<?php echo $idtitular?>&id_evento=<?php echo $id_evento;?>" onclick="return confirm(' Se confirmará ingreso a Caja Serie Nº <?php echo $serie; ?> ?');">Confirmar Ingreso Caja</a>
       </div><!--.col-->
     </div><!--.row-->
   </div><!--.container-->

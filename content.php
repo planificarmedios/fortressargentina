@@ -10,9 +10,19 @@ if (empty($_SESSION['username']) or (!isset($_SESSION['username']))){
 }
 
 else {
+
 	if ($_GET['module'] == 'start') {
 		include "modules/start/view.php";
 	}
+	
+	if ($_GET['module'] == 'orders') {
+		include "modules/orders/view.php";
+	}
+
+	if ($_GET['module'] == 'notificaciones') {
+		include "modules/notificaciones/view.php";
+	}
+	
 	
 	if ($_GET['module'] == 'doc') {
 		include "modules/doc/view.php";
@@ -194,6 +204,45 @@ else {
 	elseif ($_GET['module'] == 'cj') {
 		include "modules/cj/exportData.php";
 	}
+
+
+	elseif ($_GET['module'] == 'afinidad') {
+		include "modules/afinidad/view.php";
+	}
+
+	elseif ($_GET['module'] == 'acceso') {
+		include "modules/acceso/view.php";
+	}
+
+	elseif ($_GET['module'] == 'form_acceso') {
+		include "modules/acceso/form.php";
+	}
+
+	
+	elseif ($_GET['module'] == 'form_afinidad') {
+		include "modules/afinidad/form.php";
+	}
+	
+	
+	elseif ($_GET['module'] == 'formAddAfinidad_afinidad') {
+		include "modules/afinidad/formAddAfinidad.php";
+	}
+	
+	
+	elseif ($_GET['module'] == 'formEdit_afinidad') {
+		include "modules/afinidad/formEdit.php";
+	}
+
+	elseif ($_GET['module'] == 'formServicios_afinidad') {
+		include "modules/afinidad/formServicios.php";
+	}
+
+	elseif ($_GET['module'] == 'form_notificaciones') {
+		include "modules/notificaciones/form.php";
+	}
+	
+	
+		
 
 
 

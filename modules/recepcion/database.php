@@ -3,8 +3,8 @@ include_once ("../../callAPI.php");
 require_once ("../../parametros.php");
 require_once ("../../fechaNumber.php");
 
-
- $get_data = callAPI('GET', $servidor.'/api/access/refreshRecepcion/',false);
+try {
+ $get_data = callAPI('GET', $servidor.'/api/access/refreshRecepcionSinImprimir/',false);
  $response = json_decode($get_data, true);
 
 
@@ -33,16 +33,17 @@ require_once ("../../fechaNumber.php");
 						  };
 
               echo "<tr>
- 		                <td width='5%'   class='center'>$id_evento</td> 
+ 		                
 		                <td width='5%'   class='center'>$ingreso</td>
+						<td width='5%'   class='center'>$id_evento</td>
     	                <td width='5%'   class='center'>$hh</td>
 		                <td width='5%'   class='center'>$id</td>
-                        <td width='20%'   class='center'>$CLIENTE</td>
+                        <td width='30%'   class='center'>$CLIENTE</td>
 			            <td $st  width='10%'  class='center'>$s</td>
 		                <td class='center' width='10%'>
                    <div>
 
-				   <a data-toggle='tooltip' data-placement='top' title='Verificar' href='?module=form_recepcion&form=edit&id=$id&id_evento=$id_evento' style='margin-right:5px' class='btn btn-primary btn-sm'><i style='color:#fff' class='glyphicon glyphicon-search'></i></a>";
+				   <a data-toggle='tooltip' data-placement='top' title='Verificar' href='?module=form_recepcion&form=print&id=$id&id_evento=$id_evento' style='margin-right:5px' class='btn btn-primary btn-sm'><i style='color:#fff' class='glyphicon glyphicon-print'></i></a>";
                     ?>
                    <?php
                    echo "      
@@ -50,6 +51,9 @@ require_once ("../../fechaNumber.php");
                       </td>
                     </tr>";
             }
+} catch (Exception $e) {
+    echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+}
 		    ?>
             </tbody>
           </table>

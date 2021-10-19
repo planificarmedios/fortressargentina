@@ -59,7 +59,7 @@
             <h2 style="font:'Paloseco Light'" class="subheading" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></h2>
             <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
                 
-                <span>Un nuevo concepto en resguardo de valores llega a Mar del Plata ... </span>
+                <span>Un nuevo concepto en resguardo de valores llegó a Mar del Plata ... </span>
 
             </h1>
             

@@ -207,6 +207,13 @@ $_SESSION["idServicio"] = 1; ///////////////cambiar
         <!-- /.container -->
     </nav>
   <!-- Page Content -->
+
+
+ 
+
+
+
+
     <div class="container">
     
     	
@@ -216,7 +223,11 @@ $_SESSION["idServicio"] = 1; ///////////////cambiar
             <div id="calendar" class="col-centered">
                 </div>
             </div>
- 	   </div>
+		</div>
+		
+
+
+		
       
 		<div class="modal fade" id="ModalAdd" name="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog" role="document">
@@ -294,18 +305,21 @@ $_SESSION["idServicio"] = 1; ///////////////cambiar
                   </select>
                   </div>
 			   </div>
+
+			  
+              
                
                                
                <div class="form-group">
                   <label for="idInicio" class="col-sm-2 control-label">Inicio</label>
                   <div class="col-sm-10">
-                      <select name="idInicio" class="form-control" id="idInicio" onchange="validarFin(), habilitar(this), animarGif()" required></select>
+                      <select name="idInicio" class="choosen-select"  id="idInicio" onchange="validarFin(), habilitar(this), animarGif()" required></select>
                   </div>
 			   </div>
                
                <div class="form-group" hidden="true">
                    <div class="col-sm-10">
-                      <select class="form-control"  id="jumlah_masuk" name="jumlah_masuk"></select>
+                      <select class="choosen-select"  id="jumlah_masuk" name="jumlah_masuk"></select>
                     </div>
                </div>
                
@@ -335,7 +349,8 @@ $_SESSION["idServicio"] = 1; ///////////////cambiar
 					  <input type="text" name="real" class="form-control" id="real" readonly>
 					</div>
 			   </div>
-               
+
+			 
                                  
            	 <script type="text/javascript">
 				 // Material Select Initialization

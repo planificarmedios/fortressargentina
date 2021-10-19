@@ -31,6 +31,20 @@ if ($_SESSION['permisos_acceso'] == 'Usuario')  { ?>
 
 		}
 		
+		
+		if ($_GET["module"]=="orders" || $_GET["module"]=="form_orders") { ?>
+			<li class="active">
+			<a href="module=orders"><i class="fa fa-home"></i> Ordenes</a>
+			</li>
+		<?php
+		} 	else { ?>
+			<li>
+			<a href="module=orders"><i class="fa fa-home"></i> Ordenes</a>
+			</li>
+		<?php
+
+		}
+		
 		if ($_GET["module"]=="bunker" || $_GET["module"]=="form_bunker") { ?>
 			<li class="active">
 			<a href="?module=bunker"><i class="fa fa-windows"></i> Zona Bunker</a>
@@ -173,6 +187,10 @@ if ($_SESSION['permisos_acceso'] == 'Usuario')  { ?>
 					<?php
 					}
 
+
+					
+			
+
 					if ($_GET["module"]=="s_inventory") { ?>
 						<li class="active treeview">
 								<a href="javascript:void(0);">
@@ -272,6 +290,34 @@ if ($_SESSION['permisos_acceso'] == 'Usuario')  { ?>
 	  	</li>
 	<?php 
 
+
+
+	if ($_GET["module"]=="acceso" || $_GET["module"]=="form_acceso") { ?>
+		<li class="active">
+		<a href="?module=acceso"><i class="fa fa-sign-in"></i>Accesibilidad</a>
+		</li>
+	<?php
+	}
+
+	else { ?>
+		<li>
+		<a href="?module=acceso"><i class="fa fa-sign-in"></i>Accesibilidad</a>
+		</li>
+	<?php
+	}
+	
+	if ($_GET["module"]=="orders" || $_GET["module"]=="form_orders") { ?>
+			<li class="active">
+			<a href="?module=orders"><i class="fa fa-home"></i> Ordenes</a>
+			</li>
+		<?php
+		} 	else { ?>
+			<li>
+			<a href="?module=orders"><i class="fa fa-home"></i> Ordenes</a>
+			</li>
+		<?php
+	}
+
 	
 
 	
@@ -305,17 +351,60 @@ if ($_SESSION['permisos_acceso'] == 'Usuario')  { ?>
 		  </li>
 	  <?php
 	}
+
+
+	if ($_GET["module"]=="user" || $_GET["module"]=="form_user") { ?>
+		<li class="active treeview">
+				<a href="javascript:void(0);">
+				<i class="fa fa-user"></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i>
+				</a>
+			<ul class="treeview-menu">
+				<li><a href="?module=user"><i class="fa fa-users"></i>Listar</a></li>
+				<li><a href="?module=form_cj&form=listarclientes"><i class="fa fa-search"></i>Buscar</a></li>
+				
+			</ul>
+		</li>
+		<?php
+	}
+	else { ?>
+		<li class="treeview">
+				<a href="javascript:void(0);">
+				<i class="fa fa-user"></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i>
+				</a>
+			<ul class="treeview-menu">
+			<li><a href="?module=user"><i class="fa fa-users"></i>Listar</a></li>
+				<li><a href="?module=form_cj&form=listarclientes"><i class="fa fa-search"></i>Buscar</a></li>
+			</ul>
+		</li>
+	<?php
+	}
+
+
+
 	
-	 if ($_GET["module"]=="user" || $_GET["module"]=="form_user") { ?>
+	 /*if ($_GET["module"]=="user" || $_GET["module"]=="form_user") { ?>
 			<li class="active">
-				<a href="?module=user"><i class="fa fa-users"></i>Usuarios</a>
+				<a href="?module=user"><i class="fa fa-user"></i>Usuarios</a>
 			</li>
 		<?php
 		}
 	
 		else { ?>
 			<li>
-			<a href="?module=user"><i class="fa fa-users"></i>Usuarios</a></li>
+			<a href="?module=user"><i class="fa fa-user"></i>Usuarios</a></li>
+		<?php
+	    }*/
+
+		if ($_GET["module"]=="notifiaciones" || $_GET["module"]=="form_notificaciones") { ?>
+			<li class="active">
+				<a href="?module=notificaciones"><i class="fa fa-envelope"></i>Notificaciones</a>
+			</li>
+		<?php
+		}
+	
+		else { ?>
+			<li>
+			<a href="?module=notificaciones"><i class="fa fa-envelope"></i>Notificaciones</a></li>
 		<?php
 	    }
 		
@@ -325,6 +414,20 @@ if ($_SESSION['permisos_acceso'] == 'Usuario')  { ?>
 				
 			</li>
 		<?php
+		}
+
+		if ($_GET["module"]=="afinidad" || $_GET["module"]=="form_afinidad") { ?>
+			<li class="active">
+			  <a href="?module=afinidad"><i class="fa fa-users"></i>Grupos y Afinidad</a>
+			  </li>
+		  <?php
+		  }
+	
+		  else { ?>
+			<li>
+			  <a href="?module=afinidad"><i class="fa fa-users"></i>Grupos y Afinidad</a>
+			  </li>
+		  <?php
 		}
 
 
@@ -340,6 +443,34 @@ if ($_SESSION['permisos_acceso'] == 'Usuario')  { ?>
 			  <a href="?module=cj"><i class="fa fa-lock"></i>Cajas</a>
 			  </li>
 		  <?php
+		}
+
+		if ($_GET["module"]=="consultas" || $_GET["module"]=="form_consultas") { ?>
+			<li class="active treeview">
+					<a href="javascript:void(0);">
+					<i class="fa fa-calendar"></i> <span>Eventos y Alertas</span> <i class="fa fa-angle-left pull-right"></i>
+					</a>
+				<ul class="treeview-menu">
+					<li><a href="?module=consultas"><i class="fa fa-unlock"></i>En Proceso </a></li>
+					<li><a href="?module=form_consultas&form=list"><i class="fa fa-list"></i>Historial </a></li>
+					
+				</ul>
+			</li>
+			<?php
+		}
+		else { ?>
+			<li class="treeview">
+					<a href="javascript:void(0);">
+					<i class="fa fa-list"></i> <span>Eventos</span> <i class="fa fa-angle-left pull-right"></i>
+					</a>
+				<ul class="treeview-menu">
+					<li><a href="?module=consultas"><i class="fa fa-unlock"></i>En Proceso </a></li>
+					<li><a href="?module=form_consultas&form=list"><i class="fa fa-list"></i>Historial </a></li>
+				
+					
+				</ul>
+			</li>
+			<?php
 		}
 
 
@@ -432,14 +563,14 @@ if ($_SESSION['permisos_acceso'] == 'Usuario')  { ?>
 
 	if ($_GET["module"]=="recepcion" || $_GET["module"]=="form_recepcion") { ?>
 		<li class="active">
-		  <a href="?module=recepcion"><i cclass="fa fa-sign-in"></i>Host de Clientes</a>
+		  <a href="?module=recepcion"><i class="fa fa-sign-in"></i>Zona Recepción</a>
 		  </li>
 	  <?php
 	  }
 
 	  else { ?>
 		<li>
-		  <a href="?module=recepcion"><i class="fa fa-sign-in"></i>Host de Clientes</a>
+		  <a href="?module=recepcion"><i class="fa fa-sign-in"></i>Zona Recepción</a>
 		  </li>
 	  <?php
 	}
@@ -493,33 +624,6 @@ if ($_SESSION['permisos_acceso'] == 'Usuario')  { ?>
 
 
 
-	if ($_GET["module"]=="consultas" || $_GET["module"]=="form_consultas") { ?>
-		<li class="active treeview">
-				<a href="javascript:void(0);">
-				  <i class="fa fa-list"></i> <span>Consultas y Pendientes</span> <i class="fa fa-angle-left pull-right"></i>
-				</a>
-			  <ul class="treeview-menu">
-				<li><a href="?module=consultas"><i class="fa fa-unlock"></i>En Proceso </a></li>
-				<li><a href="?module=form_consultas&form=list"><i class="fa fa-list"></i>Historial </a></li>
-				
-			  </ul>
-		  </li>
-		<?php
-	  }
-	  else { ?>
-		<li class="treeview">
-				<a href="javascript:void(0);">
-				  <i class="fa fa-list"></i> <span>Consultas y Pendientes</span> <i class="fa fa-angle-left pull-right"></i>
-				</a>
-			  <ul class="treeview-menu">
-				<li><a href="?module=consultas"><i class="fa fa-unlock"></i>En Proceso </a></li>
-				<li><a href="?module=form_consultas&form=list"><i class="fa fa-list"></i>Historial </a></li>
-			
-				
-			  </ul>
-		  </li>
-		<?php
-	  }
 
     ?>
 	 <li>

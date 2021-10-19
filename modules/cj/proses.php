@@ -26,6 +26,65 @@ if ($_GET['act']=='asociado') {
 				//	}
 		}
 
+/////////////////////////////////////////////////////////////////////////////
+
+	} elseif ($_GET['act']=='agregarPagoCuenta') {
+	   if (isset($_POST['guardar'])) {
+					$serie = $_POST['serie'];
+					$id_cliente = $_POST['id_cliente'];
+					$importe = $_POST['importe'];
+					$finalizacion = $_POST['finalizacion'];
+
+					$jsonData = array( 'serie' => "$serie", 
+									   'id_cliente' => "$id_cliente", 
+									   'id_caja' => "0", 
+									   'finalizacion' => "$finalizacion",
+									   'importe' => "$importe");
+
+					$data_string = json_encode($jsonData);
+					$ch = curl_init($servidor.'/api/agregarPagoAcuenta');
+					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+					curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',
+					'Content-Length: ' . strlen($data_string))
+					);
+					$result = curl_exec($ch);    
+					//header("location: ../../main.php?module=form_cj&form=edit&id=$id_caja");
+					header("location: ../../main.php?module=formEdit_cj&formEdit=vencerse");
+					
+				//	}
+		}
+
+/////////////////////////////////////////////////////////////////////////////
+
+} elseif ($_GET['act']=='updateIndice') {
+	if (isset($_POST['id'])) {  
+				 $id = $_POST['id'];
+				 $libro = $_POST['libro'];
+				 $nro_caja = $_POST['nro_caja'];
+				 $serie = $_POST['serie'];
+				
+				 $jsonData = array( 'id' => "$id", 
+									'libro' => "$libro");
+
+				 $data_string = json_encode($jsonData);
+				 $ch = curl_init($servidor.'/api/ActualizarIndiceLibro');
+				 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+				 curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+				 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',
+				 'Content-Length: ' . strlen($data_string))
+				 );
+				 $result = curl_exec($ch);    
+				
+				 header("location: ../../main.php?module=formEdit_cj&formEdit=libro&id=$id&nrocaja=$nro_caja&serie=$serie");
+				 
+			 //	}
+	 }
+
+
+//////////////////////////////////////////////////////////////////////////////
 
 } elseif ($_GET['act']=='updateCaja') {
 		include_once ("../../callAPI.php");
@@ -156,6 +215,81 @@ include_once ("../../parametros.php");
 	                    header("location: ../../main.php?module=formEdit_cj&formEdit=edit&id=$i&nrocaja=$nro_caja&alert=1");
 	                    
 					
-}
+
+
+} elseif ($_GET['act']=='cambiaraResuelto') {
+
+							include_once ("../../callAPI.php");
+							include_once ("../../parametros.php");
+							
+										if (isset($_GET['id'])){ 
+										$id = $_GET['id']; 
+										}
+										
+													$jsonData = array(  'id' => "$id");
+													$data_string = json_encode($jsonData);
+													$ch = curl_init($servidor.'/api/cambiaraResuelto/');
+													curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+													curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+													curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+													curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+													'Content-Type: application/json',
+													'Content-Length: ' . strlen($data_string))
+													);
+													$result = curl_exec($ch);   
+													header("location: ../../main.php?module=formEdit_cj&formEdit=vencerse");
+
+							
+						
+} elseif ($_GET['act']=='cambiaraPendiente') {
+
+	include_once ("../../callAPI.php");
+	include_once ("../../parametros.php");
+	
+				if (isset($_GET['id'])){ 
+				$id = $_GET['id']; 
+				}
+				
+							$jsonData = array(  'id' => "$id");
+							$data_string = json_encode($jsonData);
+							$ch = curl_init($servidor.'/api/cambiaraPendiente/');
+							curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+							curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+							curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+							curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+							'Content-Type: application/json',
+							'Content-Length: ' . strlen($data_string))
+							);
+							$result = curl_exec($ch);   
+							header("location: ../../main.php?module=formEdit_cj&formEdit=vencerse");
+							
+						
+
+} elseif ($_GET['act']=='eliminarAcuenta') {
+
+	include_once ("../../callAPI.php");
+	include_once ("../../parametros.php");
+	
+				if (isset($_GET['id'])){ 
+				$id = $_GET['id']; 
+				}
+				
+							$jsonData = array(  'id' => "$id");
+							$data_string = json_encode($jsonData);
+							$ch = curl_init($servidor.'/api/eliminarAcuenta/');
+							curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+							curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+							curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+							curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+							'Content-Type: application/json',
+							'Content-Length: ' . strlen($data_string))
+							);
+							$result = curl_exec($ch);   
+							header("location: ../../main.php?module=formEdit_cj&formEdit=vencerse");
+							
+						
+	}
+
+
 
 ?>

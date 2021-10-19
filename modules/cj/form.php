@@ -93,6 +93,91 @@ if (($_GET['nrocaja']) and ($_GET['id'])and ($_GET['serie'])) {
 
 <?php
 }
+
+////////////////////////////////////////////////// esta
+
+} elseif ($_GET['form']=='listarclientes') { 
+	
+		
+?>
+
+
+  <section class="content-header" style="color:#000">
+    <h1>
+      <i class="fa fa-edit icon-title" style="color:#000"></i> Listar Clientes 
+      
+    </h1>
+    <ol class="breadcrumb" style="color:#000">
+      <li><a href="?module=cj"> Clientes </a></li>
+      <li class="active"> Listar </li>
+    </ol>
+  </section>
+  
+  <section class="content" style="color:#000">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-warning">
+          <!-- form start -->
+          <form role="form" class="form-horizontal" method="POST"  action="modules/user/proses.php?act=editarNuevoCliente" enctype="multipart/form-data">
+            <div class="box-body">
+
+           
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Ver Cliente</label>
+                <div class="col-sm-5">
+                <select id="id_cliente" name="id_cliente" class="chosen-select">
+                      <option value="0">-- Seleccionar --</option>
+						<?php 
+                        session_start(); 
+                        include_once ("callAPI.php");
+                        require_once ("parametros.php");
+                        $get_data = callAPI('GET', $servidor.'/api/clientes/',false);
+                        $response = json_decode($get_data, true);
+                        
+                            foreach ($response as $g) {
+                                  $id2 = $g['id']; //id_cliente
+                                  $dni2 = $g['dni'];
+                                  $_SESSION['nombre'] = $g['nombre'];	
+                                  $n2 = $g['nombre'];
+                                  $_SESSION['apellido']= $g['apellido'];
+                                  $a2 = $g['apellido'];
+                                  $usrid = $g['USRID'];
+                                  
+                                   if ($g['id'] == 0) {
+                                    echo "    <option selected='selected' value='0'> -- Disponible -- </option>";
+                                  } else if ($d['id_cliente'] == $id2) {
+                                    echo "    <option selected='selected' value=\"$id2\"># Cliente: $id2 Doc.: $dni2 | $n2 $a2 </option>";
+                                  } else {
+                                    echo "    <option value=\"$id2\"> # Cliente: $id2 Doc.: $dni2 | $n2 $a2  </option>";
+                                  }
+                            }
+                        
+                        ?>
+                      </select>
+                </div>
+              </div>
+              
+             
+             <div class="box-footer">
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <input type="submit" class="btn btn-warning btn-submit" id="consultar" name="consultar" value="Consultar">
+                  <a  href="?module=cj" class="btn btn-danger btn-reset">Cancelar</a>
+                </div>
+              </div>
+            </div><!-- /.box footer -->
+          </form>
+        </div><!-- /.box -->
+      </div><!--/.col -->
+    </div>   <!-- /.row -->
+  </section><!-- /.content -->
+
+  
+ 
+   <?php
+   
+ 
+/////////////////////////////////////////////////
 } elseif ($_GET['form']=='asoc') { 
 	if (($_GET['nro_caja']) and ($_GET['id_caja']) and ($_GET['serie']) ) {
 		//$nro_caja = $_GET['i']; //$id_caja = $_GET['id_caja'];

@@ -10,16 +10,16 @@ $dni    = $_POST['dataidobat'];
                     
                     foreach ($response as $d) {
                         
-                    	if ($j['existe']==true) {
+                    	if ($d['existe']==true) {
 							$m= 'dni';
 							echo "<div class='alert alert-danger alert-dismissable'>
-								<button value='true' type='button' class='close' id='stok' name='stock' data-dismiss='alert' aria-hidden='true'>&times;</button>
+								<button value='true' type='button' class='close' id='dni' name='dni' data-dismiss='alert' aria-hidden='true'>&times;</button>
 								<h4>  <i class='icon fa fa-check-circle'></i> El DNI - CUIL - CUIT ya existe!!!!!</h4>
 								</div>";
 						} else  {
 							$m= 'celular';
 							echo "<div class='alert alert-success alert-dismissable'>
-								<button value='true' type='button' class='close' id='stok' name='stock' data-dismiss='alert' aria-hidden='true'>&times;</button>
+								<button value='true' type='button' class='close' id='dni' name='dni' data-dismiss='alert' aria-hidden='true'>&times;</button>
 								<h4>  <i class='icon fa fa-check-circle'></i> Número validado correctamente !!!!!</h4>
 								</div>";
 						}

@@ -297,6 +297,7 @@ if ($_GET['formPrintModule']=='listarDisponibles') {
   	  require_once("fechaNumber.php");  
 	    $idcaja = $_GET['id']; //id_caja
       $nrocaja = $_GET['nrocaja']; //nrocaja
+      $idtitular = $_GET['id_titular']; //nrocaja
       
       if (isset($_GET['asistente'])) {
         $id_asistente = $_GET['asistente'];
@@ -320,6 +321,7 @@ if ($_GET['formPrintModule']=='listarDisponibles') {
 					foreach ($response as $d) {
 						$id = $d['id'];
 						$id_cliente = $d['id_cliente'];
+            
 						$id_servicio = $d['id_servicio'];
 						$serie = $d['serie'];
 						$nro_caja = $d['nro_caja'];
@@ -388,6 +390,7 @@ if ($_GET['formPrintModule']=='listarDisponibles') {
                                               <option value="f008">(Anexo VIII) Baja del Servicio</option>
                                               <option value="f004">(Anexo IX) Pago de Servicio </option>
                                               <option value="d002">(Anexo X) Asignación de Nuevas Llaves </option>
+                                              <option value="f009">(Anexo XI) Asignación de Nueva Tarjeta de Acceso </option>
                                               <option value="f005"> Horarios y Días Laborables </option>
                                 
                            </select>
@@ -487,6 +490,7 @@ if ($_GET['formPrintModule']=='listarDisponibles') {
 		</fieldset>
         
         <input name="idcaja" id="idcaja" value="<?php echo $idcaja;?>" hidden>
+        <input name="idtitular" id="titular" value="<?php echo $idtitular;?>" hidden>
         <input name="nrocaja" id="nrocaja" value="<?php echo $nrocaja;?>" hidden>
         <input name="id_servicio" id="id_servicio" value="<?php echo $id_servicio;?>" hidden>     
         <input name="id_cliente" id="id_cliente" value="<?php echo $id_cliente;?>" hidden>  

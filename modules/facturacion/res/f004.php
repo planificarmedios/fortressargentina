@@ -86,7 +86,7 @@ h1 {
                         <blockquote>
                           <p><br>
                             <strong> Forma de cobro: </strong> Por débito mensual automático con tarjeta de crédito con prórroga anual automática. <br>  
-							              <strong> Marca: </strong> <?php echo $marca; ?><br>
+							              <strong> Marca / Tipo: </strong> <?php echo $marca.' '.$tipo; ?><br>
                             <strong> Número de Tarjeta: </strong><?php echo $num_tarj; ?> <br>
                             <strong> Banco: </strong> <?php echo $banco; ?> <br>
 							              <strong> Vencimiento: </strong> <?php echo $v; ?> <br>

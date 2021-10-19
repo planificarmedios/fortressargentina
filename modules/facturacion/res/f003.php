@@ -263,7 +263,7 @@ h1 {
                   <strong> Contratación anual con renovación automática<br>
                   <strong> Formas de Pago:<br>
                   <strong> Pago mensual adelantado sólo por débito automático por tarjeta de crédito<br>
-									<strong> Pago por adelantado en un sólo pago congela el precio por todo el año<br>
+								
 							        
 					      
                           </p>

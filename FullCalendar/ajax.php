@@ -18,7 +18,7 @@ $s = $_POST['dataservicio'];
 		echo "<div class='form-group' id='idInicio' name='idInicio'>
                		<label class='col-sm-2 control-label'>Inicio</label>
                        <div class='col-sm-10'>
-                    <select  id='Inicio' name='Inicio'> 
+                    <select class='choosen-select'  id='Inicio' name='Inicio'> 
 					<option value=''>" 
 					?>
                     <?php echo $m;    

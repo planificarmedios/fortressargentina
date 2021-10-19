@@ -52,8 +52,8 @@
 	
 	function validarDni (input){
 		var dni = input.value;
-		//alert (dni);
-		$.post("module/user/validarCliente.php", {
+		alert (dni);
+		$.post("modules/user/validarCliente.php", {
 		 dataidobat: dni,
 		}, function(response) {      
 		  $('#stok').html(response)
@@ -136,7 +136,12 @@ if ($_GET['form']=='add') { ?>
               
                			<div class="col-sm-12 col-md-4">
 							<label class="control-label">Número DNI - CUIL - CUIT</label>
-								<input type="number" class="form-control"  id="dni" name="dni" autocomplete="off" required onblur="validarDni(this);" >
+								<input type="number" class="form-control"  id="dni" name="dni" autocomplete="off" required onchange="validarDni(this);" >
+                    	</div>
+
+						<div class="col-sm-12 col-md-4">
+							<label class="control-label">Número DNI - CUIL - CUIT</label>
+								<input type="number" class="form-control"  id="dni" name="dni" autocomplete="off" >
                     	</div>
    
 						 <div class="col-sm-12 col-md-4">

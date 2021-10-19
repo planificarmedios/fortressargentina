@@ -117,7 +117,7 @@
                 
                 <th class="center"># Caja</th>
                 <th class="center">Tipo de Caja</th>
-                <th class="center">Descripción</th>
+                <th class="center">Libro</th>
                 <th class="center"># Cliente</th>
                 <th class="center">Titular</th>
                 <th class="center">Estado Cliente</th>
@@ -138,7 +138,7 @@
 		  
 		
 			 foreach ($response as $d) {
-				          $id = $d['id'];
+				      $id = $d['id'];
 						  $nrocaja = $d['nro_caja'];
 						  $serie = $d['serie'];
 						  $tipocaja = $d['tipocaja'];
@@ -151,7 +151,8 @@
 						  } elseif (($d['id_cliente'])== 0 and ($d['status']==0)) {
 							  $s = '';
 						  }
-						  
+              
+              $libro = $d['libro']; 
 						  $apellido = $d['apellido']; 
               $descripcion= $d['descripcion'];
               $f_inicio = $d['f_inicio'];
@@ -174,29 +175,37 @@
 					  
 					  <td width='5%'  class='center'>$serie</td>
 					  <td width='10%' class='center'>$tipocaja</td>
-                      <td width='15%' class='center'>$descripcion</td>
+            <td width='5%' class='center'>$libro</td>
 					  <td width='7%'  class='center'>$m</td>
-					  <td width='20%' class='center'>$cliente</td>
+					  <td width='25%' class='center'>$cliente</td>
             		  <td width='10%' class='center'>$s</td>
             		  <td width='10%' class='center'>$f_inicio</td>
 					  <td width='10%' class='center'>$f_final</td>
-                      <td width='30%' class='center'>
+                      <td width='20%' class='center'>
                       <div>
 					  
 					  	 
-                          <a data-toggle='tooltip' data-placement='top' title='Acciones' style='margin-right:5px' class='btn btn-success btn-sm' href='?module=formEdit_cj&formEdit=edit&id=$id&nrocaja=$nrocaja'><i style='color:#fff' class='glyphicon glyphicon-edit'></i></a>
-						  
-						  
+              <a data-toggle='tooltip' data-placement='top' title='Acciones' style='margin-right:5px' class='btn btn-success btn-sm' href='?module=formEdit_cj&formEdit=edit&id=$id&nrocaja=$nrocaja'><i style='color:#fff' class='glyphicon glyphicon-edit'></i></a>
+						  				  
 						  <a data-toggle='tooltip' data-placement='top' title='Listar Registros' style='margin-right:5px' class='btn btn-warning btn-sm' href='?module=form_cj&form=list&id=$id&nrocaja=$nrocaja&serie=$serie'><i style='color:#fff' class='glyphicon glyphicon-search'></i>
-                          </a>";
+                          </a>
+                          
+                          <a  class='btn btn-danger btn-sm' href='?module=formEdit_cj&formEdit=libro&id=$id&nrocaja=$nrocaja&serie=$serie' data-toggle='tooltip' data-placement='top' title='Modificar Indice' style='margin-right:5px'>
+                          <i style='color:#fff' class='glyphicon glyphicon-book'></i>
+                      </a>"            
+                          ;
 				 
-			if ($id_cliente <> 0) {
+			if ($id_cliente <> 0 ) {
 			?> 
-            <a href='?module=formPrintModule_cj&formPrintModule=print&id=<?php echo $id;?>&nrocaja=<?php echo $nrocaja;?>' data-toggle='tooltip' data-placement='top' title='Módulo Impresiones' style='margin-right:5px' class='btn btn-primary btn-sm' ><i style='color:#fff' class='glyphicon glyphicon-print'></i></a>
+            <a href='?module=formPrintModule_cj&formPrintModule=print&id=<?php echo $id;?>&id_titular=<?php echo $id_cliente;?>&nrocaja=<?php echo $nrocaja;?>' data-toggle='tooltip' data-placement='top' title='Módulo Impresiones' style='margin-right:5px' class='btn btn-primary btn-sm' ><i style='color:#fff' class='glyphicon glyphicon-print'></i></a>
+           
+            
             <?php } else { ?>
-			<a data-toggle="tooltip" data-placement="top"  class="btn btn-default btn-sm" href="" onclick=""><i style="color:#fff" class="glyphicon glyphicon-trash"></i></a>			 
+			<a data-toggle="tooltip" data-placement="top"  class="btn btn-default btn-sm" href="" onclick=""><i style="color:#fff" class="glyphicon glyphicon-trash"></i></a>	
+              
 			<?php 
-			}
+
+    }
 				 
 						  
             if ($id_cliente == 0) {

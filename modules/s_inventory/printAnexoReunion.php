@@ -208,10 +208,35 @@ h1 {
 		Reglamento de Uso y Reserva de Salas. SEGURIDAD FORTRESS SA no se compromete a que las Salas estarán siempre disponibles, sino que se ajustará a las prioridades de reservas 
 		efectuadas. Queda absolutamente prohibido utilizar las salas Privadas para fines contrarios a las buenas costumbres. FORTRESS no se hace responsable bajo ningún aspecto de los 
 		negocios, operaciones, conteo de dinero o cualquier otro acto o suceso que ocurra dentro de las salas. Dichos actos o negocios deben ser lícitos y bajo exclusiva responsabilidad 
-		de los clientes. SEGURIDAD FORTRESS SA no tendrá conocimiento alguno del tipo de operaciones que en las salas se realice y tampoco filmará ni grabará o de forma alguna registrará lo que suceda en dichos recintos.
+		de los clientes. SEGURIDAD FORTRESS SA no tendrá conocimiento alguno del tipo de operaciones que en las salas se realice y tampoco filmará ni grabará o de forma alguna 
+		registrará lo que suceda en dichos recintos.</p>
 
+		<p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+		  <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
 
-        <p>&nbsp;</p>
+		<div class="row section" align="center">
+            <div class="col-1">
+                <table style='width:80%'>
+                    <thead contenteditable>
+                    
+                   </thead>
+                  <thead contenteditable>
+                    <tr class="invoice_detail">
+                      <th width="50%" >FIRMA ANFITRIÓN SA</th>
+                     </tr> 
+                     <tr class="invoice_detail">
+                      <th  width="80%" > ACLARACIÓN</th>
+                     </tr> 
+                    </thead>
+                </table>
+            </div><!--.row-->
+          
+          <p>&nbsp;</p>
+          
           <p class=MsoNormal style='margin-top:0cm;margin-right:29.5pt;margin-bottom:
 8.0pt;margin-left:21.3pt;text-align:justify;text-justify:inter-ideograph'><b><span
 lang=ES style='font-size:10.0pt;line-height:107%;mso-ascii-font-family:Calibri;

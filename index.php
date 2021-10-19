@@ -33,7 +33,7 @@
           <div style="font:'Paloseco Light'" class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
               
-              <li class="nav-item"><a href="indexcaptcha.php" class="nav-link">Ingresar</a></li>
+              <li class="nav-item"><a href="indexcaptcha.php" class="nav-link">Ingresar.</a></li>
             </ul>
           </div>
         </div>
